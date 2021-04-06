@@ -6,6 +6,7 @@
 package Juego;
 
 import Plantas.Planta;
+import Productos.Producto;
 
 /**
  *
@@ -13,23 +14,15 @@ import Plantas.Planta;
  */
 public class Caja {
 
-    private Planta planta;
+    private Producto producto;
     private int existencia;
 
-    public Caja(Planta planta) {
-        this.planta = planta;
+    public Caja(Producto producto) {
+        this.producto = producto;
     }
     
     public void mientras(){
-        System.out.println("Caja que contiene: "+planta.getNombre()+" con existencias de: "+existencia);
-    }
-
-    public Planta getPlanta() {
-        return planta;
-    }
-
-    public void setPlanta(Planta planta) {
-        this.planta = planta;
+        System.out.println("Caja que contiene: "+producto.getNombre()+" con existencias de: "+existencia);
     }
 
     public int getExistencia() {

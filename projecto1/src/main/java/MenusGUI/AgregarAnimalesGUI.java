@@ -11,11 +11,11 @@ import Controladores.ControladorAnimales;
  *
  * @author alex
  */
-public class AgregarParcelasGUI extends javax.swing.JFrame {
+public class AgregarAnimalesGUI extends javax.swing.JFrame {
 
     ControladorAnimales controlador;
 
-    public AgregarParcelasGUI(ControladorAnimales controlador) {
+    public AgregarAnimalesGUI(ControladorAnimales controlador) {
         initComponents();
         this.controlador = controlador;
         controlador.mostrarListaAnimales(jTextArea1);
@@ -42,7 +42,7 @@ public class AgregarParcelasGUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         tipoAnimal = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        tipoProducto = new javax.swing.JComboBox<>();
         agregarAnimal = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         tamañoAnimal = new javax.swing.JComboBox<>();
@@ -100,10 +100,10 @@ public class AgregarParcelasGUI extends javax.swing.JFrame {
 
         jLabel4.setText("Obtener Producto:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destace", "Sin Destace", "Ambas" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        tipoProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destace", "Sin Destace", "Ambas" }));
+        tipoProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                tipoProductoActionPerformed(evt);
             }
         });
 
@@ -143,7 +143,7 @@ public class AgregarParcelasGUI extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tipoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                         .addComponent(jButton3))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -168,7 +168,7 @@ public class AgregarParcelasGUI extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tipoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3)
                     .addComponent(tamañoAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -183,12 +183,13 @@ public class AgregarParcelasGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreAnimalActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void tipoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoProductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_tipoProductoActionPerformed
 
     private void agregarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarAnimalActionPerformed
-        controlador.crearAnimal(nombreAnimal.getText(), Double.parseDouble((String) tamañoAnimal.getSelectedItem()), (String) tipoAnimal.getSelectedItem());
+        controlador.crearAnimal(nombreAnimal.getText(), Double.parseDouble((String) tamañoAnimal.getSelectedItem()), (String) tipoProducto.getSelectedItem(),(String) tipoAnimal.getSelectedItem());
+        
         jTextArea1.setText("");
         controlador.mostrarListaAnimales(jTextArea1);
     }//GEN-LAST:event_agregarAnimalActionPerformed
@@ -214,14 +215,16 @@ public class AgregarParcelasGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgregarParcelasGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarAnimalesGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgregarParcelasGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarAnimalesGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgregarParcelasGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarAnimalesGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgregarParcelasGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarAnimalesGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -237,7 +240,6 @@ public class AgregarParcelasGUI extends javax.swing.JFrame {
     private javax.swing.JButton agregarAnimal;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -250,5 +252,6 @@ public class AgregarParcelasGUI extends javax.swing.JFrame {
     private javax.swing.JTextField nombreAnimal;
     private javax.swing.JComboBox<String> tamañoAnimal;
     private javax.swing.JComboBox<String> tipoAnimal;
+    private javax.swing.JComboBox<String> tipoProducto;
     // End of variables declaration//GEN-END:variables
 }

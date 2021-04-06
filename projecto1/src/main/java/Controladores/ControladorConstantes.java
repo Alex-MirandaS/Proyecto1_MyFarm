@@ -32,12 +32,16 @@ public class ControladorConstantes {
     //MAIZ
     public static String GRANO1 = "Maiz";
     public static int C_SEMILLAS_G1 = 20;
-    
-        //ANIMALES PREDETERMINADAS
+
+    //ANIMALES PREDETERMINADAS
     //MANZANO
     public static String HERBÍVORO1 = "Vaca";
     public static double ESPACIO_HERBÍVORO1 = 5;
     //MAIZ
     public static String OMNÍVORO1 = "Gallina";
-    public static double ESPACIO_OMNÍVORO1 = 0.5 ;
+    public static double ESPACIO_OMNÍVORO1 = 0.5;
+
+    public static String DESTACE = "Destace";
+    public static String SIN_DESTACE = "Sin Destace";
+    public static String AMBAS = "Ambas";
 }

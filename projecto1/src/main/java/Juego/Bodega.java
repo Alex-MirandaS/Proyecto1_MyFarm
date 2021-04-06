@@ -6,6 +6,7 @@
 package Juego;
 
 import Controladores.ControladorPlantas;
+import Controladores.ControladorProductos;
 import Listas.Lista;
 
 /**
@@ -14,18 +15,18 @@ import Listas.Lista;
  */
 public class Bodega {
 
-    private ControladorPlantas controlPlantas;
+    private ControladorProductos controlProductos;
     private Lista<Caja> contenedor = new Lista<>();
 //tambien productos
 
-    public Bodega(ControladorPlantas controlPlantas) {
-        this.controlPlantas = controlPlantas;
+    public Bodega(ControladorProductos controlProductos) {
+        this.controlProductos = controlProductos;
         crearCajas();
     }
 
     private void crearCajas() {
-        for (int i = 0; i < controlPlantas.getPlantasJuego().getSize(); i++) {
-            contenedor.add(new Caja(controlPlantas.getPlantasJuego().get(i)));
+        for (int i = 0; i < controlProductos.getProductosJuego().getSize(); i++) {
+            contenedor.add(new Caja(controlProductos.getProductosJuego().get(i)));
         }
     }
 

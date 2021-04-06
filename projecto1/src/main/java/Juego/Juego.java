@@ -10,6 +10,7 @@ import Casillas.Desierto;
 import Casillas.Pasto;
 import Controladores.ControladorAnimales;
 import Controladores.ControladorPlantas;
+import Controladores.ControladorProductos;
 import JuegoGUI.JuegoGUI;
 import MenusGUI.DatosJugador;
 
@@ -23,16 +24,17 @@ public class Juego {
     private Granja granja;
     private ControladorAnimales controlAnimales;
     private ControladorPlantas controlPlantas;
+    private ControladorProductos controlProductos;
     private Bodega bodega;
 
     private JuegoGUI ventanaJuego;
     private DatosJugador datosJugador;
 
     public Juego() {
-        controlAnimales = new ControladorAnimales();
         controlPlantas = new ControladorPlantas();
+        controlProductos = new ControladorProductos(controlPlantas);
+        controlAnimales = new ControladorAnimales(controlProductos);
         datosJugador = new DatosJugador(this);
-        bodega = new Bodega(controlPlantas);
 
         jug = new Jugador("Pepe", "fsddfs");
         granja = new Granja(jug, bodega, controlPlantas, controlAnimales);
@@ -40,6 +42,7 @@ public class Juego {
     }
 
     public void inicio() {
+        bodega = new Bodega(controlProductos);
         //datosJugador.setVisible(true);
         ventanaJuego.setVisible(true);
         // jug = new Jugador("Pepe", "");

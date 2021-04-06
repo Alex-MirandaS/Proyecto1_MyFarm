@@ -9,7 +9,9 @@ import Animales.Animal;
 import Animales.Herbívoro;
 import Animales.Omnívoro;
 import Listas.Lista;
-import MenusGUI.AgregarParcelasGUI;
+import MenusGUI.AgregarAnimalesGUI;
+import Productos.Alimento;
+import Productos.MateriaPrima;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
@@ -21,27 +23,34 @@ import javax.swing.JTextArea;
 public class ControladorAnimales {
 
     private Lista<Animal> animalesJuego;
-    private AgregarParcelasGUI agregarAnimal;
+    private AgregarAnimalesGUI agregarAnimal;
+    //private AgregarProductoGeneradoGUI agregarProducto;
+    private ControladorProductos productosJuego;
 
-    public ControladorAnimales() {
+    public ControladorAnimales(ControladorProductos productosJuego) {
         animalesJuego = new Lista<>();
+        this.productosJuego = productosJuego;
         llenadoInicial();
-        agregarAnimal = new AgregarParcelasGUI(this);
+        agregarAnimal = new AgregarAnimalesGUI(this);
     }
 
     public void iniciar() {
         agregarAnimal.setVisible(true);
     }
 
-    public void crearAnimal(String nombre, double espacio, String elección) {
+    public void crearAnimal(String nombre, double espacio, String tipoProducto, String elección) {
         if (nombre == "") {
-           JOptionPane.showMessageDialog(null, "No ha ingresado el nombre del Animal");
-        }else{
-        if (elección == "Herbívoro") {
-            animalesJuego.add(new Herbívoro(nombre, (double)espacio));
+            JOptionPane.showMessageDialog(null, "No ha ingresado el nombre del Animal");
         } else {
-            animalesJuego.add(new Omnívoro(nombre, (double)espacio));
-        }
+            Animal temp;
+            if (elección == "Herbívoro") {
+                temp = new Herbívoro(nombre, (double) espacio, tipoProducto);
+                animalesJuego.add(temp);
+            } else {
+                temp = new Herbívoro(nombre, (double) espacio, tipoProducto);
+                animalesJuego.add(temp);
+            }
+            productosAnimal(temp);
         }
     }
 
@@ -52,9 +61,27 @@ public class ControladorAnimales {
         }
     }
 
+    private void productosAnimal(Animal animal) {
+        if (animal.getObtenerProducto() == "Ambas") {
+            animal.getDestace().add( productosJuego.getProductosJuego().get(2));
+            animal.getSinDestace().add(productosJuego.getProductosJuego().get(0));
+        } else if (animal.getObtenerProducto() == "Destace") {
+            animal.getDestace().add((MateriaPrima) productosJuego.getProductosJuego().get(2));
+        } else {
+            animal.getSinDestace().add((Alimento) productosJuego.getProductosJuego().get(0));
+        }
+    }
+
     private void llenadoInicial() {
-        animalesJuego.add(new Herbívoro(ControladorConstantes.HERBÍVORO1, ControladorConstantes.ESPACIO_HERBÍVORO1));
-        animalesJuego.add(new Omnívoro(ControladorConstantes.OMNÍVORO1, ControladorConstantes.ESPACIO_OMNÍVORO1));
+        Animal vaca = new Herbívoro(ControladorConstantes.HERBÍVORO1, ControladorConstantes.ESPACIO_HERBÍVORO1, ControladorConstantes.AMBAS);
+        vaca.getSinDestace().add(productosJuego.getProductosJuego().get(2));
+        vaca.getDestace().add(productosJuego.getProductosJuego().get(5));
+        vaca.getDestace().add( productosJuego.getProductosJuego().get(4));
+        animalesJuego.add(vaca);
+        Animal gallina = new Omnívoro(ControladorConstantes.OMNÍVORO1, ControladorConstantes.ESPACIO_OMNÍVORO1, ControladorConstantes.AMBAS);
+        gallina.getSinDestace().add(productosJuego.getProductosJuego().get(3));
+        gallina.getDestace().add(productosJuego.getProductosJuego().get(6));
+        animalesJuego.add(gallina);
     }
 
     public Lista<Animal> getAnimalesJuego() {

@@ -31,6 +31,7 @@ public class Pasto extends Casilla {
     private Planta planta;
     private Parcela parcela;
     private Bodega bodega;
+    private int fertilidad = (int) (Math.random() * 100 + 1);
 
     public Pasto(int indice, Jugador jug, ControladorPlantas plantas, ControladorAnimales animales, Bodega bodega) {
         super(indice);
@@ -55,7 +56,7 @@ public class Pasto extends Casilla {
     public void cosecha(JLabel img) {
         if (planta.isPlantaLista()) {
             int selección = 0;
-            bodega.getContenedor().get(selección).agregartExistencia(1);
+            bodega.getContenedor().get(selección).agregartExistencia(1*fertilidad);
             planta = null;
             img.setText("");
         } else {
@@ -84,7 +85,7 @@ public class Pasto extends Casilla {
 
         if ("".equals(img.getText())) {
             if (jug.getOro() >= ControladorConstantes.PRECIO_PARCELA) {
-                parcela = new Parcela(animales.getAnimalesJuego().get(0));
+                parcela = new Parcela(animales.getAnimalesJuego().get(0), animales);
                 jug.restarOro(ControladorConstantes.PRECIO_PARCELA);
                 agregarParcelaCultivo(img, "Parcela" + Parcela.getCParcelas());
             } else {
@@ -113,5 +114,9 @@ public class Pasto extends Casilla {
     public Parcela getParcela() {
         return parcela;
     }
+
+    public int getFertilidad() {
+        return fertilidad;
+    }  
 
 }

@@ -5,10 +5,8 @@
  */
 package JuegoGUI;
 
-import MenusGUI.*;
-import Controladores.ControladorAnimales;
-import Controladores.ControladorParcelas;
 import Juego.Parcela;
+import javax.swing.JPanel;
 
 /**
  *
@@ -20,9 +18,16 @@ public class ParcelaGUI extends javax.swing.JFrame {
 
     public ParcelaGUI(Parcela parcela) {
         initComponents();
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.parcela = parcela;
-       // controlador.mostrarListaAnimales();
+        // controlador.mostrarListaAnimales();
     }
+
+    public JPanel getContenedorAnimalesParcela() {
+        return contenedorAnimalesParcela;
+    }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,57 +38,77 @@ public class ParcelaGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-
-        jButton2.setText("Salir");
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        recolectarProductos = new javax.swing.JToggleButton();
+        destasar = new javax.swing.JToggleButton();
+        limpiar = new javax.swing.JToggleButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        contenedorAnimalesParcela = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.BorderLayout(-80, 0));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        jPanel3.setLayout(new java.awt.GridLayout(3, 3, 3, 3));
+
+        jLabel1.setText("kjkj");
+        jPanel3.add(jLabel1);
+
+        jLabel2.setText("jkjkjk");
+        jPanel3.add(jLabel2);
+
+        jLabel3.setText("jkjkjk");
+        jPanel3.add(jLabel3);
+
+        recolectarProductos.setText("Recolectar Producto");
+        jPanel3.add(recolectarProductos);
+
+        destasar.setText("Destasar");
+        jPanel3.add(destasar);
+
+        limpiar.setText("Limpiar");
+        limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(limpiar);
+        jPanel3.add(jLabel4);
+        jPanel3.add(jLabel5);
+        jPanel3.add(jLabel6);
+
+        getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_END);
+
+        jLabel8.setText("jLabel8");
+        getContentPane().add(jLabel8, java.awt.BorderLayout.LINE_END);
+
+        jLabel7.setText("jLabel7");
+        getContentPane().add(jLabel7, java.awt.BorderLayout.LINE_START);
+
+        javax.swing.GroupLayout contenedorAnimalesParcelaLayout = new javax.swing.GroupLayout(contenedorAnimalesParcela);
+        contenedorAnimalesParcela.setLayout(contenedorAnimalesParcelaLayout);
+        contenedorAnimalesParcelaLayout.setHorizontalGroup(
+            contenedorAnimalesParcelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 446, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 281, Short.MAX_VALUE)
+        contenedorAnimalesParcelaLayout.setVerticalGroup(
+            contenedorAnimalesParcelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 182, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.LINE_END);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 281, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel2, java.awt.BorderLayout.LINE_START);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 508, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 281, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
+        getContentPane().add(contenedorAnimalesParcela, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
+        parcela.llenarParcela(3, parcela.getAnimalesJuego().getAnimalesJuego().get(0));
+    }//GEN-LAST:event_limpiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,9 +153,18 @@ public class ParcelaGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel contenedorAnimalesParcela;
+    private javax.swing.JToggleButton destasar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JToggleButton limpiar;
+    private javax.swing.JToggleButton recolectarProductos;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,18 +4,16 @@
  * and open the template in the editor.
  */
 
-package Animales;
-
-import Plantas.Planta;
+package Productos;
 
 /**
  * 
  * @author alex
  */
-public class Herbívoro extends Animal{
-   
-    public Herbívoro(String nombre, double espacio, String obtenerProducto) {
-        super(nombre, espacio, obtenerProducto);
+public class MateriaPrima extends Producto{
+
+    public MateriaPrima(String nombre) {
+        super(nombre);
     }
 
 }

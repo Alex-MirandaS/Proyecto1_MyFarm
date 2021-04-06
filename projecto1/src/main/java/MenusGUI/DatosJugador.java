@@ -140,7 +140,7 @@ public class DatosJugador extends javax.swing.JFrame {
 
     private void guardarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarDatosActionPerformed
        juego.crearJugador(nombre.getText(), nick.getText());
-       
+       //
     }//GEN-LAST:event_guardarDatosActionPerformed
 
     private void añadirAnimal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirAnimal1ActionPerformed
