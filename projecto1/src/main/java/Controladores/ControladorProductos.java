@@ -8,6 +8,7 @@ package Controladores;
 import Casillas.Casilla;
 import Listas.Lista;
 import MenusGUI.AgregarPlantasGUI;
+import MenusGUI.AgregarProductoGUI;
 import Plantas.Fruta;
 import Plantas.Grano;
 import Plantas.Planta;
@@ -27,19 +28,17 @@ public class ControladorProductos {
     private Lista<MateriaPrima> materiaPrimaJuego;
     private Lista<Alimento> AlimentoJuego;
     private ControladorPlantas plantasJuego;
-    private AgregarPlantasGUI agregarPlanta;
+    private AgregarProductoGUI agregarProducto;
 
     public ControladorProductos(ControladorPlantas plantasJuego) {
         productosJuego = new Lista<>();
-        AlimentoJuego = new Lista<>();
-
         llenadoInicial();
-        //agregarPlanta = new AgregarPlantasGUI(this);
-        //panel
+        agregarProducto = new AgregarProductoGUI(this);
+      
     }
 
     public void iniciar() {
-        agregarPlanta.setVisible(true);
+        agregarProducto.setVisible(true);
     }
 
     public void crearProducto(String nombre, String tipo) {

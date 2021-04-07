@@ -34,15 +34,16 @@ public class Juego {
         controlPlantas = new ControladorPlantas();
         controlProductos = new ControladorProductos(controlPlantas);
         controlAnimales = new ControladorAnimales(controlProductos);
+        bodega = new Bodega(controlProductos);
         datosJugador = new DatosJugador(this);
-
+        //por mientras
         jug = new Jugador("Pepe", "fsddfs");
         granja = new Granja(jug, bodega, controlPlantas, controlAnimales);
+
         ventanaJuego = new JuegoGUI(this);
     }
 
     public void inicio() {
-        bodega = new Bodega(controlProductos);
         datosJugador.setVisible(true);
         //ventanaJuego.setVisible(true);
         // jug = new Jugador("Pepe", "");
@@ -132,6 +133,10 @@ public class Juego {
         return controlPlantas;
     }
 
+    public ControladorProductos getControlProductos() {
+        return controlProductos;
+    }
+    
     public Bodega getBodega() {
         return bodega;
     }

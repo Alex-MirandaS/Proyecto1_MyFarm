@@ -29,39 +29,47 @@ public class DatosJugador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        añadirPlanta = new javax.swing.JButton();
+        añadirAnimal = new javax.swing.JButton();
+        añadirProducto = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        nombre = new javax.swing.JTextField();
+        jPanel6 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         nick = new javax.swing.JTextField();
-        nombre = new javax.swing.JTextField();
         guardarDatos = new javax.swing.JButton();
-        añadirPlanta = new javax.swing.JButton();
-        añadirAnimal1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jLabel1.setText("Nombre:");
+        jPanel2.setLayout(new java.awt.BorderLayout());
 
-        jLabel2.setText("NickName:");
+        jLabel6.setText("    ");
+        jPanel2.add(jLabel6, java.awt.BorderLayout.LINE_END);
 
-        nick.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nickActionPerformed(evt);
-            }
-        });
+        jLabel7.setText("    ");
+        jPanel2.add(jLabel7, java.awt.BorderLayout.LINE_START);
 
-        nombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreActionPerformed(evt);
-            }
-        });
-
-        guardarDatos.setText("EMPEZAR PARTIDA");
-        guardarDatos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                guardarDatosActionPerformed(evt);
-            }
-        });
+        jPanel7.setLayout(new java.awt.GridLayout(3, 3, 2, 0));
+        jPanel7.add(jLabel8);
+        jPanel7.add(jLabel9);
+        jPanel7.add(jLabel10);
 
         añadirPlanta.setText("Crear Planta");
         añadirPlanta.addActionListener(new java.awt.event.ActionListener() {
@@ -69,91 +77,96 @@ public class DatosJugador extends javax.swing.JFrame {
                 añadirPlantaActionPerformed(evt);
             }
         });
+        jPanel7.add(añadirPlanta);
 
-        añadirAnimal1.setText("Crear Animal");
-        añadirAnimal1.addActionListener(new java.awt.event.ActionListener() {
+        añadirAnimal.setText("Crear Animal");
+        añadirAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                añadirAnimal1ActionPerformed(evt);
+                añadirAnimalActionPerformed(evt);
             }
         });
+        jPanel7.add(añadirAnimal);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(añadirAnimal1)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nick, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(106, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(añadirPlanta)
-                        .addGap(20, 20, 20))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(guardarDatos)
-                .addGap(114, 114, 114))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(nick, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(guardarDatos)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(añadirPlanta)
-                    .addComponent(añadirAnimal1))
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
+        añadirProducto.setText("Crear Producto");
+        añadirProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                añadirProductoActionPerformed(evt);
+            }
+        });
+        jPanel7.add(añadirProducto);
+        jPanel7.add(jLabel11);
+        jPanel7.add(jLabel12);
+        jPanel7.add(jLabel13);
+
+        jPanel2.add(jPanel7, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_END);
+
+        jLabel3.setText("               ");
+        getContentPane().add(jLabel3, java.awt.BorderLayout.LINE_END);
+
+        jLabel4.setText("               ");
+        getContentPane().add(jLabel4, java.awt.BorderLayout.LINE_START);
+
+        jPanel3.setLayout(new java.awt.BorderLayout());
+
+        jPanel4.setLayout(new java.awt.GridLayout(3, 0, 0, 5));
+
+        jPanel5.setLayout(new java.awt.GridLayout(1, 2));
+
+        jLabel1.setText("Nombre:");
+        jPanel5.add(jLabel1);
+        jPanel5.add(nombre);
+
+        jPanel4.add(jPanel5);
+
+        jPanel6.setLayout(new java.awt.GridLayout(1, 2));
+
+        jLabel2.setText("NickName:");
+        jPanel6.add(jLabel2);
+        jPanel6.add(nick);
+
+        jPanel4.add(jPanel6);
+
+        guardarDatos.setText("EMPEZAR PARTIDA");
+        guardarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarDatosActionPerformed(evt);
+            }
+        });
+        jPanel4.add(guardarDatos);
+
+        jPanel3.add(jPanel4, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
+
+        jLabel5.setText("   ");
+        getContentPane().add(jLabel5, java.awt.BorderLayout.PAGE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void nickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nickActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nickActionPerformed
-
-    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombreActionPerformed
-
-    private void guardarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarDatosActionPerformed
-       juego.crearJugador(nombre.getText(), nick.getText());
-       //
-    }//GEN-LAST:event_guardarDatosActionPerformed
-
-    private void añadirAnimal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirAnimal1ActionPerformed
-        this.setEnabled(false);
-        juego.getControlAnimales().iniciar();
-        this.setEnabled(true);
-    }//GEN-LAST:event_añadirAnimal1ActionPerformed
 
     private void añadirPlantaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirPlantaActionPerformed
         this.setEnabled(false);
         juego.getControlPlantas().iniciar();
         this.setEnabled(true);
     }//GEN-LAST:event_añadirPlantaActionPerformed
+
+    private void añadirAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirAnimalActionPerformed
+        this.setEnabled(false);
+        juego.getControlAnimales().iniciar();
+        this.setEnabled(true);
+    }//GEN-LAST:event_añadirAnimalActionPerformed
+
+    private void añadirProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirProductoActionPerformed
+        this.setEnabled(false);
+        juego.getControlProductos().iniciar();
+        this.setEnabled(true);
+    }//GEN-LAST:event_añadirProductoActionPerformed
+
+    private void guardarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarDatosActionPerformed
+        juego.crearJugador(nombre.getText(), nick.getText());
+    }//GEN-LAST:event_guardarDatosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,17 +198,35 @@ public class DatosJugador extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               // new DatosJugador().setVisible(true);
+                // new DatosJugador().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton añadirAnimal1;
+    private javax.swing.JButton añadirAnimal;
     private javax.swing.JButton añadirPlanta;
+    private javax.swing.JButton añadirProducto;
     private javax.swing.JButton guardarDatos;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JTextField nick;
     private javax.swing.JTextField nombre;
     // End of variables declaration//GEN-END:variables
