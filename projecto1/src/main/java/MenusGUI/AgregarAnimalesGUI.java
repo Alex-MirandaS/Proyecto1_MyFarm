@@ -189,7 +189,6 @@ public class AgregarAnimalesGUI extends javax.swing.JFrame {
 
     private void agregarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarAnimalActionPerformed
         controlador.crearAnimal(nombreAnimal.getText(), Double.parseDouble((String) tamañoAnimal.getSelectedItem()), (String) tipoProducto.getSelectedItem(),(String) tipoAnimal.getSelectedItem());
-        
         jTextArea1.setText("");
         controlador.mostrarListaAnimales(jTextArea1);
     }//GEN-LAST:event_agregarAnimalActionPerformed

@@ -43,8 +43,8 @@ public class Juego {
 
     public void inicio() {
         bodega = new Bodega(controlProductos);
-        //datosJugador.setVisible(true);
-        ventanaJuego.setVisible(true);
+        datosJugador.setVisible(true);
+        //ventanaJuego.setVisible(true);
         // jug = new Jugador("Pepe", "");
         //granja = new Granja(jug);
     }
