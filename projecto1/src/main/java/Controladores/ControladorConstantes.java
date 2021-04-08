@@ -44,4 +44,8 @@ public class ControladorConstantes {
     public static String DESTACE = "Destace";
     public static String SIN_DESTACE = "Sin Destace";
     public static String AMBAS = "Ambas";
+    
+    //Barco
+    public static int PRECIO_BARCO = 20;
+
 }

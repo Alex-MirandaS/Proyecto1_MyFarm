@@ -71,7 +71,8 @@ public class ControladorProductos {
         productosJuego.add(new MateriaPrima("Cuero"));
         productosJuego.add(new MateriaPrima("Carne Vaca"));
         productosJuego.add(new MateriaPrima("Carne Gallina"));
-
+        //Peces
+        productosJuego.add(new Alimento("Pescado"));
     }
 
     public Lista<Producto> getProductosJuego() {

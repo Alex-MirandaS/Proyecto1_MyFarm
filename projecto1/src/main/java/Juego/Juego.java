@@ -44,8 +44,8 @@ public class Juego {
     }
 
     public void inicio() {
-        datosJugador.setVisible(true);
-        //ventanaJuego.setVisible(true);
+        //datosJugador.setVisible(true);
+        ventanaJuego.setVisible(true);
         // jug = new Jugador("Pepe", "");
         //granja = new Granja(jug);
     }
@@ -106,6 +106,17 @@ public class Juego {
             }
         }
     }
+    
+        public void prepararAñadirBarco() {
+        for (int i = 0; i < granja.getCasillas().getSize(); i++) {
+
+            if (granja.getCasillas().get(i) instanceof Agua && granja.getCasillas().get(i).getFigura().isEnabled() == true) {
+                Agua agua = (Agua) granja.getCasillas().get(i);
+                boolean temp = agua.getFigura().isPrepararAñadirBarco();
+                agua.getFigura().setPrepararAñadirBarco(!temp);
+            }
+        }
+    }
 
     public void prepararCosechar() {
         for (int i = 0; i < granja.getCasillas().getSize(); i++) {
@@ -120,7 +131,7 @@ public class Juego {
     }
 
     public void mientras() {
-        for (int i = 0; i < controlPlantas.getPlantasJuego().getSize(); i++) {
+        for (int i = 0; i < bodega.getContenedor().getSize(); i++) {
             bodega.getContenedor().get(i).mientras();
         }
     }
@@ -139,6 +150,10 @@ public class Juego {
     
     public Bodega getBodega() {
         return bodega;
+    }
+
+    public Jugador getJug() {
+        return jug;
     }
 
 }

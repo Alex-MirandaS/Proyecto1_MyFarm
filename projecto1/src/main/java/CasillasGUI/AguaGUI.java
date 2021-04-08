@@ -18,11 +18,12 @@ import javax.swing.JLabel;
  */
 public class AguaGUI extends javax.swing.JPanel {
 
-    boolean prepararDesbloqueo;
+    private boolean prepararDesbloqueo, prepararAñadirBarco;
+    private Agua agua;
 
-    public AguaGUI(int i) {
+    public AguaGUI(int i, Agua agua) {
         initComponents();
-//        this.prepararDesbloqueo = prepararDesbloqueo;
+        this.agua = agua;
         indice.setText("Agua " + i);
     }
 
@@ -36,6 +37,7 @@ public class AguaGUI extends javax.swing.JPanel {
     private void initComponents() {
 
         indice = new javax.swing.JLabel();
+        Barco = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 51, 255));
         setForeground(new java.awt.Color(0, 204, 153));
@@ -55,15 +57,19 @@ public class AguaGUI extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(30, Short.MAX_VALUE)
-                .addComponent(indice, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(Barco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(indice, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
                 .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addContainerGap(39, Short.MAX_VALUE)
                 .addComponent(indice, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Barco, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -74,7 +80,13 @@ public class AguaGUI extends javax.swing.JPanel {
 
         if (prepararDesbloqueo) {
             ControladorCasillas control = new ControladorCasillas();
-            control.desbloquearCasillas(this,Color.BLUE);
+            control.desbloquearCasillas(this, Color.BLUE);
+        }
+        if (agua.barcoExiste()) {
+            //agua.ponerBarco(Barco);
+        }
+        if (prepararAñadirBarco) {
+            agua.ponerBarco(Barco);
         }
     }//GEN-LAST:event_formMouseClicked
 
@@ -90,7 +102,17 @@ public class AguaGUI extends javax.swing.JPanel {
         this.prepararDesbloqueo = prepararDesbloqueo;
     }
 
+    public boolean isPrepararAñadirBarco() {
+        return prepararAñadirBarco;
+    }
+
+    public void setPrepararAñadirBarco(boolean prepararAñadirBarco) {
+        this.prepararAñadirBarco = prepararAñadirBarco;
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Barco;
     private javax.swing.JLabel indice;
     // End of variables declaration//GEN-END:variables
 }

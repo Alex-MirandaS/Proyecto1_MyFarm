@@ -14,7 +14,7 @@ import Controladores.ControladorConstantes;
 public class Jugador {
 
     private String nombre, nickname;
-    private int vida, oro, semillas = 50;
+    private int vida=100, oro, semillas = 50;
 
     public Jugador(String nombre, String nickname) {
         this.nombre = nombre;
@@ -47,5 +47,19 @@ public class Jugador {
     public int getSemillas() {
         return semillas;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public int getVida() {
+        return vida;
+    }
+    
+    
 
 }

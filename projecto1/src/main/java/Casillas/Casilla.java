@@ -5,9 +5,6 @@
  */
 package Casillas;
 
-import CasillasGUI.CasillaGUI;
-import Juego.Jugador;
-import java.awt.Component;
 import javax.swing.JPanel;
 
 /**
@@ -26,11 +23,6 @@ public class Casilla {
 
     public JPanel getFigura() {
         return figura;
-    }
-
-    @Override
-    public String toString() {
-        return "Casilla{" + "figura=" + figura + ", indice=" + indice + '}';
     }
 
     public void setPrepararDesbloqueo(boolean prepararDesbloqueo) {

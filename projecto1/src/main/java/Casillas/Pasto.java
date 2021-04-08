@@ -5,12 +5,8 @@
  */
 package Casillas;
 
-import Animales.Animal;
 import CasillasGUI.PastoGUI;
-import Controladores.ControladorAnimales;
-import Controladores.ControladorConstantes;
-import Controladores.ControladorPasto;
-import Controladores.ControladorPlantas;
+import Controladores.*;
 import Juego.Bodega;
 import Juego.Jugador;
 import Juego.Parcela;

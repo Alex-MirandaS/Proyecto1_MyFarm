@@ -47,7 +47,7 @@ public class Granja {
             if (numAleatorio > 0 && numAleatorio < 41) {
                 casillas.add(new Pasto(i, jug, plantas, animales, bodega));
             } else if (numAleatorio > 40 && numAleatorio < 76) {
-                casillas.add(new Agua(i, jug));
+                casillas.add(new Agua(i, jug, bodega));
             } else {
                 casillas.add(new Desierto(i));
             }
@@ -55,8 +55,7 @@ public class Granja {
     }
 
     public void LlenarTablero(JPanel panel) {
-        GridLayout cuadritos = new GridLayout(ControladorConstantes.Y, ControladorConstantes.X);
-        panel.setLayout(cuadritos);
+        panel.setLayout(new GridLayout(ControladorConstantes.Y, ControladorConstantes.X));
         ControladorCasillas controlador = new ControladorCasillas();
         int contX = 0;
         int contY = 0;

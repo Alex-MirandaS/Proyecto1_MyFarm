@@ -11,4 +11,6 @@ package Interfaces;
  */
 public interface CasillasGUI {
     
+    
+    boolean numero = false;
 }

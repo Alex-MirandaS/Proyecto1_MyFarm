@@ -9,6 +9,7 @@ import Casillas.Casilla;
 import Casillas.Pasto;
 import Controladores.ControladorCasillas;
 import Controladores.ControladorPasto;
+import Interfaces.CasillasGUI;
 import java.awt.Color;
 import javax.swing.JLabel;
 
@@ -16,7 +17,7 @@ import javax.swing.JLabel;
  *
  * @author alex
  */
-public class PastoGUI extends javax.swing.JPanel {
+public class PastoGUI extends javax.swing.JPanel{
 
     boolean prepararDesbloqueo, prepararAñadirParcela, prepararAñadirCultivo;
     ControladorPasto cPasto = new ControladorPasto();

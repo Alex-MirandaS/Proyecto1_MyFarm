@@ -21,6 +21,11 @@ public class JuegoGUI extends javax.swing.JFrame {
     public JuegoGUI(Juego juego) {
         initComponents();
         this.juego = juego;
+        this.nombre.setText(juego.getJug().getNombre());
+        this.nick.setText(juego.getJug().getNickname());
+        this.vida.setText(""+juego.getJug().getVida());
+        this.oro.setText(""+juego.getJug().getOro());
+        this.cSemillas.setText(""+juego.getJug().getSemillas());
         juego.getGranja().LlenarTablero(this.PanelCentral);
     }
 
@@ -34,177 +39,287 @@ public class JuegoGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        PanelCentral = new javax.swing.JPanel();
-        PanelDerecho = new javax.swing.JPanel();
-        desbloqueo = new javax.swing.JToggleButton();
-        añadirParcela1 = new javax.swing.JToggleButton();
+        jPanel1 = new javax.swing.JPanel();
+        accederBodega = new javax.swing.JButton();
+        accederMercado = new javax.swing.JButton();
+        accederReportes = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        nombre = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        nick = new javax.swing.JLabel();
+        figuritaPersonaje = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        vida = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        oro = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        cSemillas = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        precioAgregarCasillas = new javax.swing.JLabel();
+        agregarCasilla = new javax.swing.JToggleButton();
+        jPanel12 = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        precioAgregarCasillas1 = new javax.swing.JLabel();
+        agregarBarco = new javax.swing.JToggleButton();
+        jPanel14 = new javax.swing.JPanel();
+        jPanel15 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        precioAgregarCasillas2 = new javax.swing.JLabel();
         añadirPlanta = new javax.swing.JToggleButton();
-        cosechar = new javax.swing.JToggleButton();
-        jButton1 = new javax.swing.JButton();
+        jPanel16 = new javax.swing.JPanel();
+        jPanel17 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        precioAgregarCasillas3 = new javax.swing.JLabel();
+        añadirParcela = new javax.swing.JToggleButton();
+        opciones = new javax.swing.JButton();
+        PanelCentral = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout PanelCentralLayout = new javax.swing.GroupLayout(PanelCentral);
-        PanelCentral.setLayout(PanelCentralLayout);
-        PanelCentralLayout.setHorizontalGroup(
-            PanelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 231, Short.MAX_VALUE)
-        );
-        PanelCentralLayout.setVerticalGroup(
-            PanelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 312, Short.MAX_VALUE)
-        );
+        jPanel1.setLayout(new java.awt.GridLayout(1, 3));
 
-        getContentPane().add(PanelCentral, java.awt.BorderLayout.CENTER);
-
-        desbloqueo.setText("desbloqueo");
-        desbloqueo.addActionListener(new java.awt.event.ActionListener() {
+        accederBodega.setText("Bodega");
+        accederBodega.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                desbloqueoActionPerformed(evt);
+                accederBodegaActionPerformed(evt);
             }
         });
+        jPanel1.add(accederBodega);
 
-        añadirParcela1.setText("Añadir Parcela");
-        añadirParcela1.addActionListener(new java.awt.event.ActionListener() {
+        accederMercado.setText("Mercado");
+        jPanel1.add(accederMercado);
+
+        accederReportes.setText("Reportes");
+        jPanel1.add(accederReportes);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
+
+        jPanel2.setLayout(new java.awt.GridLayout(2, 0));
+
+        jPanel4.setLayout(new java.awt.BorderLayout());
+
+        jLabel1.setText("   ");
+        jPanel4.add(jLabel1, java.awt.BorderLayout.PAGE_START);
+
+        jLabel2.setText("  ");
+        jPanel4.add(jLabel2, java.awt.BorderLayout.LINE_START);
+
+        jLabel3.setText("  ");
+        jPanel4.add(jLabel3, java.awt.BorderLayout.LINE_END);
+
+        jPanel6.setLayout(new java.awt.GridLayout(2, 0));
+
+        jPanel7.setLayout(new java.awt.GridLayout(1, 2));
+
+        jPanel9.setLayout(new java.awt.GridLayout(2, 2));
+
+        jLabel4.setText("Nombre:");
+        jPanel9.add(jLabel4);
+        jPanel9.add(nombre);
+
+        jLabel5.setText("Nickname:");
+        jPanel9.add(jLabel5);
+        jPanel9.add(nick);
+
+        jPanel7.add(jPanel9);
+        jPanel7.add(figuritaPersonaje);
+
+        jPanel6.add(jPanel7);
+
+        jPanel8.setLayout(new java.awt.GridLayout(3, 3));
+
+        jLabel6.setText("Vida:");
+        jPanel8.add(jLabel6);
+        jPanel8.add(vida);
+
+        jLabel7.setText("Oro:");
+        jPanel8.add(jLabel7);
+        jPanel8.add(oro);
+
+        jLabel12.setText("Semillas:");
+        jPanel8.add(jLabel12);
+        jPanel8.add(cSemillas);
+
+        jPanel6.add(jPanel8);
+
+        jPanel4.add(jPanel6, java.awt.BorderLayout.CENTER);
+
+        jPanel2.add(jPanel4);
+
+        jPanel5.setLayout(new java.awt.GridLayout(5, 0, 0, 3));
+
+        jPanel10.setLayout(new java.awt.BorderLayout());
+
+        jPanel11.setLayout(new java.awt.BorderLayout());
+
+        jLabel8.setText("  ");
+        jPanel11.add(jLabel8, java.awt.BorderLayout.LINE_END);
+        jPanel11.add(precioAgregarCasillas, java.awt.BorderLayout.CENTER);
+
+        jPanel10.add(jPanel11, java.awt.BorderLayout.LINE_END);
+
+        agregarCasilla.setText("Agregar Casilla");
+        agregarCasilla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                añadirParcela1ActionPerformed(evt);
+                agregarCasillaActionPerformed(evt);
             }
         });
+        jPanel10.add(agregarCasilla, java.awt.BorderLayout.CENTER);
 
-        añadirPlanta.setText("Añadir Planta");
+        jPanel5.add(jPanel10);
+
+        jPanel12.setLayout(new java.awt.BorderLayout());
+
+        jPanel13.setLayout(new java.awt.BorderLayout());
+
+        jLabel9.setText("  ");
+        jPanel13.add(jLabel9, java.awt.BorderLayout.LINE_END);
+        jPanel13.add(precioAgregarCasillas1, java.awt.BorderLayout.CENTER);
+
+        jPanel12.add(jPanel13, java.awt.BorderLayout.LINE_END);
+
+        agregarBarco.setText("Agregar Barco");
+        agregarBarco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarBarcoActionPerformed(evt);
+            }
+        });
+        jPanel12.add(agregarBarco, java.awt.BorderLayout.CENTER);
+
+        jPanel5.add(jPanel12);
+
+        jPanel14.setLayout(new java.awt.BorderLayout());
+
+        jPanel15.setLayout(new java.awt.BorderLayout());
+
+        jLabel10.setText("  ");
+        jPanel15.add(jLabel10, java.awt.BorderLayout.LINE_END);
+        jPanel15.add(precioAgregarCasillas2, java.awt.BorderLayout.CENTER);
+
+        jPanel14.add(jPanel15, java.awt.BorderLayout.LINE_END);
+
+        añadirPlanta.setText("Añadir Siembra");
         añadirPlanta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 añadirPlantaActionPerformed(evt);
             }
         });
+        jPanel14.add(añadirPlanta, java.awt.BorderLayout.CENTER);
 
-        cosechar.setText("Cosechar");
-        cosechar.addActionListener(new java.awt.event.ActionListener() {
+        jPanel5.add(jPanel14);
+
+        jPanel16.setLayout(new java.awt.BorderLayout());
+
+        jPanel17.setLayout(new java.awt.BorderLayout());
+
+        jLabel11.setText("  ");
+        jPanel17.add(jLabel11, java.awt.BorderLayout.LINE_END);
+        jPanel17.add(precioAgregarCasillas3, java.awt.BorderLayout.CENTER);
+
+        jPanel16.add(jPanel17, java.awt.BorderLayout.LINE_END);
+
+        añadirParcela.setText("Añadir Parcela");
+        añadirParcela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cosecharActionPerformed(evt);
+                añadirParcelaActionPerformed(evt);
             }
         });
+        jPanel16.add(añadirParcela, java.awt.BorderLayout.CENTER);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jPanel5.add(jPanel16);
 
-        javax.swing.GroupLayout PanelDerechoLayout = new javax.swing.GroupLayout(PanelDerecho);
-        PanelDerecho.setLayout(PanelDerechoLayout);
-        PanelDerechoLayout.setHorizontalGroup(
-            PanelDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelDerechoLayout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addGroup(PanelDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(añadirPlanta)
-                    .addGroup(PanelDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDerechoLayout.createSequentialGroup()
-                            .addComponent(desbloqueo)
-                            .addGap(26, 26, 26))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDerechoLayout.createSequentialGroup()
-                            .addComponent(añadirParcela1)
-                            .addGap(13, 13, 13)))))
-            .addGroup(PanelDerechoLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(PanelDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cosechar)
-                    .addComponent(jButton1))
-                .addGap(0, 0, Short.MAX_VALUE))
+        opciones.setText("Opciones");
+        jPanel5.add(opciones);
+
+        jPanel2.add(jPanel5);
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.LINE_END);
+
+        javax.swing.GroupLayout PanelCentralLayout = new javax.swing.GroupLayout(PanelCentral);
+        PanelCentral.setLayout(PanelCentralLayout);
+        PanelCentralLayout.setHorizontalGroup(
+            PanelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 217, Short.MAX_VALUE)
         );
-        PanelDerechoLayout.setVerticalGroup(
-            PanelDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelDerechoLayout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(desbloqueo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(añadirParcela1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(añadirPlanta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cosechar)
-                .addGap(23, 23, 23)
-                .addComponent(jButton1)
-                .addContainerGap(43, Short.MAX_VALUE))
+        PanelCentralLayout.setVerticalGroup(
+            PanelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 427, Short.MAX_VALUE)
         );
 
-        getContentPane().add(PanelDerecho, java.awt.BorderLayout.LINE_END);
+        getContentPane().add(PanelCentral, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void desbloqueoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desbloqueoActionPerformed
+    private void agregarCasillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarCasillaActionPerformed
         juego.prepararDesbloqueo();
 
         if (añadirPlanta.isSelected()) {
             juego.prepararAñadirCultivo();
             añadirPlanta.setSelected(false);
         }
-        if (añadirParcela1.isSelected()) {
+        if (añadirParcela.isSelected()) {
             juego.prepararAñadirParcela();
-            añadirParcela1.setSelected(false);
+            añadirParcela.setSelected(false);
         }
-        if (cosechar.isSelected()) {
-            juego.prepararCosechar();
-            cosechar.setSelected(false);
-        }
-    }//GEN-LAST:event_desbloqueoActionPerformed
+//        if (cosechar.isSelected()) {
+//            juego.prepararCosechar();
+//            cosechar.setSelected(false);
+//        }
+    }//GEN-LAST:event_agregarCasillaActionPerformed
 
     private void añadirPlantaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirPlantaActionPerformed
         juego.prepararAñadirCultivo();
-        if (desbloqueo.isSelected()) {
+        if (agregarCasilla.isSelected()) {
             juego.prepararDesbloqueo();
-            desbloqueo.setSelected(false);
+            agregarCasilla.setSelected(false);
         }
-        if (añadirParcela1.isSelected()) {
+        if (añadirParcela.isSelected()) {
             juego.prepararAñadirParcela();
-            añadirParcela1.setSelected(false);
+            añadirParcela.setSelected(false);
         }
-        if (cosechar.isSelected()) {
-            juego.prepararCosechar();
-            cosechar.setSelected(false);
-        }
+//        if (cosechar.isSelected()) {
+//            juego.prepararCosechar();
+//            cosechar.setSelected(false);
+//        }
     }//GEN-LAST:event_añadirPlantaActionPerformed
 
-    private void añadirParcela1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirParcela1ActionPerformed
+    private void añadirParcelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirParcelaActionPerformed
         juego.prepararAñadirParcela();
-        if (desbloqueo.isSelected()) {
+        if (agregarCasilla.isSelected()) {
             juego.prepararDesbloqueo();
-            desbloqueo.setSelected(false);
+            agregarCasilla.setSelected(false);
         }
         if (añadirPlanta.isSelected()) {
             juego.prepararAñadirCultivo();
             añadirPlanta.setSelected(false);
         }
-        if (cosechar.isSelected()) {
-            juego.prepararCosechar();
-            cosechar.setSelected(false);
-        }
+//        if (cosechar.isSelected()) {
+//            juego.prepararCosechar();
+//            cosechar.setSelected(false);
+//        }
+    }//GEN-LAST:event_añadirParcelaActionPerformed
 
-    }//GEN-LAST:event_añadirParcela1ActionPerformed
-
-    private void cosecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cosecharActionPerformed
-        juego.prepararCosechar();
-        if (desbloqueo.isSelected()) {
-            juego.prepararDesbloqueo();
-            desbloqueo.setSelected(false);
-        }
-        if (añadirPlanta.isSelected()) {
-            juego.prepararAñadirCultivo();
-            añadirPlanta.setSelected(false);
-        }
-        if (añadirParcela1.isSelected()) {
-            juego.prepararAñadirParcela();
-            añadirParcela1.setSelected(false);
-        }
-
-    }//GEN-LAST:event_cosecharActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void accederBodegaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accederBodegaActionPerformed
         juego.mientras();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_accederBodegaActionPerformed
+
+    private void agregarBarcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarBarcoActionPerformed
+        juego.prepararAñadirBarco();
+    }//GEN-LAST:event_agregarBarcoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,6 +348,12 @@ public class JuegoGUI extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -244,12 +365,52 @@ public class JuegoGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelCentral;
-    private javax.swing.JPanel PanelDerecho;
-    private javax.swing.JToggleButton añadirParcela1;
+    private javax.swing.JButton accederBodega;
+    private javax.swing.JButton accederMercado;
+    private javax.swing.JButton accederReportes;
+    private javax.swing.JToggleButton agregarBarco;
+    private javax.swing.JToggleButton agregarCasilla;
+    private javax.swing.JToggleButton añadirParcela;
     private javax.swing.JToggleButton añadirPlanta;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JToggleButton cosechar;
-    private javax.swing.JToggleButton desbloqueo;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel cSemillas;
+    private javax.swing.JLabel figuritaPersonaje;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel nick;
+    private javax.swing.JLabel nombre;
+    private javax.swing.JButton opciones;
+    private javax.swing.JLabel oro;
+    private javax.swing.JLabel precioAgregarCasillas;
+    private javax.swing.JLabel precioAgregarCasillas1;
+    private javax.swing.JLabel precioAgregarCasillas2;
+    private javax.swing.JLabel precioAgregarCasillas3;
+    private javax.swing.JLabel vida;
     // End of variables declaration//GEN-END:variables
 }
