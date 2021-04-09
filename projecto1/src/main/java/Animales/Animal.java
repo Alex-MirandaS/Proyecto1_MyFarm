@@ -7,10 +7,9 @@ package Animales;
 
 import JuegoGUI.AnimalGUI;
 import Listas.Lista;
-import Productos.Alimento;
-import Productos.MateriaPrima;
 import Productos.Producto;
 import java.awt.Color;
+import javax.swing.JLabel;
 
 /**
  *
@@ -22,7 +21,7 @@ public class Animal {
     protected String nombre, obtenerProducto;
     protected int edad, alimentoConsumido, vida;
     protected double espacio;
-    protected AnimalGUI figuraAnimal = new AnimalGUI();
+    protected JLabel figuraAnimal = new JLabel();
 
     public Animal(String nombre, double espacio, String obtenerProducto) {
         destace = new Lista<>();
@@ -30,6 +29,7 @@ public class Animal {
         this.nombre = nombre;
         this.espacio = espacio;
         this.obtenerProducto = obtenerProducto;
+        this.figuraAnimal.setText(nombre);
     }
 
     public double getEspacio() {
@@ -38,12 +38,6 @@ public class Animal {
 
     public String getNombre() {
         return nombre;
-    }
-
-    public AnimalGUI getFiguraAnimal(int i) {
-
-        figuraAnimal.setBackground(new Color(i * 20));
-        return figuraAnimal;
     }
 
     public String getObtenerProducto() {
@@ -56,6 +50,10 @@ public class Animal {
 
     public Lista<Producto> getSinDestace() {
         return sinDestace;
+    }
+
+    public JLabel getFiguraAnimal() {
+        return figuraAnimal;
     }
    
 

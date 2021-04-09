@@ -6,14 +6,14 @@
 package Juego;
 
 import Animales.Animal;
-import Controladores.ControladorAnimales;
 import Controladores.ControladorConstantes;
+import JuegoGUI.AnimalGUI;
 import JuegoGUI.ParcelaGUI;
 import Listas.Lista;
+import Productos.Producto;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 /**
  *
@@ -22,69 +22,116 @@ import javax.swing.JPanel;
 public class Parcela {
 
     private Lista<Animal> animales;
+    private Lista<AnimalGUI> animalesGUI;
     private Animal tipo;
     private static int cParcelas = 0;
-    private int espacio, ancho, alto;
+    private int espacio, ancho = 5, alto;
     private ParcelaGUI figuraParcela;
     private JLabel figuraParcelaCasilla = new JLabel();
+    private Bodega bodega;
 
 //GUI
-    public Parcela(Animal tipo) {
-        this.figuraParcelaCasilla.setText("Parcela de "+tipo.getNombre()+"s");
+    public Parcela(Animal tipo, Bodega bodega) {
+        this.figuraParcelaCasilla.setText("Parcela de " + tipo.getNombre() + "s");
         animales = new Lista<>();
+        animalesGUI = new Lista<>();
         this.tipo = tipo;
+        this.bodega = bodega;
         espacio = ControladorConstantes.LIM_PARCELA;
-        dimensionarParcelaAnimales((int) (espacio / tipo.getEspacio()));
-
+        dimensionarParcelaAnimales((ControladorConstantes.LIM_PARCELA / tipo.getEspacio()));
         figuraParcela = new ParcelaGUI(this);
-        GridLayout animalLayout = new GridLayout(ancho, alto);
-        figuraParcela.getContenedorAnimalesParcela().setLayout(animalLayout);
+        verificarFiguraParcela();
         cParcelas++;
     }
 
-    public void llenarParcela(int cAnimales, Animal animal) {
-        if (tipo == animal) {
-            if (tipo.getEspacio() * cAnimales <= espacio) {
-                for (int i = 0; i < cAnimales; i++) {
-                    animales.add(tipo);
-                }
-                espacio -= tipo.getEspacio() * cAnimales;
-            } else {
-                JOptionPane.showMessageDialog(null, "La parcela no puede almacenar esa cantidad de animales");
+    public void llenarParcela(int cAnimales) {
+
+        if (tipo.getEspacio() * cAnimales <= espacio) {
+            for (int i = 0; i < cAnimales; i++) {
+                animales.add(tipo);
             }
+            espacio -= tipo.getEspacio() * cAnimales;
         } else {
-            JOptionPane.showMessageDialog(null, "Esta parcela no acepta este tipo de animal");
+            JOptionPane.showMessageDialog(null, "La parcela no puede almacenar esa cantidad de animales");
         }
         figuraParcela.getContenedorAnimalesParcela().removeAll();
         mostrarAnimales();
     }
 
-    private void dimensionarParcelaAnimales(int cAnimales) {
-
-        int division = (cAnimales / 2);
-
-        if (division % 2 != 0.0) {
-            double divisionDouble = division;
-
-            alto = (int) Math.ceil(divisionDouble / 2);
-            ancho = ((division - 1) / 2);
-
-        } else {
-            int cuadrado = (division / 2);
-            ancho = cuadrado;
-            alto = cuadrado;
-        }
-
+    private void dimensionarParcelaAnimales(double cAnimales) {
+        alto = (int) Math.ceil(cAnimales / ancho);
     }
 
     private void mostrarAnimales() {
+        figuraParcela.getContenedorAnimalesParcela().setLayout(new GridLayout(alto, ancho));
         for (int i = 0; i < animales.getSize(); i++) {
-            figuraParcela.getContenedorAnimalesParcela().add(animales.get(i).getFiguraAnimal(i));
+            animalesGUI.add(new AnimalGUI(tipo.getNombre(), this));
+            figuraParcela.getContenedorAnimalesParcela().add(animalesGUI.get(i));
         }
     }
 
     public void mostrarParcela() {
         figuraParcela.setVisible(true);//poner boton recolectar
+    }
+
+    public void prepararProductosSinDestace() {
+        for (int i = 0; i < animalesGUI.getSize(); i++) {
+            boolean temp = animalesGUI.get(i).isPrepararProductosSinDestace();
+            animalesGUI.get(i).setPrepararProductosSinDestace(!temp);
+        }
+    }
+
+    public void agregarProductosSinDestace() {
+        String nombreProducto;
+        for (int i = 0; i < tipo.getSinDestace().getSize(); i++) {
+            nombreProducto = tipo.getSinDestace().get(i).getNombre();
+            bodega.getContenedor().get(buscarProducto(nombreProducto)).agregartExistencia(1);
+        }
+    }
+
+    public void prepararProductosConDestace() {
+        for (int i = 0; i < animalesGUI.getSize(); i++) {
+            boolean temp = animalesGUI.get(i).isPrepararProductosConDestace();
+            animalesGUI.get(i).setPrepararProductosConDestace(!temp);
+        }
+    }
+
+    public void agregarProductosConDestace(AnimalGUI figuraAnimal) {
+        String nombreProducto;
+        for (int i = 0; i < tipo.getDestace().getSize(); i++) {
+            nombreProducto = tipo.getDestace().get(i).getNombre();
+            bodega.getContenedor().get(buscarProducto(nombreProducto)).agregartExistencia(1);
+        }
+        animales.eliminar(buscarAnimalGUI(figuraAnimal));
+        animalesGUI.eliminar(buscarAnimalGUI(figuraAnimal));
+        figuraParcela.getContenedorAnimalesParcela().removeAll();
+        mostrarAnimales();
+    }
+
+    public int buscarProducto(String nombreProducto) {
+        for (int i = 0; i < bodega.getContenedor().getSize(); i++) {
+            if (nombreProducto.equals(bodega.getContenedor().get(i).getProducto().getNombre())) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    public int buscarAnimalGUI(AnimalGUI buscarAnimalGUI) {
+        for (int i = 0; i < animalesGUI.getSize(); i++) {
+            if (buscarAnimalGUI.equals(animalesGUI.get(i))) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    public void verificarFiguraParcela() {
+        if (tipo.getDestace().esVacia()) {
+            figuraParcela.getDestasar().setVisible(false);
+        } else if (tipo.getSinDestace().esVacia()) {
+            figuraParcela.getRecolectarProductos().setVisible(false);
+        }
     }
 
     public Lista<Animal> getAnimales() {
@@ -106,6 +153,5 @@ public class Parcela {
     public JLabel getFiguraParcelaCasilla() {
         return figuraParcelaCasilla;
     }
-   
 
 }

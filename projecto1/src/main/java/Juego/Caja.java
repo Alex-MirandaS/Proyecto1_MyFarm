@@ -41,4 +41,8 @@ public class Caja {
         this.existencia -= existencia;
     }
 
+    public Producto getProducto() {
+        return producto;
+    }
+
 }

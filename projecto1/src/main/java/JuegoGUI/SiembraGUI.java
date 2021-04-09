@@ -5,8 +5,8 @@
  */
 package JuegoGUI;
 
-import Juego.Parcela;
-import javax.swing.JPanel;
+import Casillas.Pasto;
+
 
 /**
  *
@@ -14,13 +14,13 @@ import javax.swing.JPanel;
  */
 public class SiembraGUI extends javax.swing.JFrame {
 
-    private Parcela parcela;
+    private Pasto pasto;
 
-    public SiembraGUI(Parcela parcela) {
+    public SiembraGUI(Pasto pasto) {
         initComponents();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        this.parcela = parcela;
-        // controlador.mostrarListaAnimales();
+        this.figuraCultivo.setText(pasto.getPlanta().getNombre());
+        this.pasto = pasto;
     }
 
     /**
@@ -33,37 +33,25 @@ public class SiembraGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        recolectarProductos = new javax.swing.JToggleButton();
-        jLabel9 = new javax.swing.JLabel();
+        cosechar = new javax.swing.JToggleButton();
         limpiar = new javax.swing.JToggleButton();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         figuraCultivo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel3.setLayout(new java.awt.GridLayout(3, 3, 3, 3));
+        jPanel3.setLayout(new java.awt.GridLayout(2, 2, 3, 3));
 
-        jLabel1.setText("kjkj");
-        jPanel3.add(jLabel1);
-
-        jLabel2.setText("jkjkjk");
-        jPanel3.add(jLabel2);
-
-        jLabel3.setText("jkjkjk");
-        jPanel3.add(jLabel3);
-
-        recolectarProductos.setText("Recolectar Cultivo");
-        jPanel3.add(recolectarProductos);
-
-        jLabel9.setText(" ");
-        jPanel3.add(jLabel9);
+        cosechar.setText("Recolectar Cultivo");
+        cosechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cosecharActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cosechar);
 
         limpiar.setText("Limpiar");
         limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -72,16 +60,17 @@ public class SiembraGUI extends javax.swing.JFrame {
             }
         });
         jPanel3.add(limpiar);
-        jPanel3.add(jLabel4);
         jPanel3.add(jLabel5);
-        jPanel3.add(jLabel6);
+
+        jButton1.setText("jButton1");
+        jPanel3.add(jButton1);
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
-        jLabel8.setText("jLabel8");
+        jLabel8.setText("   ");
         getContentPane().add(jLabel8, java.awt.BorderLayout.LINE_END);
 
-        jLabel7.setText("jLabel7");
+        jLabel7.setText("   ");
         getContentPane().add(jLabel7, java.awt.BorderLayout.LINE_START);
         getContentPane().add(figuraCultivo, java.awt.BorderLayout.CENTER);
 
@@ -91,6 +80,10 @@ public class SiembraGUI extends javax.swing.JFrame {
     private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
       //parcela.limpiar();
     }//GEN-LAST:event_limpiarActionPerformed
+
+    private void cosecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cosecharActionPerformed
+     pasto.cosecha(figuraCultivo);
+    }//GEN-LAST:event_cosecharActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,18 +136,13 @@ public class SiembraGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton cosechar;
     private javax.swing.JLabel figuraCultivo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JToggleButton limpiar;
-    private javax.swing.JToggleButton recolectarProductos;
     // End of variables declaration//GEN-END:variables
 }

@@ -98,7 +98,7 @@ public class PastoGUI extends javax.swing.JPanel {
             pasto.crearParcela(ParcelaCultivo);
         }
         if (pasto.plantaExistente()) {
-            pasto.cosecha(ParcelaCultivo);
+            pasto.desplegarCultivo();
         }
         if (prepararAñadirCultivo) {
             pasto.sembrar(ParcelaCultivo);

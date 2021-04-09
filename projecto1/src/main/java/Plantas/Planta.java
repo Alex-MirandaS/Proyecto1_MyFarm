@@ -6,6 +6,7 @@
 
 package Plantas;
 
+import JuegoGUI.SiembraGUI;
 import javax.swing.JLabel;
 
 
@@ -30,7 +31,7 @@ public abstract class Planta {
     
     public abstract void marchitar();
     
-    public abstract void cosechar(JLabel img);
+    public abstract void cosechar(JLabel img, JLabel imgCasilla);
 
     public int getSemillas() {
         return semillas;
@@ -59,6 +60,5 @@ public abstract class Planta {
     public Planta getPlantaCosechada() {
         return plantaCosechada;
     }
-
     
 }

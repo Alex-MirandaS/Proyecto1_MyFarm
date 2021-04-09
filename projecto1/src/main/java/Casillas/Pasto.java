@@ -10,6 +10,7 @@ import Controladores.*;
 import Juego.Bodega;
 import Juego.Jugador;
 import Juego.Parcela;
+import JuegoGUI.SiembraGUI;
 import MenusGUI.ElegirTipoAnimal;
 import MenusGUI.ElegirTipoPlanta;
 import Plantas.Planta;
@@ -29,6 +30,7 @@ public class Pasto extends Casilla {
     private ControladorAnimales animales;
     private ControladorPasto cPasto = new ControladorPasto();
     private Planta planta;
+    private SiembraGUI siembraGUI;
     private Parcela parcela;
     private Bodega bodega;
     private int fertilidad = (int) (Math.random() * 100 + 1);
@@ -49,6 +51,8 @@ public class Pasto extends Casilla {
             jug.restarSemillas(planta.getSemillas());
             img.setText(planta.getNombre());
             agregarParcelaCultivo(img);
+            siembraGUI = new SiembraGUI(this);
+            planta.setPlantaLista(true);
         } else if (img.getText() != "") {
             JOptionPane.showMessageDialog(null, "Esta casilla ya esta ocupada");
         } else {
@@ -62,14 +66,27 @@ public class Pasto extends Casilla {
     }
 
     public void cosecha(JLabel img) {
-        int selección = 0;
         if (planta.isPlantaLista()) {
-            bodega.getContenedor().get(selección).agregartExistencia(1 * fertilidad);
-            planta.cosechar(img);
+            bodega.getContenedor().get(buscarProducto()).agregartExistencia(1 * fertilidad);
+            planta.cosechar(img,this.getFigura().getParcelaCultivo());
             planta = planta.getPlantaCosechada();
+
         } else {
             JOptionPane.showMessageDialog(null, "Esta casilla no tienen nada que cosechar, o la cosecha aun no esta lista");
         }
+    }
+
+    public int buscarProducto() {
+        for (int i = 0; i < plantas.getPlantasJuego().getSize(); i++) {
+            if (planta.getNombre().equals(bodega.getContenedor().get(i).getProducto().getNombre())) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    public void desplegarCultivo() {
+        siembraGUI.setVisible(true);
     }
 
     public void crearParcela(JLabel img) {
@@ -97,7 +114,7 @@ public class Pasto extends Casilla {
 
         if ("".equals(img.getText())) {
             if (jug.getOro() >= ControladorConstantes.PRECIO_PARCELA) {
-                parcela = new Parcela(animales.getAnimalesJuego().get(selección));
+                parcela = new Parcela(animales.getAnimalesJuego().get(selección),bodega);
                 jug.restarOro(ControladorConstantes.PRECIO_PARCELA);
                 img.setText(parcela.getFiguraParcelaCasilla().getText());
                 agregarParcelaCultivo(img);

@@ -23,7 +23,7 @@ public class Fruta extends Planta {
     }
 
     @Override
-    public void cosechar(JLabel img) {
+    public void cosechar(JLabel img, JLabel imgCasilla) {
         img.setText(nombre);
         plantaCosechada = this;
     }

@@ -33,5 +33,5 @@ public class Bodega {
     public Lista<Caja> getContenedor() {
         return contenedor;
     }
-
+    
 }

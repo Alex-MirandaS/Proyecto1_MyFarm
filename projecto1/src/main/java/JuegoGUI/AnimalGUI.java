@@ -5,17 +5,22 @@
  */
 package JuegoGUI;
 
+import Juego.Parcela;
+import javax.swing.JLabel;
+
 /**
  *
  * @author alex
  */
 public class AnimalGUI extends javax.swing.JPanel {
 
-    /**
-     * Creates new form AnimalGUI
-     */
-    public AnimalGUI() {
+    private Parcela parcela;
+    private boolean prepararProductosSinDestace, prepararProductosConDestace;
+
+    public AnimalGUI(String nombreAnimal, Parcela parcela) {
         initComponents();
+        this.parcela = parcela;
+        this.nombreAnimal.setText(nombreAnimal);
     }
 
     /**
@@ -27,21 +32,64 @@ public class AnimalGUI extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        nombreAnimal = new javax.swing.JLabel();
+
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 51, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(nombreAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 37, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(nombreAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        if (this.isEnabled()) {
+
+        }
+        if (prepararProductosSinDestace) {
+            parcela.agregarProductosSinDestace();
+        }
+        if (prepararProductosConDestace) {
+         parcela.agregarProductosConDestace(this);
+        }
+    }//GEN-LAST:event_formMouseClicked
+
+    public boolean isPrepararProductosSinDestace() {
+        return prepararProductosSinDestace;
+    }
+
+    public void setPrepararProductosSinDestace(boolean prepararProductosSinDestace) {
+        this.prepararProductosSinDestace = prepararProductosSinDestace;
+    }
+
+    public boolean isPrepararProductosConDestace() {
+        return prepararProductosConDestace;
+    }
+
+    public void setPrepararProductosConDestace(boolean prepararProductosConDestace) {
+        this.prepararProductosConDestace = prepararProductosConDestace;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel nombreAnimal;
     // End of variables declaration//GEN-END:variables
 }
