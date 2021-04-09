@@ -11,6 +11,7 @@ import Controladores.ControladorConstantes;
 import JuegoGUI.ParcelaGUI;
 import Listas.Lista;
 import java.awt.GridLayout;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -21,16 +22,16 @@ import javax.swing.JPanel;
 public class Parcela {
 
     private Lista<Animal> animales;
-    private ControladorAnimales animalesJuego;
     private Animal tipo;
     private static int cParcelas = 0;
     private int espacio, ancho, alto;
     private ParcelaGUI figuraParcela;
+    private JLabel figuraParcelaCasilla = new JLabel();
 
 //GUI
-    public Parcela(Animal tipo, ControladorAnimales animalesJuego) {
+    public Parcela(Animal tipo) {
+        this.figuraParcelaCasilla.setText("Parcela de "+tipo.getNombre()+"s");
         animales = new Lista<>();
-        this.animalesJuego = animalesJuego;
         this.tipo = tipo;
         espacio = ControladorConstantes.LIM_PARCELA;
         dimensionarParcelaAnimales((int) (espacio / tipo.getEspacio()));
@@ -98,10 +99,13 @@ public class Parcela {
         return cParcelas;
     }
 
-    public ControladorAnimales getAnimalesJuego() {
-        return animalesJuego;
+    public Animal getTipo() {
+        return tipo;
     }
-    
-    
+
+    public JLabel getFiguraParcelaCasilla() {
+        return figuraParcelaCasilla;
+    }
+   
 
 }

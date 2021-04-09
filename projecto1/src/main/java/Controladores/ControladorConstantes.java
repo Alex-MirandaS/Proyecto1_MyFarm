@@ -18,7 +18,8 @@ public class ControladorConstantes {
     public static int X = 11, Y = 11;
     //CASILLAS DESBLOQUEADAS 
     public static int XD = 5, YD = 5;
-
+    //PRECIO DESBLOQUEAR CASILLA
+    public static int PRECIO_CASILLA = 20;
     //MAXIMO ESPACIO EN UNA PARCELA
     public static int LIMITE = 50;
     //PRECIO PARCELA
@@ -44,8 +45,9 @@ public class ControladorConstantes {
     public static String DESTACE = "Destace";
     public static String SIN_DESTACE = "Sin Destace";
     public static String AMBAS = "Ambas";
-    
+
     //Barco
     public static int PRECIO_BARCO = 20;
-
+    //SIMBOLO DINERO
+    public static String SIMBOLO_ORO = "©";
 }

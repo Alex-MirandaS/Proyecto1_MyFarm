@@ -23,7 +23,7 @@ import javax.swing.JToggleButton;
  *
  * @author alex
  */
-public class ControladorAnimales {
+public class ControladorAnimales{
 
     private Lista<Animal> animalesJuego;
     private Lista<Producto> temp;
@@ -104,6 +104,12 @@ public class ControladorAnimales {
     private void llenarListaOpciones(JComboBox opciones) {
         for (int i = 0; i < temp.getSize(); i++) {
             opciones.addItem(temp.get(i).getNombre());
+        }
+    }
+    
+        public void llenarListaOp(JComboBox opciones) {
+        for (int i = 0; i < animalesJuego.getSize(); i++) {
+            opciones.addItem(animalesJuego.get(i).getNombre());
         }
     }
 

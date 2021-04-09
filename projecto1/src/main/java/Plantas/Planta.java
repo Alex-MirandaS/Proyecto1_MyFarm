@@ -6,7 +6,9 @@
 
 package Plantas;
 
-import JuegoGUI.PlantaGUI;
+import javax.swing.JLabel;
+
+
 
 /**
  * 
@@ -17,14 +19,18 @@ public abstract class Planta {
     protected int semillas, vida;
     protected String nombre;
     protected boolean plantaLista = false;
-    protected PlantaGUI figuraPlanta = new PlantaGUI();
+    protected JLabel figuraPlanta = new JLabel();
+    protected Planta plantaCosechada;
 
     public Planta(int semillas, String nombre) {
         this.semillas = semillas;
         this.nombre = nombre;
+        this.figuraPlanta.setText(nombre);
     }
     
     public abstract void marchitar();
+    
+    public abstract void cosechar(JLabel img);
 
     public int getSemillas() {
         return semillas;
@@ -45,6 +51,14 @@ public abstract class Planta {
     public void setPlantaLista(boolean plantaLista) {
         this.plantaLista = plantaLista;
     }
-    
+
+    public JLabel getFiguraPlanta() {
+        return figuraPlanta;
+    }
+
+    public Planta getPlantaCosechada() {
+        return plantaCosechada;
+    }
+
     
 }

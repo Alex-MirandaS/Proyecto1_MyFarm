@@ -17,9 +17,11 @@ import javax.swing.JLabel;
  */
 public class DesiertoGUI extends javax.swing.JPanel {
 
-    boolean prepararDesbloqueo;
-    public DesiertoGUI(int i) {
+    private boolean prepararDesbloqueo;
+    private Desierto desierto;
+    public DesiertoGUI(int i, Desierto desierto) {
         initComponents();
+        this.desierto = desierto;
         indice.setText("Desierto " + i);
     }
 
@@ -71,7 +73,7 @@ public class DesiertoGUI extends javax.swing.JPanel {
         }
                 if (prepararDesbloqueo) {
                 ControladorCasillas control = new ControladorCasillas();
-                control.desbloquearCasillas(this,Color.YELLOW);
+                control.desbloquearCasillas(this,Color.YELLOW, "Desierto",desierto.getJug());
             }
         
     }//GEN-LAST:event_formMouseClicked

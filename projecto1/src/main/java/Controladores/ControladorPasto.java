@@ -5,9 +5,7 @@
  */
 package Controladores;
 
-import java.awt.Color;
 import java.awt.Component;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 
 /**
@@ -16,15 +14,14 @@ import javax.swing.JLabel;
  */
 public class ControladorPasto {
 
-    public void añadirParcelaCultivo(JLabel component, String text) {
-        if (component.getText().equals("")) {
-            Component[] components = component.getComponents();
-            component.setText(text);
-            component.setEnabled(true);
+    public void añadirParcelaCultivo(JLabel component) {
 
-            for (int i = 0; i < components.length; i++) {
-                components[i].setEnabled(true);
-            }
+        Component[] components = component.getComponents();
+        component.setEnabled(true);
+
+        for (int i = 0; i < components.length; i++) {
+            components[i].setEnabled(true);
         }
     }
+
 }

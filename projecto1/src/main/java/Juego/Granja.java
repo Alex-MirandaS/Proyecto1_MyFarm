@@ -49,7 +49,7 @@ public class Granja {
             } else if (numAleatorio > 40 && numAleatorio < 76) {
                 casillas.add(new Agua(i, jug, bodega));
             } else {
-                casillas.add(new Desierto(i));
+                casillas.add(new Desierto(i, jug));
             }
         }
     }

@@ -5,11 +5,10 @@
  */
 package CasillasGUI;
 
-import Casillas.Casilla;
 import Casillas.Pasto;
 import Controladores.ControladorCasillas;
 import Controladores.ControladorPasto;
-import Interfaces.CasillasGUI;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 
@@ -17,7 +16,7 @@ import javax.swing.JLabel;
  *
  * @author alex
  */
-public class PastoGUI extends javax.swing.JPanel{
+public class PastoGUI extends javax.swing.JPanel {
 
     boolean prepararDesbloqueo, prepararAñadirParcela, prepararAñadirCultivo;
     ControladorPasto cPasto = new ControladorPasto();
@@ -66,20 +65,21 @@ public class PastoGUI extends javax.swing.JPanel{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(indice, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(indice, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ParcelaCultivo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(ParcelaCultivo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(indice, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(ParcelaCultivo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addGap(22, 22, 22))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -89,19 +89,20 @@ public class PastoGUI extends javax.swing.JPanel{
         }
         if (prepararDesbloqueo) {
             ControladorCasillas control = new ControladorCasillas();
-            control.desbloquearCasillas(this, Color.GREEN);
+            control.desbloquearCasillas(this, Color.GREEN, "Pasto", pasto.getJug());
         }
         if (pasto.parcelaExistente()) {
             pasto.desplegarParcela();
         }
         if (prepararAñadirParcela) {
-            pasto.agregarParcela(ParcelaCultivo);
+            pasto.crearParcela(ParcelaCultivo);
         }
         if (pasto.plantaExistente()) {
             pasto.cosecha(ParcelaCultivo);
         }
         if (prepararAñadirCultivo) {
-            pasto.siembra(ParcelaCultivo);
+            pasto.sembrar(ParcelaCultivo);
+
         }
     }//GEN-LAST:event_formMouseClicked
 
@@ -132,6 +133,11 @@ public class PastoGUI extends javax.swing.JPanel{
     public void setPrepararAñadirCultivo(boolean prepararCultivo) {
         this.prepararAñadirCultivo = prepararCultivo;
     }
+
+    public JLabel getParcelaCultivo() {
+        return ParcelaCultivo;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ParcelaCultivo;

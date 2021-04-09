@@ -13,4 +13,6 @@ public interface CasillasGUI {
     
     
     boolean numero = false;
+    
+    public void restarDineroCasillaDesbloqueada();
 }

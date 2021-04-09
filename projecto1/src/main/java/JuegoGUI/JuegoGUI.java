@@ -5,8 +5,7 @@
  */
 package JuegoGUI;
 
-import Casillas.Agua;
-import CasillasGUI.AguaGUI;
+import Controladores.ControladorConstantes;
 import Juego.Juego;
 import javax.swing.JPanel;
 
@@ -23,9 +22,12 @@ public class JuegoGUI extends javax.swing.JFrame {
         this.juego = juego;
         this.nombre.setText(juego.getJug().getNombre());
         this.nick.setText(juego.getJug().getNickname());
-        this.vida.setText(""+juego.getJug().getVida());
-        this.oro.setText(""+juego.getJug().getOro());
-        this.cSemillas.setText(""+juego.getJug().getSemillas());
+        this.vida.setText("" + juego.getJug().getVida());
+        this.oro.setText("" + juego.getJug().getOro());
+        this.cSemillas.setText("" + juego.getJug().getSemillas());
+        this.precioAgregarCasillas.setText(ControladorConstantes.SIMBOLO_ORO + ControladorConstantes.PRECIO_CASILLA);
+        this.precioAgregarBarco.setText(ControladorConstantes.SIMBOLO_ORO + ControladorConstantes.PRECIO_BARCO);
+        this.precioParcela.setText(ControladorConstantes.SIMBOLO_ORO + ControladorConstantes.PRECIO_PARCELA);
         juego.getGranja().LlenarTablero(this.PanelCentral);
     }
 
@@ -72,18 +74,15 @@ public class JuegoGUI extends javax.swing.JFrame {
         jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        precioAgregarCasillas1 = new javax.swing.JLabel();
+        precioAgregarBarco = new javax.swing.JLabel();
         agregarBarco = new javax.swing.JToggleButton();
         jPanel14 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        precioAgregarCasillas2 = new javax.swing.JLabel();
-        añadirPlanta = new javax.swing.JToggleButton();
-        jPanel16 = new javax.swing.JPanel();
-        jPanel17 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        precioAgregarCasillas3 = new javax.swing.JLabel();
+        precioParcela = new javax.swing.JLabel();
         añadirParcela = new javax.swing.JToggleButton();
+        jPanel16 = new javax.swing.JPanel();
+        añadirPlanta = new javax.swing.JToggleButton();
         opciones = new javax.swing.JButton();
         PanelCentral = new javax.swing.JPanel();
 
@@ -187,7 +186,7 @@ public class JuegoGUI extends javax.swing.JFrame {
 
         jLabel9.setText("  ");
         jPanel13.add(jLabel9, java.awt.BorderLayout.LINE_END);
-        jPanel13.add(precioAgregarCasillas1, java.awt.BorderLayout.CENTER);
+        jPanel13.add(precioAgregarBarco, java.awt.BorderLayout.CENTER);
 
         jPanel12.add(jPanel13, java.awt.BorderLayout.LINE_END);
 
@@ -207,29 +206,9 @@ public class JuegoGUI extends javax.swing.JFrame {
 
         jLabel10.setText("  ");
         jPanel15.add(jLabel10, java.awt.BorderLayout.LINE_END);
-        jPanel15.add(precioAgregarCasillas2, java.awt.BorderLayout.CENTER);
+        jPanel15.add(precioParcela, java.awt.BorderLayout.CENTER);
 
         jPanel14.add(jPanel15, java.awt.BorderLayout.LINE_END);
-
-        añadirPlanta.setText("Añadir Siembra");
-        añadirPlanta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                añadirPlantaActionPerformed(evt);
-            }
-        });
-        jPanel14.add(añadirPlanta, java.awt.BorderLayout.CENTER);
-
-        jPanel5.add(jPanel14);
-
-        jPanel16.setLayout(new java.awt.BorderLayout());
-
-        jPanel17.setLayout(new java.awt.BorderLayout());
-
-        jLabel11.setText("  ");
-        jPanel17.add(jLabel11, java.awt.BorderLayout.LINE_END);
-        jPanel17.add(precioAgregarCasillas3, java.awt.BorderLayout.CENTER);
-
-        jPanel16.add(jPanel17, java.awt.BorderLayout.LINE_END);
 
         añadirParcela.setText("Añadir Parcela");
         añadirParcela.addActionListener(new java.awt.event.ActionListener() {
@@ -237,7 +216,19 @@ public class JuegoGUI extends javax.swing.JFrame {
                 añadirParcelaActionPerformed(evt);
             }
         });
-        jPanel16.add(añadirParcela, java.awt.BorderLayout.CENTER);
+        jPanel14.add(añadirParcela, java.awt.BorderLayout.CENTER);
+
+        jPanel5.add(jPanel14);
+
+        jPanel16.setLayout(new java.awt.BorderLayout());
+
+        añadirPlanta.setText("Añadir Siembra");
+        añadirPlanta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                añadirPlantaActionPerformed(evt);
+            }
+        });
+        jPanel16.add(añadirPlanta, java.awt.BorderLayout.CENTER);
 
         jPanel5.add(jPanel16);
 
@@ -281,22 +272,6 @@ public class JuegoGUI extends javax.swing.JFrame {
 //        }
     }//GEN-LAST:event_agregarCasillaActionPerformed
 
-    private void añadirPlantaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirPlantaActionPerformed
-        juego.prepararAñadirCultivo();
-        if (agregarCasilla.isSelected()) {
-            juego.prepararDesbloqueo();
-            agregarCasilla.setSelected(false);
-        }
-        if (añadirParcela.isSelected()) {
-            juego.prepararAñadirParcela();
-            añadirParcela.setSelected(false);
-        }
-//        if (cosechar.isSelected()) {
-//            juego.prepararCosechar();
-//            cosechar.setSelected(false);
-//        }
-    }//GEN-LAST:event_añadirPlantaActionPerformed
-
     private void añadirParcelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirParcelaActionPerformed
         juego.prepararAñadirParcela();
         if (agregarCasilla.isSelected()) {
@@ -320,6 +295,18 @@ public class JuegoGUI extends javax.swing.JFrame {
     private void agregarBarcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarBarcoActionPerformed
         juego.prepararAñadirBarco();
     }//GEN-LAST:event_agregarBarcoActionPerformed
+
+    private void añadirPlantaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirPlantaActionPerformed
+        juego.prepararAñadirCultivo();
+        if (agregarCasilla.isSelected()) {
+            juego.prepararDesbloqueo();
+            agregarCasilla.setSelected(false);
+        }
+        if (añadirParcela.isSelected()) {
+            juego.prepararAñadirParcela();
+            añadirParcela.setSelected(false);
+        }
+    }//GEN-LAST:event_añadirPlantaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -377,7 +364,6 @@ public class JuegoGUI extends javax.swing.JFrame {
     private javax.swing.JLabel figuritaPersonaje;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -395,7 +381,6 @@ public class JuegoGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -407,10 +392,9 @@ public class JuegoGUI extends javax.swing.JFrame {
     private javax.swing.JLabel nombre;
     private javax.swing.JButton opciones;
     private javax.swing.JLabel oro;
+    private javax.swing.JLabel precioAgregarBarco;
     private javax.swing.JLabel precioAgregarCasillas;
-    private javax.swing.JLabel precioAgregarCasillas1;
-    private javax.swing.JLabel precioAgregarCasillas2;
-    private javax.swing.JLabel precioAgregarCasillas3;
+    private javax.swing.JLabel precioParcela;
     private javax.swing.JLabel vida;
     // End of variables declaration//GEN-END:variables
 }

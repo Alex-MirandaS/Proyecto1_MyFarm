@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Plantas;
 
+import javax.swing.JLabel;
+
 /**
- * 
+ *
  * @author alex
  */
-public class Fruta extends Planta{
+public class Fruta extends Planta {
 
     public Fruta(int semillas, String nombre) {
         super(semillas, nombre);
@@ -21,6 +22,10 @@ public class Fruta extends Planta{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-    
+    @Override
+    public void cosechar(JLabel img) {
+        img.setText(nombre);
+        plantaCosechada = this;
+    }
+
 }

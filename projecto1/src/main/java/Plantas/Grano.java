@@ -6,6 +6,8 @@
 
 package Plantas;
 
+import javax.swing.JLabel;
+
 /**
  * 
  * @author alex
@@ -20,5 +22,12 @@ public class Grano extends Planta{
     public void marchitar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
- 
+
+    @Override
+    public void cosechar(JLabel img) {
+        img.setText("");
+        plantaCosechada = null;
+    }
+
+
 }

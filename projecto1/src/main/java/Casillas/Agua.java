@@ -7,14 +7,12 @@ package Casillas;
 
 import CasillasGUI.AguaGUI;
 import Controladores.ControladorAgua;
+import Controladores.ControladorConstantes;
 import Juego.Barco;
 import Juego.Bodega;
-import Juego.Caja;
 import Juego.Jugador;
-import Productos.Producto;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 /**
  *
@@ -23,12 +21,11 @@ import javax.swing.JPanel;
 public class Agua extends Casilla {
 
     private Bodega bodega;
-    private Jugador jug;
     private ControladorAgua controlador;
     private Barco barco;
 
     public Agua(int indice, Jugador jug, Bodega bodega) {
-        super(indice);
+        super(indice, jug);
         this.jug = jug;
         this.bodega = bodega;
         this.controlador = new ControladorAgua();
@@ -64,5 +61,4 @@ public class Agua extends Casilla {
     public AguaGUI getFigura() {
         return (AguaGUI) figura;
     }
-
 }

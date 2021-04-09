@@ -6,6 +6,7 @@
 package Casillas;
 
 import CasillasGUI.DesiertoGUI;
+import Juego.Jugador;
 
 /**
  *
@@ -13,9 +14,9 @@ import CasillasGUI.DesiertoGUI;
  */
 public class Desierto extends Casilla {
 
-    public Desierto(int indice) {
-        super(indice);
-        figura = new DesiertoGUI(indice);
+    public Desierto(int indice, Jugador jug) {
+        super(indice, jug);
+        figura = new DesiertoGUI(indice, this);
     }
 
     @Override

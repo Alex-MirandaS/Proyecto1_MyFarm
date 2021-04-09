@@ -11,6 +11,7 @@ import MenusGUI.AgregarPlantasGUI;
 import Plantas.Fruta;
 import Plantas.Grano;
 import Plantas.Planta;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
@@ -50,6 +51,12 @@ public class ControladorPlantas {
         for (int i = 0; i < plantasJuego.getSize(); i++) {
             pantalla.append(plantasJuego.get(i).getNombre());
             pantalla.append(System.getProperty("line.separator"));
+        }
+    }
+
+    public void llenarListaOpciones(JComboBox opciones) {
+        for (int i = 0; i < plantasJuego.getSize(); i++) {
+            opciones.addItem(plantasJuego.get(i).getNombre());
         }
     }
 
