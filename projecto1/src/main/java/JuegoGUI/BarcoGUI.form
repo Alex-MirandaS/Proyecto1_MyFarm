@@ -37,12 +37,12 @@
         <Property name="verticalGap" type="int" value="3"/>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JToggleButton" name="cosechar">
+        <Component class="javax.swing.JToggleButton" name="recolectarPeces">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Recolectar Cultivo"/>
+            <Property name="text" type="java.lang.String" value="Recolectar Peces"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cosecharActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="recolectarPecesActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JToggleButton" name="limpiar">
@@ -53,10 +53,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="limpiarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Agregar Fertilizante"/>
-          </Properties>
+        <Component class="javax.swing.JLabel" name="jLabel1">
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
@@ -88,7 +85,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="figuraCultivo">
+    <Component class="javax.swing.JLabel" name="figuraBarco">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
           <BorderConstraints direction="Center"/>

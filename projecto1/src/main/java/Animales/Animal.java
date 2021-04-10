@@ -19,16 +19,17 @@ public class Animal {
 
     protected Lista<Producto> destace, sinDestace;
     protected String nombre, obtenerProducto;
-    protected int edad, alimentoConsumido, vida;
+    protected int edad, alimentoConsumido, vida, precio;
     protected double espacio;
     protected JLabel figuraAnimal = new JLabel();
 
-    public Animal(String nombre, double espacio, String obtenerProducto) {
+    public Animal(String nombre, double espacio, String obtenerProducto, int precio) {
         destace = new Lista<>();
         sinDestace = new Lista<>();
         this.nombre = nombre;
         this.espacio = espacio;
         this.obtenerProducto = obtenerProducto;
+        this.precio = precio;
         this.figuraAnimal.setText(nombre);
     }
 
@@ -54,6 +55,10 @@ public class Animal {
 
     public JLabel getFiguraAnimal() {
         return figuraAnimal;
+    }
+
+    public int getPrecio() {
+        return precio;
     }
    
 

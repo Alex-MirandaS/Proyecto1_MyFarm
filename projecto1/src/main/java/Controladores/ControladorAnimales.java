@@ -44,15 +44,15 @@ public class ControladorAnimales{
         agregarAnimal.setVisible(true);
     }
 
-    public void crearAnimal(String nombre, double espacio, String tipoProducto, String elección) {
+    public void crearAnimal(String nombre, double espacio, String tipoProducto, String elección, int precio) {
         if (nombre == "") {
             JOptionPane.showMessageDialog(null, "No ha ingresado el nombre del Animal");
         } else {
             if (elección == "Herbívoro") {
-                tempAnimal = new Herbívoro(nombre, (double) espacio, tipoProducto);
+                tempAnimal = new Herbívoro(nombre, (double) espacio, tipoProducto, precio);
                 animalesJuego.add(tempAnimal);
             } else {
-                tempAnimal = new Herbívoro(nombre, (double) espacio, tipoProducto);
+                tempAnimal = new Herbívoro(nombre, (double) espacio, tipoProducto, precio);
                 animalesJuego.add(tempAnimal);
             }
             ingresarProductosAnimal(tipoProducto);
@@ -138,12 +138,12 @@ public class ControladorAnimales{
     }
 
     private void llenadoInicial() {
-        Animal vaca = new Herbívoro(ControladorConstantes.HERBÍVORO1, ControladorConstantes.ESPACIO_HERBÍVORO1, ControladorConstantes.AMBAS);
+        Animal vaca = new Herbívoro(ControladorConstantes.HERBÍVORO1, ControladorConstantes.ESPACIO_HERBÍVORO1, ControladorConstantes.AMBAS, ControladorConstantes.PRECIO_HERBÍVORO1);
         vaca.getSinDestace().add(productosJuego.getProductosJuego().get(2));
         vaca.getDestace().add(productosJuego.getProductosJuego().get(5));
         vaca.getDestace().add(productosJuego.getProductosJuego().get(4));
         animalesJuego.add(vaca);
-        Animal gallina = new Omnívoro(ControladorConstantes.OMNÍVORO1, ControladorConstantes.ESPACIO_OMNÍVORO1, ControladorConstantes.AMBAS);
+        Animal gallina = new Omnívoro(ControladorConstantes.OMNÍVORO1, ControladorConstantes.ESPACIO_OMNÍVORO1, ControladorConstantes.AMBAS, ControladorConstantes.PRECIO_OMNÍVORO1);
         gallina.getSinDestace().add(productosJuego.getProductosJuego().get(3));
         gallina.getDestace().add(productosJuego.getProductosJuego().get(6));
         animalesJuego.add(gallina);

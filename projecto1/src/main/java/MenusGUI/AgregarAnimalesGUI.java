@@ -46,6 +46,8 @@ public class AgregarAnimalesGUI extends javax.swing.JFrame {
         agregarAnimal = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         tamañoAnimal = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        precio = new javax.swing.JTextField();
 
         jButton2.setText("Salir");
 
@@ -123,6 +125,8 @@ public class AgregarAnimalesGUI extends javax.swing.JFrame {
 
         tamañoAnimal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "0.5", "2", "2.5", "3", "3.5", "4", "4.5", "5", "5.5", "6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5" }));
 
+        jLabel5.setText("Precio:");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -139,19 +143,23 @@ public class AgregarAnimalesGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tamañoAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(1, 1, 1)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tipoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
-                        .addComponent(jButton3))
+                        .addComponent(tipoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tipoAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(agregarAnimal)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(precio)))
+                .addGap(6, 6, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(agregarAnimal, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(14, 14, 14))
         );
         jPanel3Layout.setVerticalGroup(
@@ -163,7 +171,9 @@ public class AgregarAnimalesGUI extends javax.swing.JFrame {
                     .addComponent(nombreAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(tipoAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(agregarAnimal))
+                    .addComponent(agregarAnimal)
+                    .addComponent(jLabel5)
+                    .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -188,7 +198,7 @@ public class AgregarAnimalesGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tipoProductoActionPerformed
 
     private void agregarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarAnimalActionPerformed
-        controlador.crearAnimal(nombreAnimal.getText(), Double.parseDouble((String) tamañoAnimal.getSelectedItem()), (String) tipoProducto.getSelectedItem(),(String) tipoAnimal.getSelectedItem());
+        controlador.crearAnimal(nombreAnimal.getText(), Double.parseDouble((String) tamañoAnimal.getSelectedItem()), (String) tipoProducto.getSelectedItem(), (String) tipoAnimal.getSelectedItem(), Integer.parseInt(precio.getText()));
         jTextArea1.setText("");
         controlador.mostrarListaAnimales(jTextArea1);
     }//GEN-LAST:event_agregarAnimalActionPerformed
@@ -243,12 +253,14 @@ public class AgregarAnimalesGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField nombreAnimal;
+    private javax.swing.JTextField precio;
     private javax.swing.JComboBox<String> tamañoAnimal;
     private javax.swing.JComboBox<String> tipoAnimal;
     private javax.swing.JComboBox<String> tipoProducto;

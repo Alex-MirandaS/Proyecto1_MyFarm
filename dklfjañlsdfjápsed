@@ -1,0 +1,41 @@
+[33mcommit 4aaa6a18ebb2aea2f6ab9a2101e6d13ab8c7de55[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Alex-MirandaS <williammiranda201930967@cunoc.edu.gt>
+Date:   Fri Apr 9 15:27:35 2021 -0600
+
+    Se agrego la logica para agregar animales a las Parcelas, ademas de obtener los productos generados por destace y sin destace, y al ser destasado, el animal se elimina seguidamente
+
+[33mcommit 2fb3dd8166b34560f0ca5d29162e2d8dc7b1407f[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Alex-MirandaS <williammiranda201930967@cunoc.edu.gt>
+Date:   Thu Apr 8 21:04:51 2021 -0600
+
+    Se crearon los sub menus para agregar parcelas segun el tipo de animal, y agregar siembras segun el tipo de planta
+
+[33mcommit 4f9e282347c82b5c86889096b3b5ac53c2f7facf[m
+Author: Alex-MirandaS <williammiranda201930967@cunoc.edu.gt>
+Date:   Wed Apr 7 21:47:06 2021 -0600
+
+    Se modifico y se agregaron los metodos ya realizados a una nueva interfaz grafica
+
+[33mcommit d1a83ba7af6b4c7991f620cb42b5f86172b318dc[m
+Author: Alex-MirandaS <williammiranda201930967@cunoc.edu.gt>
+Date:   Wed Apr 7 11:09:22 2021 -0600
+
+    Se añadio el sub menu para agregar productos, se puede agregar productos a los animales
+
+[33mcommit e38ffceed9a8a00d6e92f6c590a9f03357f027f2[m
+Author: Alex-MirandaS <williammiranda201930967@cunoc.edu.gt>
+Date:   Wed Apr 7 09:22:35 2021 -0600
+
+    Se agrego la logica de los Productos generados por cada Animal
+
+[33mcommit a4e3a8dde6455dd44575ed675b0a4001e79181f1[m
+Author: Alex-MirandaS <williammiranda201930967@cunoc.edu.gt>
+Date:   Tue Apr 6 17:03:15 2021 -0600
+
+    Se agrego la clase productos, asignadolos a los animales, dependiendo si su obtencion es por destace o sin destace, se trabajo mas a fondo con la clase animal, añadiendo listas en donde se contendra los productos que contienen dependiendo de cada caso
+
+[33mcommit d572571b11736d225e8a1cf45b8472076144716b[m
+Author: Alex-MirandaS <williammiranda201930967@cunoc.edu.gt>
+Date:   Mon Apr 5 00:38:35 2021 -0600
+
+    Se crean los objetos Principales del juego, implementando la siembra, cosecha, desbloqueo, casillas de agua-desierto-pasto, creacion de animales y plantas, menus del juego, parcelas

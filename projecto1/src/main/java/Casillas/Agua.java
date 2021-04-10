@@ -7,10 +7,10 @@ package Casillas;
 
 import CasillasGUI.AguaGUI;
 import Controladores.ControladorAgua;
-import Controladores.ControladorConstantes;
 import Juego.Barco;
 import Juego.Bodega;
 import Juego.Jugador;
+import JuegoGUI.BarcoGUI;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -23,6 +23,7 @@ public class Agua extends Casilla {
     private Bodega bodega;
     private ControladorAgua controlador;
     private Barco barco;
+    private BarcoGUI figuraBarco;
 
     public Agua(int indice, Jugador jug, Bodega bodega) {
         super(indice, jug);
@@ -34,15 +35,18 @@ public class Agua extends Casilla {
 
     public void ponerBarco(JLabel img) {
 
-        Barco barcoTemp = new Barco();
+        Barco barcoTemp = new Barco(this);
         if (jug.getOro() >= barcoTemp.getPrecio()) {
             barco = barcoTemp;
             jug.restarOro(barco.getPrecio());
             controlador.añadirBarco(img, barco.getNombre());
-            //  pescar(img, planta.getNombre());
         } else {
             JOptionPane.showMessageDialog(null, "No tiene el oro suficiente");
         }
+    }
+
+    public void desplegarBarco(JLabel barco) {
+        this.barco.mostrarBarco();
     }
 
     public boolean barcoExiste() {
@@ -61,4 +65,9 @@ public class Agua extends Casilla {
     public AguaGUI getFigura() {
         return (AguaGUI) figura;
     }
+
+    public Barco getBarco() {
+        return barco;
+    }
+
 }

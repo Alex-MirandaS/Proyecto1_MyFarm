@@ -289,7 +289,7 @@ public class JuegoGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_añadirParcelaActionPerformed
 
     private void accederBodegaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accederBodegaActionPerformed
-        juego.mientras();
+        juego.mostrarBodega();
     }//GEN-LAST:event_accederBodegaActionPerformed
 
     private void agregarBarcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarBarcoActionPerformed

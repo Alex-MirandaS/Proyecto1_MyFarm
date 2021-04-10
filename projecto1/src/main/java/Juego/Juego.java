@@ -37,17 +37,18 @@ public class Juego {
         bodega = new Bodega(controlProductos);
         datosJugador = new DatosJugador(this);
         //por mientras
-         jug = new Jugador("Pepe", "fsddfs");
+        jug = new Jugador("Pepe", "fsddfs");
         granja = new Granja(jug, bodega, controlPlantas, controlAnimales);
         ventanaJuego = new JuegoGUI(this);
     }
 
     public void inicio() {
         //datosJugador.setVisible(true);
-         //mientras
-         ventanaJuego.setVisible(true);
+        //mientras
+        ventanaJuego.setVisible(true);
     }
-    public void iniciarJuego(){
+
+    public void iniciarJuego() {
         granja = new Granja(jug, bodega, controlPlantas, controlAnimales);
         ventanaJuego = new JuegoGUI(this);
         ventanaJuego.setVisible(true);
@@ -100,7 +101,7 @@ public class Juego {
     }
 
     public void prepararAñadirCultivo() {
-        
+
         for (int i = 0; i < granja.getCasillas().getSize(); i++) {
 
             if (granja.getCasillas().get(i) instanceof Pasto && granja.getCasillas().get(i).getFigura().isEnabled() == true) {
@@ -134,10 +135,10 @@ public class Juego {
         }
     }
 
-    public void mientras() {
-        for (int i = 0; i < bodega.getContenedor().getSize(); i++) {
-            bodega.getContenedor().get(i).mientras();
-        }
+    public void mostrarBodega() {
+        bodega.getFiguraBodega().getExistencias().setText("");
+        bodega.llenarBodega();
+        bodega.getFiguraBodega().setVisible(true);
     }
 
     public ControladorAnimales getControlAnimales() {

@@ -10,7 +10,6 @@ import Controladores.ControladorConstantes;
 import JuegoGUI.AnimalGUI;
 import JuegoGUI.ParcelaGUI;
 import Listas.Lista;
-import Productos.Producto;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -29,17 +28,20 @@ public class Parcela {
     private ParcelaGUI figuraParcela;
     private JLabel figuraParcelaCasilla = new JLabel();
     private Bodega bodega;
+    private Jugador Jug;
 
 //GUI
-    public Parcela(Animal tipo, Bodega bodega) {
+    public Parcela(Animal tipo, Bodega bodega, Jugador jug) {
         this.figuraParcelaCasilla.setText("Parcela de " + tipo.getNombre() + "s");
         animales = new Lista<>();
         animalesGUI = new Lista<>();
         this.tipo = tipo;
         this.bodega = bodega;
+        this.Jug = jug;
         espacio = ControladorConstantes.LIM_PARCELA;
         dimensionarParcelaAnimales((ControladorConstantes.LIM_PARCELA / tipo.getEspacio()));
         figuraParcela = new ParcelaGUI(this);
+        figuraParcela.getPrecio().setText("Precio: ");
         verificarFiguraParcela();
         cParcelas++;
     }
@@ -124,6 +126,13 @@ public class Parcela {
             }
         }
         return 0;
+    }
+
+    public void preparararAlimentar() {
+        for (int i = 0; i < animalesGUI.getSize(); i++) {
+            boolean temp = animalesGUI.get(i).isPrepararAlimentar();
+            animalesGUI.get(i).setPrepararAlimentar(!temp);
+        }
     }
 
     public void verificarFiguraParcela() {

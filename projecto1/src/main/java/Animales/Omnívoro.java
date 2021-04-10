@@ -13,8 +13,8 @@ import Plantas.Planta;
  */
 public class Omnívoro extends Animal {
 
-    public Omnívoro(String nombre, double espacio, String obtenerProducto) {
-        super(nombre, espacio, obtenerProducto);
+    public Omnívoro(String nombre, double espacio, String obtenerProducto, int precio) {
+        super(nombre, espacio, obtenerProducto, precio);
     }
 
 }

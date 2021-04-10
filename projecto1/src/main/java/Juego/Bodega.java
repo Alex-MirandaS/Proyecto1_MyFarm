@@ -5,8 +5,8 @@
  */
 package Juego;
 
-import Controladores.ControladorPlantas;
 import Controladores.ControladorProductos;
+import JuegoGUI.BodegaGUI;
 import Listas.Lista;
 
 /**
@@ -17,11 +17,13 @@ public class Bodega {
 
     private ControladorProductos controlProductos;
     private Lista<Caja> contenedor = new Lista<>();
-//tambien productos
+    private BodegaGUI figuraBodega;
 
     public Bodega(ControladorProductos controlProductos) {
         this.controlProductos = controlProductos;
+        figuraBodega = new BodegaGUI();
         crearCajas();
+        llenarBodega();
     }
 
     private void crearCajas() {
@@ -30,8 +32,23 @@ public class Bodega {
         }
     }
 
+    public void llenarBodega() {
+        
+        for (int i = 0; i < controlProductos.getProductosJuego().getSize(); i++) {
+            figuraBodega.getProductos().append(contenedor.get(i).getProducto().getNombre());
+            figuraBodega.getProductos().append(System.getProperty("line.separator"));
+            figuraBodega.getExistencias().append(Integer.toString(contenedor.get(i).getExistencia()));
+            figuraBodega.getExistencias().append(System.getProperty("line.separator"));
+
+        }
+    }
+
     public Lista<Caja> getContenedor() {
         return contenedor;
     }
-    
+
+    public BodegaGUI getFiguraBodega() {
+        return figuraBodega;
+    }
+
 }

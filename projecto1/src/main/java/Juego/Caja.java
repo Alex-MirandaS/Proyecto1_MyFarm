@@ -20,10 +20,6 @@ public class Caja {
     public Caja(Producto producto) {
         this.producto = producto;
     }
-    
-    public void mientras(){
-        System.out.println("Caja que contiene: "+producto.getNombre()+" con existencias de: "+existencia);
-    }
 
     public int getExistencia() {
         return existencia;

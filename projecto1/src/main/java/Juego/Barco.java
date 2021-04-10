@@ -6,7 +6,9 @@
 
 package Juego;
 
+import Casillas.Agua;
 import Controladores.ControladorConstantes;
+import JuegoGUI.BarcoGUI;
 
 /**
  * 
@@ -15,12 +17,19 @@ import Controladores.ControladorConstantes;
 public class Barco {
 private int peces  = (int) (Math.random() * 50 + 1);
 private static int cBarcos;
-private String nombre = "Barco"+cBarcos;
+private String nombre;
+private BarcoGUI figuraBarco;
 
-    public Barco() {
+    public Barco(Agua agua) {
+         nombre = "Barco"+cBarcos;
+        figuraBarco = new BarcoGUI(agua);
         cBarcos++;
     }
 
+    public void mostrarBarco(){
+        figuraBarco.setVisible(true);
+    }
+    
     public String getNombre() {
         return nombre;
     }

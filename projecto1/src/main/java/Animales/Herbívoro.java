@@ -14,8 +14,8 @@ import Plantas.Planta;
  */
 public class Herbívoro extends Animal{
    
-    public Herbívoro(String nombre, double espacio, String obtenerProducto) {
-        super(nombre, espacio, obtenerProducto);
+    public Herbívoro(String nombre, double espacio, String obtenerProducto, int precio) {
+        super(nombre, espacio, obtenerProducto, precio);
     }
 
 }

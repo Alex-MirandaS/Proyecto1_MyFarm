@@ -81,7 +81,7 @@ public class AguaGUI extends javax.swing.JPanel {
             control.desbloquearCasillas(this, Color.BLUE, "Agua",agua.getJug());
         }
         if (agua.barcoExiste()) {
-            //agua.ponerBarco(Barco);
+            agua.desplegarBarco(barco);
         }
         if (prepararAñadirBarco) {
             agua.ponerBarco(barco);
@@ -106,6 +106,10 @@ public class AguaGUI extends javax.swing.JPanel {
 
     public void setPrepararAñadirBarco(boolean prepararAñadirBarco) {
         this.prepararAñadirBarco = prepararAñadirBarco;
+    }
+
+    public JLabel getBarco() {
+        return barco;
     }
 
 

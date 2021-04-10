@@ -5,22 +5,21 @@
  */
 package JuegoGUI;
 
-import Casillas.Pasto;
-
+import Casillas.Agua;
 
 /**
  *
  * @author alex
  */
-public class SiembraGUI extends javax.swing.JFrame {
+public class BarcoGUI extends javax.swing.JFrame {
 
-    private Pasto pasto;
+    private Agua agua;
 
-    public SiembraGUI(Pasto pasto) {
+    public BarcoGUI(Agua agua) {
         initComponents();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        this.figuraCultivo.setText(pasto.getPlanta().getNombre());
-        this.pasto = pasto;
+        this.figuraBarco.setText("Barco");
+        this.agua = agua;
     }
 
     /**
@@ -33,25 +32,25 @@ public class SiembraGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        cosechar = new javax.swing.JToggleButton();
+        recolectarPeces = new javax.swing.JToggleButton();
         limpiar = new javax.swing.JToggleButton();
-        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        figuraCultivo = new javax.swing.JLabel();
+        figuraBarco = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel3.setLayout(new java.awt.GridLayout(2, 2, 3, 3));
 
-        cosechar.setText("Recolectar Cultivo");
-        cosechar.addActionListener(new java.awt.event.ActionListener() {
+        recolectarPeces.setText("Recolectar Peces");
+        recolectarPeces.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cosecharActionPerformed(evt);
+                recolectarPecesActionPerformed(evt);
             }
         });
-        jPanel3.add(cosechar);
+        jPanel3.add(recolectarPeces);
 
         limpiar.setText("Limpiar");
         limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -60,9 +59,7 @@ public class SiembraGUI extends javax.swing.JFrame {
             }
         });
         jPanel3.add(limpiar);
-
-        jButton1.setText("Agregar Fertilizante");
-        jPanel3.add(jButton1);
+        jPanel3.add(jLabel1);
 
         jButton2.setText("Salir");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +76,7 @@ public class SiembraGUI extends javax.swing.JFrame {
 
         jLabel7.setText("   ");
         getContentPane().add(jLabel7, java.awt.BorderLayout.LINE_START);
-        getContentPane().add(figuraCultivo, java.awt.BorderLayout.CENTER);
+        getContentPane().add(figuraBarco, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -88,9 +85,9 @@ public class SiembraGUI extends javax.swing.JFrame {
       //parcela.limpiar();
     }//GEN-LAST:event_limpiarActionPerformed
 
-    private void cosecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cosecharActionPerformed
-     pasto.cosecha(figuraCultivo);
-    }//GEN-LAST:event_cosecharActionPerformed
+    private void recolectarPecesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recolectarPecesActionPerformed
+     agua.recolectarPeces();
+    }//GEN-LAST:event_recolectarPecesActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.setVisible(false);
@@ -113,14 +110,30 @@ public class SiembraGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SiembraGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BarcoGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SiembraGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BarcoGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SiembraGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BarcoGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SiembraGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BarcoGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -147,13 +160,13 @@ public class SiembraGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton cosechar;
-    private javax.swing.JLabel figuraCultivo;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel figuraBarco;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JToggleButton limpiar;
+    private javax.swing.JToggleButton recolectarPeces;
     // End of variables declaration//GEN-END:variables
 }

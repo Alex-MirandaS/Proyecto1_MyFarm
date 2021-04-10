@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 public class AnimalGUI extends javax.swing.JPanel {
 
     private Parcela parcela;
-    private boolean prepararProductosSinDestace, prepararProductosConDestace;
+    private boolean prepararProductosSinDestace, prepararProductosConDestace, prepararAlimentar, prepararLimpiar;
 
     public AnimalGUI(String nombreAnimal, Parcela parcela) {
         initComponents();
@@ -85,6 +85,22 @@ public class AnimalGUI extends javax.swing.JPanel {
 
     public void setPrepararProductosConDestace(boolean prepararProductosConDestace) {
         this.prepararProductosConDestace = prepararProductosConDestace;
+    }
+
+    public boolean isPrepararAlimentar() {
+        return prepararAlimentar;
+    }
+
+    public void setPrepararAlimentar(boolean prepararAlimentar) {
+        this.prepararAlimentar = prepararAlimentar;
+    }
+
+    public boolean isPrepararLimpiar() {
+        return prepararLimpiar;
+    }
+
+    public void setPrepararLimpiar(boolean prepararLimpiar) {
+        this.prepararLimpiar = prepararLimpiar;
     }
     
     

@@ -6,6 +6,7 @@
 package JuegoGUI;
 
 import Juego.Parcela;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
@@ -14,29 +15,28 @@ import javax.swing.JToggleButton;
  * @author alex
  */
 public class ParcelaGUI extends javax.swing.JFrame {
-
+    
     private Parcela parcela;
-
+    
     public ParcelaGUI(Parcela parcela) {
         initComponents();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.parcela = parcela;
-
+        String precioAnimal = "Precio: "+parcela.getTipo().getPrecio();
+        this.precio.setText(precioAnimal);
     }
-
+    
     public JPanel getContenedorAnimalesParcela() {
         return contenedorAnimalesParcela;
     }
-
+    
     public JToggleButton getDestasar() {
         return destasar;
     }
-
+    
     public JToggleButton getRecolectarProductos() {
         return recolectarProductos;
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,16 +48,16 @@ public class ParcelaGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         recolectarProductos = new javax.swing.JToggleButton();
         destasar = new javax.swing.JToggleButton();
-        limpiar = new javax.swing.JToggleButton();
         agregarAnimal = new javax.swing.JToggleButton();
         cAnimales = new javax.swing.JTextField();
+        limpiar = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        precio = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         contenedorAnimalesParcela = new javax.swing.JPanel();
@@ -65,6 +65,14 @@ public class ParcelaGUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel3.setLayout(new java.awt.GridLayout(2, 5, 3, 3));
+
+        jButton1.setText("Alimentar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton1);
 
         recolectarProductos.setText("Recolectar Producto");
         recolectarProductos.addActionListener(new java.awt.event.ActionListener() {
@@ -82,14 +90,6 @@ public class ParcelaGUI extends javax.swing.JFrame {
         });
         jPanel3.add(destasar);
 
-        limpiar.setText("Limpiar");
-        limpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                limpiarActionPerformed(evt);
-            }
-        });
-        jPanel3.add(limpiar);
-
         agregarAnimal.setText("Agregar Animal");
         agregarAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,11 +98,18 @@ public class ParcelaGUI extends javax.swing.JFrame {
         });
         jPanel3.add(agregarAnimal);
         jPanel3.add(cAnimales);
+
+        limpiar.setText("Limpiar");
+        limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(limpiar);
         jPanel3.add(jLabel1);
         jPanel3.add(jLabel2);
         jPanel3.add(jLabel3);
-        jPanel3.add(jLabel9);
-        jPanel3.add(jLabel10);
+        jPanel3.add(precio);
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
@@ -134,6 +141,7 @@ public class ParcelaGUI extends javax.swing.JFrame {
 
     private void agregarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarAnimalActionPerformed
         parcela.llenarParcela(Integer.parseInt(cAnimales.getText()));
+        cAnimales.setText("");
     }//GEN-LAST:event_agregarAnimalActionPerformed
 
     private void recolectarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recolectarProductosActionPerformed
@@ -143,6 +151,10 @@ public class ParcelaGUI extends javax.swing.JFrame {
     private void destasarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_destasarActionPerformed
         parcela.prepararProductosConDestace();
     }//GEN-LAST:event_destasarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       parcela.preparararAlimentar();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,21 +197,25 @@ public class ParcelaGUI extends javax.swing.JFrame {
             }
         });
     }
+    
+    public JLabel getPrecio() {
+        return precio;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton agregarAnimal;
     private javax.swing.JTextField cAnimales;
     private javax.swing.JPanel contenedorAnimalesParcela;
     private javax.swing.JToggleButton destasar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JToggleButton limpiar;
+    private javax.swing.JLabel precio;
     private javax.swing.JToggleButton recolectarProductos;
     // End of variables declaration//GEN-END:variables
 }

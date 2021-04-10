@@ -114,7 +114,7 @@ public class Pasto extends Casilla {
 
         if ("".equals(img.getText())) {
             if (jug.getOro() >= ControladorConstantes.PRECIO_PARCELA) {
-                parcela = new Parcela(animales.getAnimalesJuego().get(selección),bodega);
+                parcela = new Parcela(animales.getAnimalesJuego().get(selección),bodega, jug);
                 jug.restarOro(ControladorConstantes.PRECIO_PARCELA);
                 img.setText(parcela.getFiguraParcelaCasilla().getText());
                 agregarParcelaCultivo(img);
