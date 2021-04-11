@@ -23,7 +23,6 @@ public class Parcela {
     private Lista<Animal> animales;
     private Lista<AnimalGUI> animalesGUI;
     private Animal tipo;
-    private static int cParcelas = 0;
     private int espacio, ancho = 5, alto;
     private ParcelaGUI figuraParcela;
     private JLabel figuraParcelaCasilla = new JLabel();
@@ -43,7 +42,6 @@ public class Parcela {
         figuraParcela = new ParcelaGUI(this);
         figuraParcela.getPrecio().setText("Precio: ");
         verificarFiguraParcela();
-        cParcelas++;
     }
 
     public void llenarParcela(int cAnimales) {
@@ -149,10 +147,6 @@ public class Parcela {
 
     public void setAnimales(Lista<Animal> animales) {
         this.animales = animales;
-    }
-
-    public static int getCParcelas() {
-        return cParcelas;
     }
 
     public Animal getTipo() {

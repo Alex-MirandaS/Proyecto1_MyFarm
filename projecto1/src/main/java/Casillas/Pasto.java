@@ -35,9 +35,9 @@ public class Pasto extends Casilla {
     private Bodega bodega;
     private int fertilidad = (int) (Math.random() * 100 + 1);
 
-    public Pasto(int indice, Jugador jug, ControladorPlantas plantas, ControladorAnimales animales, Bodega bodega) {
-        super(indice, jug);
-        figura = new PastoGUI(indice, this);
+    public Pasto(Jugador jug, ControladorPlantas plantas, ControladorAnimales animales, Bodega bodega) {
+        super(jug);
+        figura = new PastoGUI(this);
         this.jug = jug;
         this.plantas = plantas;
         this.bodega = bodega;

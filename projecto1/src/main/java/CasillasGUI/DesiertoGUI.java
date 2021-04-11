@@ -19,10 +19,10 @@ public class DesiertoGUI extends javax.swing.JPanel {
 
     private boolean prepararDesbloqueo;
     private Desierto desierto;
-    public DesiertoGUI(int i, Desierto desierto) {
+    public DesiertoGUI(Desierto desierto) {
         initComponents();
         this.desierto = desierto;
-        indice.setText("Desierto " + i);
+        indice.setText("Desierto ");
     }
 
     /**

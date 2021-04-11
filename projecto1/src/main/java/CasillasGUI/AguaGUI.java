@@ -19,10 +19,10 @@ public class AguaGUI extends javax.swing.JPanel {
     private boolean prepararDesbloqueo, prepararAñadirBarco;
     private Agua agua;
 
-    public AguaGUI(int i, Agua agua) {
+    public AguaGUI(Agua agua) {
         initComponents();
         this.agua = agua;
-        indice.setText("Agua " + i);
+        indice.setText("Agua ");
     }
 
     /**

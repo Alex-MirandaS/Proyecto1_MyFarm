@@ -5,7 +5,6 @@
  */
 package Controladores;
 
-import Casillas.Casilla;
 import Listas.Lista;
 import MenusGUI.AgregarPlantasGUI;
 import Plantas.Fruta;

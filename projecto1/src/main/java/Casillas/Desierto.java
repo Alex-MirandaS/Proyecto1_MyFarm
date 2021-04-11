@@ -14,9 +14,9 @@ import Juego.Jugador;
  */
 public class Desierto extends Casilla {
 
-    public Desierto(int indice, Jugador jug) {
-        super(indice, jug);
-        figura = new DesiertoGUI(indice, this);
+    public Desierto(Jugador jug) {
+        super(jug);
+        figura = new DesiertoGUI(this);
     }
 
     @Override

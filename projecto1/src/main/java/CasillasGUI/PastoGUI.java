@@ -22,9 +22,9 @@ public class PastoGUI extends javax.swing.JPanel {
     ControladorPasto cPasto = new ControladorPasto();
     Pasto pasto;
 
-    public PastoGUI(int i, Pasto pasto) {
+    public PastoGUI(Pasto pasto) {
         initComponents();
-        indice.setText("Pasto " + i);
+        indice.setText("Pasto ");
         this.pasto = pasto;
     }
 

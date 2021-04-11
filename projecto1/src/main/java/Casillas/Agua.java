@@ -25,12 +25,12 @@ public class Agua extends Casilla {
     private Barco barco;
     private BarcoGUI figuraBarco;
 
-    public Agua(int indice, Jugador jug, Bodega bodega) {
-        super(indice, jug);
+    public Agua(Jugador jug, Bodega bodega) {
+        super(jug);
         this.jug = jug;
         this.bodega = bodega;
         this.controlador = new ControladorAgua();
-        figura = new AguaGUI(indice, this);
+        figura = new AguaGUI(this);
     }
 
     public void ponerBarco(JLabel img) {

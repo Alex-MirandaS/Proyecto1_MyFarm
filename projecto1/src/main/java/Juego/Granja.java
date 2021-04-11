@@ -26,6 +26,7 @@ public class Granja {
 
     private Lista<Casilla> casillas = new Lista<>();
     private int PRIMERA_CASILLA_POS = 36;
+    private int contPasto = 1, contAgua = 1, contDesierto = 1;
     private Jugador jug;
     private Bodega bodega;
     private ControladorPlantas plantas;
@@ -42,14 +43,22 @@ public class Granja {
     private void LlenarCasillasAleatorias() {
         int numAleatorio;
         for (int i = 0; i < (ControladorConstantes.X * ControladorConstantes.Y); i++) {
-            numAleatorio = (int) (Math.random() * 100 + 1);
+            numAleatorio = (int) (Math.random() * 3 + 1);
 
-            if (numAleatorio > 0 && numAleatorio < 41) {
-                casillas.add(new Pasto(i, jug, plantas, animales, bodega));
-            } else if (numAleatorio > 40 && numAleatorio < 76) {
-                casillas.add(new Agua(i, jug, bodega));
-            } else {
-                casillas.add(new Desierto(i, jug));
+            if (numAleatorio == 1 && contPasto <= ((0.40) * (ControladorConstantes.X * ControladorConstantes.Y))) {
+                casillas.add(new Pasto(jug, plantas, animales, bodega));
+                contPasto++;
+            } else if (numAleatorio == 1 && contPasto > ((0.40) * (ControladorConstantes.X * ControladorConstantes.Y))) {
+                numAleatorio = 2;
+            }
+            if (numAleatorio == 2 && contAgua <= ((0.35) * (ControladorConstantes.X * ControladorConstantes.Y))) {
+                casillas.add(new Agua(jug, bodega));
+                contAgua++;
+            } else if (numAleatorio == 1 && contAgua > ((0.40) * (ControladorConstantes.X * ControladorConstantes.Y))) {
+                numAleatorio = 3;
+            }
+            if (numAleatorio == 3 && contDesierto < ((0.25) * (ControladorConstantes.X * ControladorConstantes.Y))) {
+                casillas.add(new Desierto(jug));
             }
         }
     }

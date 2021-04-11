@@ -5,7 +5,6 @@
  */
 package Casillas;
 
-import Controladores.ControladorConstantes;
 import Juego.Jugador;
 import javax.swing.JPanel;
 
@@ -16,12 +15,10 @@ import javax.swing.JPanel;
 public class Casilla {
 
     protected JPanel figura;
-    protected int indice;
     protected boolean prepararDesbloqueo;
     protected Jugador jug;
 
-    public Casilla(int indice, Jugador jug) {
-        this.indice = indice;
+    public Casilla(Jugador jug) {
         this.jug = jug;
     }
 

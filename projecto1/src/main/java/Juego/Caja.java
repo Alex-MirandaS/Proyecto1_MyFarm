@@ -5,7 +5,6 @@
  */
 package Juego;
 
-import Plantas.Planta;
 import Productos.Producto;
 
 /**
