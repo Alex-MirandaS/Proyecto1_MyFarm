@@ -13,6 +13,9 @@ import Plantas.Fruta;
 import Plantas.Grano;
 import Plantas.Planta;
 import Productos.Alimento;
+import Productos.ComidaAnimalesHerbívoros;
+import Productos.ComidaAnimalesOmnívoros;
+import Productos.Fertilizante;
 import Productos.MateriaPrima;
 import Productos.Producto;
 import javax.swing.JOptionPane;
@@ -34,21 +37,21 @@ public class ControladorProductos {
         productosJuego = new Lista<>();
         llenadoInicial();
         agregarProducto = new AgregarProductoGUI(this);
-      
+
     }
 
     public void iniciar() {
         agregarProducto.setVisible(true);
     }
 
-    public void crearProducto(String nombre, String tipo) {
+    public void crearProducto(String nombre, String tipo, int precio) {
         if (nombre == "") {
             JOptionPane.showMessageDialog(null, "No ha ingresado el nombre del Producto");
         } else {
             if (tipo == "Alimento") {
-                productosJuego.add(new Alimento(nombre));
-            } else {            
-                productosJuego.add(new MateriaPrima(nombre));
+                productosJuego.add(new Alimento(nombre, precio));
+            } else {
+                productosJuego.add(new MateriaPrima(nombre, precio));
             }
         }
     }
@@ -62,17 +65,31 @@ public class ControladorProductos {
 
     private void llenadoInicial() {
         //Plantas
-        productosJuego.add(new Alimento(ControladorConstantes.FRUTA1));
-        productosJuego.add(new Alimento(ControladorConstantes.GRANO1));
-        productosJuego.add(new Alimento("Leche"));
-        productosJuego.add(new Alimento("Huevo"));
+        productosJuego.add(new Alimento(ControladorConstantes.FRUTA1, 5));
+        productosJuego.add(new Alimento(ControladorConstantes.GRANO1, 6));
+        productosJuego.add(new Alimento("Leche", 7));
+        productosJuego.add(new Alimento("Huevo", 12));
 
         //Animales
-        productosJuego.add(new MateriaPrima("Cuero"));
-        productosJuego.add(new MateriaPrima("Carne Vaca"));
-        productosJuego.add(new MateriaPrima("Carne Gallina"));
+        productosJuego.add(new MateriaPrima("Cuero", 25));
+        productosJuego.add(new MateriaPrima("Carne Vaca", 30));
+        productosJuego.add(new MateriaPrima("Carne Gallina", 28));
         //Peces
-        productosJuego.add(new Alimento("Pescado"));
+        productosJuego.add(new Alimento("Pescado", 10));
+
+        //Fertilizante
+        productosJuego.add(new Fertilizante("Gallinaza", 0, 0));
+        productosJuego.add(new Fertilizante("Yara", 0, 0));
+        productosJuego.add(new Fertilizante("PastoClean", 0, 0));
+
+        //AlimentoAnimales
+        productosJuego.add(new ComidaAnimalesOmnívoros("Abejas", 10));
+        productosJuego.add(new ComidaAnimalesOmnívoros("Cebada", 20));
+        productosJuego.add(new ComidaAnimalesOmnívoros("Avena", 30));
+        productosJuego.add(new ComidaAnimalesHerbívoros("Hierba", 5));
+        productosJuego.add(new ComidaAnimalesHerbívoros("Heno", 15));
+        productosJuego.add(new ComidaAnimalesHerbívoros("Grano", 20));
+
     }
 
     public Lista<Producto> getProductosJuego() {

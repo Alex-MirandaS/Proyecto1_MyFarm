@@ -51,6 +51,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Mercado"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="accederMercadoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="accederReportes">
           <Properties>

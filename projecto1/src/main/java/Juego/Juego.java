@@ -12,6 +12,7 @@ import Controladores.ControladorAnimales;
 import Controladores.ControladorPlantas;
 import Controladores.ControladorProductos;
 import JuegoGUI.JuegoGUI;
+import Listas.Lista;
 import MenusGUI.DatosJugador;
 
 /**
@@ -26,6 +27,7 @@ public class Juego {
     private ControladorPlantas controlPlantas;
     private ControladorProductos controlProductos;
     private Bodega bodega;
+    private Mercado mercado;
 
     private JuegoGUI ventanaJuego;
     private DatosJugador datosJugador;
@@ -39,6 +41,7 @@ public class Juego {
         //por mientras
         jug = new Jugador("Pepe", "fsddfs");
         granja = new Granja(jug, bodega, controlPlantas, controlAnimales);
+        mercado = new Mercado(jug, bodega);
         ventanaJuego = new JuegoGUI(this);
     }
 
@@ -139,6 +142,10 @@ public class Juego {
         bodega.getFiguraBodega().getExistencias().setText("");
         bodega.llenarBodega();
         bodega.getFiguraBodega().setVisible(true);
+    }
+
+    public void mostrarMercado() {
+        mercado.iniciar();
     }
 
     public ControladorAnimales getControlAnimales() {

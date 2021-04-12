@@ -9,10 +9,12 @@ package Productos;
  *
  * @author alex
  */
-public class MateriaPrima extends Producto {
+public class Fertilizante extends Producto{
 
-    public MateriaPrima(String nombre, int precio) {
+    public Fertilizante(String nombre, int precio, int cantidad) {
         super(nombre, precio);
     }
+
+
 
 }

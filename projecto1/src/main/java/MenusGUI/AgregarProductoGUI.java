@@ -53,7 +53,7 @@ public class AgregarProductoGUI extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        precioProducto = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         PanelCentro = new javax.swing.JPanel();
@@ -112,8 +112,10 @@ public class AgregarProductoGUI extends javax.swing.JFrame {
         jPanel4.add(tipoProducto);
         jPanel4.add(jLabel16);
         jPanel4.add(jLabel8);
+
+        jLabel15.setText("Precio:");
         jPanel4.add(jLabel15);
-        jPanel4.add(jLabel17);
+        jPanel4.add(precioProducto);
         jPanel4.add(jLabel18);
         jPanel4.add(jLabel19);
 
@@ -138,7 +140,7 @@ public class AgregarProductoGUI extends javax.swing.JFrame {
 
     private void agregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarProductoActionPerformed
         areaTextoProductos.setText("");
-        controlador.crearProducto(nombreProducto.getText(), (String) tipoProducto.getSelectedItem());
+        controlador.crearProducto(nombreProducto.getText(), (String) tipoProducto.getSelectedItem(), Integer.parseInt(precioProducto.getText()));
         controlador.mostrarListaProductosAnimales(areaTextoProductos);
     }//GEN-LAST:event_agregarProductoActionPerformed
 
@@ -195,7 +197,6 @@ public class AgregarProductoGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel3;
@@ -210,6 +211,7 @@ public class AgregarProductoGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nombreProducto;
+    private javax.swing.JTextField precioProducto;
     private javax.swing.JComboBox<String> tipoProducto;
     private javax.swing.JLabel tituloDestace;
     // End of variables declaration//GEN-END:variables

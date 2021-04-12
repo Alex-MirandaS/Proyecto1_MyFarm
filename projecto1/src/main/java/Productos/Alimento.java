@@ -12,8 +12,10 @@ package Productos;
  */
 public class Alimento extends Producto{
 
-    public Alimento(String nombre) {
-        super(nombre);
+    public Alimento(String nombre, int precio) {
+        super(nombre, precio);
     }
+
+
 
 }

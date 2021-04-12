@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package Productos;
 
 /**
- *
+ * 
  * @author alex
  */
-public class MateriaPrima extends Producto {
+public class ComidaAnimalesHerbívoros extends ComidaAnimales{
 
-    public MateriaPrima(String nombre, int precio) {
+    public ComidaAnimalesHerbívoros(String nombre, int precio) {
         super(nombre, precio);
     }
 

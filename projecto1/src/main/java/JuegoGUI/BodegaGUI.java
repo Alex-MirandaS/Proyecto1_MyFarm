@@ -15,8 +15,6 @@ import javax.swing.JTextArea;
  */
 public class BodegaGUI extends javax.swing.JFrame {
 
-    private Bodega bodega;
-
     public BodegaGUI() {
         initComponents();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);        

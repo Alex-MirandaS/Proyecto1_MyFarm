@@ -33,7 +33,7 @@ public class Bodega {
     }
 
     public void llenarBodega() {
-        
+        figuraBodega.getProductos().setText("");
         for (int i = 0; i < controlProductos.getProductosJuego().getSize(); i++) {
             figuraBodega.getProductos().append(contenedor.get(i).getProducto().getNombre());
             figuraBodega.getProductos().append(System.getProperty("line.separator"));

@@ -9,9 +9,9 @@ package Productos;
  *
  * @author alex
  */
-public class MateriaPrima extends Producto {
+public class ComidaAnimales extends Producto {
 
-    public MateriaPrima(String nombre, int precio) {
+    public ComidaAnimales(String nombre, int precio) {
         super(nombre, precio);
     }
 

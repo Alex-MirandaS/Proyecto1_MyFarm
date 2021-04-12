@@ -11,19 +11,18 @@ import Animales.Omnívoro;
 import Listas.Lista;
 import MenusGUI.AgregarAnimalesGUI;
 import MenusGUI.AgregarProductoAnimalesGUI;
-import Productos.Alimento;
-import Productos.MateriaPrima;
+import Productos.ComidaAnimales;
+import Productos.Fertilizante;
 import Productos.Producto;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
-import javax.swing.JToggleButton;
 
 /**
  *
  * @author alex
  */
-public class ControladorAnimales{
+public class ControladorAnimales {
 
     private Lista<Animal> animalesJuego;
     private Lista<Producto> temp;
@@ -103,11 +102,15 @@ public class ControladorAnimales{
 
     private void llenarListaOpciones(JComboBox opciones) {
         for (int i = 0; i < temp.getSize(); i++) {
-            opciones.addItem(temp.get(i).getNombre());
+            if (temp.get(i) instanceof ComidaAnimales || temp.get(i) instanceof Fertilizante) {
+
+            } else {
+                opciones.addItem(temp.get(i).getNombre());
+            }
         }
     }
-    
-        public void llenarListaOp(JComboBox opciones) {
+
+    public void llenarListaOp(JComboBox opciones) {
         for (int i = 0; i < animalesJuego.getSize(); i++) {
             opciones.addItem(animalesJuego.get(i).getNombre());
         }
@@ -124,7 +127,7 @@ public class ControladorAnimales{
             mostrarListaProductos(pantalla, tempAnimal.getSinDestace());
             temp.eliminar(agregarProducto.getProductosDisponibles2().getSelectedIndex());
         }
-        
+
         agregarProducto.getProductosDisponibles1().removeAllItems();
         agregarProducto.getProductosDisponibles2().removeAllItems();
         llenarOpciones();

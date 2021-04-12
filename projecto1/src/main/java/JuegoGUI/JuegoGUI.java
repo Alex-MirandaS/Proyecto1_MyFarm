@@ -99,6 +99,11 @@ public class JuegoGUI extends javax.swing.JFrame {
         jPanel1.add(accederBodega);
 
         accederMercado.setText("Mercado");
+        accederMercado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accederMercadoActionPerformed(evt);
+            }
+        });
         jPanel1.add(accederMercado);
 
         accederReportes.setText("Reportes");
@@ -307,6 +312,10 @@ public class JuegoGUI extends javax.swing.JFrame {
             añadirParcela.setSelected(false);
         }
     }//GEN-LAST:event_añadirPlantaActionPerformed
+
+    private void accederMercadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accederMercadoActionPerformed
+        juego.mostrarMercado();
+    }//GEN-LAST:event_accederMercadoActionPerformed
 
     /**
      * @param args the command line arguments
