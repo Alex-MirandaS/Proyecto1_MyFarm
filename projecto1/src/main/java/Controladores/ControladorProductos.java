@@ -49,7 +49,7 @@ public class ControladorProductos {
             JOptionPane.showMessageDialog(null, "No ha ingresado el nombre del Producto");
         } else {
             if (tipo == "Alimento") {
-                productosJuego.add(new Alimento(nombre, precio));
+                productosJuego.add(new Alimento(nombre, precio, 5));
             } else {
                 productosJuego.add(new MateriaPrima(nombre, precio));
             }
@@ -65,30 +65,30 @@ public class ControladorProductos {
 
     private void llenadoInicial() {
         //Plantas
-        productosJuego.add(new Alimento(ControladorConstantes.FRUTA1, 5));
-        productosJuego.add(new Alimento(ControladorConstantes.GRANO1, 6));
-        productosJuego.add(new Alimento("Leche", 7));
-        productosJuego.add(new Alimento("Huevo", 12));
+        productosJuego.add(new Alimento(ControladorConstantes.FRUTA1, 5, 10));
+        productosJuego.add(new Alimento(ControladorConstantes.GRANO1, 6, 20));
+        productosJuego.add(new Alimento("Leche", 7, 20));
+        productosJuego.add(new Alimento("Huevo", 12, 5));
 
         //Animales
         productosJuego.add(new MateriaPrima("Cuero", 25));
         productosJuego.add(new MateriaPrima("Carne Vaca", 30));
         productosJuego.add(new MateriaPrima("Carne Gallina", 28));
         //Peces
-        productosJuego.add(new Alimento("Pescado", 10));
+        productosJuego.add(new Alimento("Pescado", 10, 2));
 
         //Fertilizante
-        productosJuego.add(new Fertilizante("Gallinaza", 0, 0));
-        productosJuego.add(new Fertilizante("Yara", 0, 0));
-        productosJuego.add(new Fertilizante("PastoClean", 0, 0));
+        productosJuego.add(new Fertilizante("Gallinaza", 10, 10));
+        productosJuego.add(new Fertilizante("Yara", 10, 10));
+        productosJuego.add(new Fertilizante("PastoClean", 10, 10));
 
         //AlimentoAnimales
-        productosJuego.add(new ComidaAnimalesOmnívoros("Abejas", 10));
-        productosJuego.add(new ComidaAnimalesOmnívoros("Cebada", 20));
-        productosJuego.add(new ComidaAnimalesOmnívoros("Avena", 30));
-        productosJuego.add(new ComidaAnimalesHerbívoros("Hierba", 5));
-        productosJuego.add(new ComidaAnimalesHerbívoros("Heno", 15));
-        productosJuego.add(new ComidaAnimalesHerbívoros("Grano", 20));
+        productosJuego.add(new ComidaAnimalesOmnívoros("Abejas", 10, 5));
+        productosJuego.add(new ComidaAnimalesOmnívoros("Cebada", 20, 6));
+        productosJuego.add(new ComidaAnimalesOmnívoros("Avena", 30, 7));
+        productosJuego.add(new ComidaAnimalesHerbívoros("Hierba", 5, 8));
+        productosJuego.add(new ComidaAnimalesHerbívoros("Heno", 15,9));
+        productosJuego.add(new ComidaAnimalesHerbívoros("Grano", 20,10));
 
     }
 

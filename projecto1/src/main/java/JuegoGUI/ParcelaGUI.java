@@ -6,6 +6,7 @@
 package JuegoGUI;
 
 import Juego.Parcela;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
@@ -15,25 +16,27 @@ import javax.swing.JToggleButton;
  * @author alex
  */
 public class ParcelaGUI extends javax.swing.JFrame {
-    
+
     private Parcela parcela;
-    
+
     public ParcelaGUI(Parcela parcela) {
         initComponents();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.parcela = parcela;
-        String precioAnimal = "Precio: "+parcela.getTipo().getPrecio();
+        String precioAnimal = "Precio: " + parcela.getTipo().getPrecio();
         this.precio.setText(precioAnimal);
+        cAnimales.setText("0");
+        cAlimento.setText("0");
     }
-    
+
     public JPanel getContenedorAnimalesParcela() {
         return contenedorAnimalesParcela;
     }
-    
+
     public JToggleButton getDestasar() {
         return destasar;
     }
-    
+
     public JToggleButton getRecolectarProductos() {
         return recolectarProductos;
     }
@@ -48,15 +51,15 @@ public class ParcelaGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        alimentar = new javax.swing.JButton();
         recolectarProductos = new javax.swing.JToggleButton();
         destasar = new javax.swing.JToggleButton();
         agregarAnimal = new javax.swing.JToggleButton();
         cAnimales = new javax.swing.JTextField();
+        alimentosDisponibles = new javax.swing.JComboBox<>();
+        existencias = new javax.swing.JLabel();
+        cAlimento = new javax.swing.JTextField();
         limpiar = new javax.swing.JToggleButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         precio = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -66,13 +69,13 @@ public class ParcelaGUI extends javax.swing.JFrame {
 
         jPanel3.setLayout(new java.awt.GridLayout(2, 5, 3, 3));
 
-        jButton1.setText("Alimentar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        alimentar.setText("Alimentar");
+        alimentar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                alimentarActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1);
+        jPanel3.add(alimentar);
 
         recolectarProductos.setText("Recolectar Producto");
         recolectarProductos.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +102,15 @@ public class ParcelaGUI extends javax.swing.JFrame {
         jPanel3.add(agregarAnimal);
         jPanel3.add(cAnimales);
 
+        alimentosDisponibles.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                alimentosDisponiblesItemStateChanged(evt);
+            }
+        });
+        jPanel3.add(alimentosDisponibles);
+        jPanel3.add(existencias);
+        jPanel3.add(cAlimento);
+
         limpiar.setText("Limpiar");
         limpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,9 +118,6 @@ public class ParcelaGUI extends javax.swing.JFrame {
             }
         });
         jPanel3.add(limpiar);
-        jPanel3.add(jLabel1);
-        jPanel3.add(jLabel2);
-        jPanel3.add(jLabel3);
         jPanel3.add(precio);
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_END);
@@ -141,7 +150,7 @@ public class ParcelaGUI extends javax.swing.JFrame {
 
     private void agregarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarAnimalActionPerformed
         parcela.llenarParcela(Integer.parseInt(cAnimales.getText()));
-        cAnimales.setText("");
+        cAnimales.setText("0");
     }//GEN-LAST:event_agregarAnimalActionPerformed
 
     private void recolectarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recolectarProductosActionPerformed
@@ -152,9 +161,14 @@ public class ParcelaGUI extends javax.swing.JFrame {
         parcela.prepararProductosConDestace();
     }//GEN-LAST:event_destasarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       parcela.preparararAlimentar();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void alimentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alimentarActionPerformed
+        parcela.preparararAlimentar((String)alimentosDisponibles.getSelectedItem(), Integer.parseInt(cAlimento.getText()));
+        cAlimento.setText("0");
+    }//GEN-LAST:event_alimentarActionPerformed
+
+    private void alimentosDisponiblesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_alimentosDisponiblesItemStateChanged
+        existencias.setText("Existencias: "+parcela.obtenerExistenciasAlimento((String)alimentosDisponibles.getSelectedItem()));
+    }//GEN-LAST:event_alimentosDisponiblesItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -197,20 +211,26 @@ public class ParcelaGUI extends javax.swing.JFrame {
             }
         });
     }
-    
+
     public JLabel getPrecio() {
         return precio;
     }
 
+    public JComboBox<String> getAlimentosDisponibles() {
+        return alimentosDisponibles;
+    }
+    
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton agregarAnimal;
+    private javax.swing.JButton alimentar;
+    private javax.swing.JComboBox<String> alimentosDisponibles;
+    private javax.swing.JTextField cAlimento;
     private javax.swing.JTextField cAnimales;
     private javax.swing.JPanel contenedorAnimalesParcela;
     private javax.swing.JToggleButton destasar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel existencias;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel3;

@@ -25,11 +25,11 @@ public class Mercado {
         this.bodega = bodega;
         this.figuraMercado = new MercadoGUI(this);
         llenarListas();
-        dineroJugador();
     }
-    
-    public void iniciar(){
+
+    public void iniciar() {
         figuraMercado.setVisible(true);
+        dineroJugador();
     }
 
     private void llenarListas() {
@@ -48,7 +48,7 @@ public class Mercado {
                 figuraMercado.getListaProductosCompra().addItem(bodega.getContenedor().get(i).getProducto().getNombre());
             }
         }
-        
+
     }
 
     public int buscarIndice(String objetoSeleccionado) {
@@ -65,23 +65,23 @@ public class Mercado {
             JOptionPane.showMessageDialog(null, "Cantidad invalida");
         } else {
             bodega.getContenedor().get(indiceProducto).restarExistencia(cantidad);
-            jug.agregarOro(bodega.getContenedor().get(indiceProducto).getProducto().getPrecio());
+            jug.agregarOro(bodega.getContenedor().get(cantidad*indiceProducto).getProducto().getPrecio());
         }
         dineroJugador();
     }
 
     public void realizarCompra(int indiceProducto, int cantidad) {
-        if (cantidad < 0) {
+        if (cantidad < 0 || cantidad * bodega.getContenedor().get(indiceProducto).getProducto().getPrecio() > jug.getOro()) {
             JOptionPane.showMessageDialog(null, "Cantidad invalida");
         } else {
             bodega.getContenedor().get(indiceProducto).agregartExistencia(cantidad);
-            jug.restarOro(bodega.getContenedor().get(indiceProducto).getProducto().getPrecio());
+            jug.restarOro(bodega.getContenedor().get(indiceProducto).getProducto().getPrecio()*cantidad);
         }
         dineroJugador();
     }
 
     private void dineroJugador() {
-       figuraMercado.getDineroJugador().setText("Oro disponible: "+jug.getOro());
+        figuraMercado.getDineroJugador().setText("Oro disponible: " + jug.getOro());
     }
 
     public Bodega getBodega() {

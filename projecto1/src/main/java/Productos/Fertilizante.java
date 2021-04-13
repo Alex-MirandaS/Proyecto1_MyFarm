@@ -9,12 +9,17 @@ package Productos;
  *
  * @author alex
  */
-public class Fertilizante extends Producto{
+public class Fertilizante extends Producto {
+
+    private int cantidad;
 
     public Fertilizante(String nombre, int precio, int cantidad) {
         super(nombre, precio);
+        this.cantidad = cantidad;
     }
 
-
+    public int getCantidad() {
+        return cantidad;
+    }
 
 }

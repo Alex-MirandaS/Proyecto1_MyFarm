@@ -5,10 +5,8 @@
  */
 package Animales;
 
-import JuegoGUI.AnimalGUI;
 import Listas.Lista;
 import Productos.Producto;
-import java.awt.Color;
 import javax.swing.JLabel;
 
 /**
@@ -19,7 +17,7 @@ public class Animal {
 
     protected Lista<Producto> destace, sinDestace;
     protected String nombre, obtenerProducto;
-    protected int edad, alimentoConsumido, vida, precio;
+    protected int edad, alimentoConsumido, vida = 100, precio;
     protected double espacio;
     protected JLabel figuraAnimal = new JLabel();
 
@@ -60,6 +58,18 @@ public class Animal {
     public int getPrecio() {
         return precio;
     }
-   
+
+    public int getVida() {
+        return vida;
+    }
+
+    public void sumarVida(int vida) {
+        this.vida += vida;
+    }
+
+    public void restarVida(int vida) {
+        this.vida -= vida;
+    }
+
 
 }

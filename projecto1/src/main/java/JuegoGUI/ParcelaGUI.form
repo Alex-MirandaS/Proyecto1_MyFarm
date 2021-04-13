@@ -37,12 +37,12 @@
         <Property name="verticalGap" type="int" value="3"/>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="alimentar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Alimentar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alimentarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JToggleButton" name="recolectarProductos">
@@ -71,6 +71,23 @@
         </Component>
         <Component class="javax.swing.JTextField" name="cAnimales">
         </Component>
+        <Component class="javax.swing.JComboBox" name="alimentosDisponibles">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="alimentosDisponiblesItemStateChanged"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="existencias">
+        </Component>
+        <Component class="javax.swing.JTextField" name="cAlimento">
+        </Component>
         <Component class="javax.swing.JToggleButton" name="limpiar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Limpiar"/>
@@ -78,12 +95,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="limpiarActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
         </Component>
         <Component class="javax.swing.JLabel" name="precio">
         </Component>

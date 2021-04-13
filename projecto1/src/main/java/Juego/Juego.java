@@ -12,8 +12,10 @@ import Controladores.ControladorAnimales;
 import Controladores.ControladorPlantas;
 import Controladores.ControladorProductos;
 import JuegoGUI.JuegoGUI;
-import Listas.Lista;
+import MenusGUI.ComerGUI;
 import MenusGUI.DatosJugador;
+import Productos.Alimento;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,6 +33,7 @@ public class Juego {
 
     private JuegoGUI ventanaJuego;
     private DatosJugador datosJugador;
+    private ComerGUI comer;
 
     public Juego() {
         controlPlantas = new ControladorPlantas();
@@ -43,6 +46,8 @@ public class Juego {
         granja = new Granja(jug, bodega, controlPlantas, controlAnimales);
         mercado = new Mercado(jug, bodega);
         ventanaJuego = new JuegoGUI(this);
+        comer = new ComerGUI(this);
+        llenarAlimentos();
     }
 
     public void inicio() {
@@ -142,6 +147,37 @@ public class Juego {
         bodega.getFiguraBodega().getExistencias().setText("");
         bodega.llenarBodega();
         bodega.getFiguraBodega().setVisible(true);
+    }
+
+    public void mostrarComer() {
+        comer.setVisible(true);
+    }
+
+    public void comer(int indiceAlimento, int cantidad) {
+        if (cantidad < 0 || cantidad * bodega.getContenedor().get(indiceAlimento).getExistencia() > bodega.getContenedor().get(indiceAlimento).getExistencia()) {
+            JOptionPane.showMessageDialog(null, "Cantidad invalida");
+        } else {
+            bodega.getContenedor().get(indiceAlimento).restarExistencia(cantidad * bodega.getContenedor().get(indiceAlimento).getProducto().getPrecio());
+            Alimento alimento = (Alimento) bodega.getContenedor().get(indiceAlimento).getProducto();
+            jug.agregarVida(alimento.getVidaAgregada());
+        }
+    }
+
+    public int obtenerIndiceProducto(String nombreAlimento) {
+        for (int i = 0; i < bodega.getContenedor().getSize(); i++) {
+            if (nombreAlimento.equals(bodega.getContenedor().get(i).getProducto().getNombre())) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    private void llenarAlimentos() {
+        for (int i = 0; i < bodega.getContenedor().getSize(); i++) {
+            if (bodega.getContenedor().get(i).getProducto() instanceof Alimento) {
+                comer.getAlimentos().addItem(bodega.getContenedor().get(i).getProducto().getNombre());
+            }
+        }
     }
 
     public void mostrarMercado() {

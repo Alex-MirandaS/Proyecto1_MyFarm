@@ -11,8 +11,15 @@ package Productos;
  */
 public class ComidaAnimales extends Producto {
 
-    public ComidaAnimales(String nombre, int precio) {
+    protected int cantidad;
+    
+    public ComidaAnimales(String nombre, int precio, int cantidad) {
         super(nombre, precio);
+        this.cantidad = cantidad;
+    }
+
+    public int getCantidad() {
+        return cantidad;
     }
 
 }

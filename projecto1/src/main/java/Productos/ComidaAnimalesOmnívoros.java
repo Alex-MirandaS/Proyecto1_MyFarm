@@ -12,8 +12,8 @@ package Productos;
  */
 public class ComidaAnimalesOmnívoros extends ComidaAnimales{
 
-    public ComidaAnimalesOmnívoros(String nombre, int precio) {
-        super(nombre, precio);
+    public ComidaAnimalesOmnívoros(String nombre, int precio, int cantidad) {
+        super(nombre, precio, cantidad);
     }
 
 }

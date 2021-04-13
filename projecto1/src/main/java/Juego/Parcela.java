@@ -6,10 +6,14 @@
 package Juego;
 
 import Animales.Animal;
+import Animales.Herbívoro;
 import Controladores.ControladorConstantes;
 import JuegoGUI.AnimalGUI;
 import JuegoGUI.ParcelaGUI;
 import Listas.Lista;
+import Productos.ComidaAnimalesHerbívoros;
+import Productos.ComidaAnimalesOmnívoros;
+import Productos.Producto;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -29,6 +33,9 @@ public class Parcela {
     private Bodega bodega;
     private Jugador Jug;
 
+    private String productoTemp;
+    private int cantidadTemp;
+
 //GUI
     public Parcela(Animal tipo, Bodega bodega, Jugador jug) {
         this.figuraParcelaCasilla.setText("Parcela de " + tipo.getNombre() + "s");
@@ -42,6 +49,7 @@ public class Parcela {
         figuraParcela = new ParcelaGUI(this);
         figuraParcela.getPrecio().setText("Precio: ");
         verificarFiguraParcela();
+        llenarListaAlimentos();
     }
 
     public void llenarParcela(int cAnimales) {
@@ -81,7 +89,7 @@ public class Parcela {
         }
     }
 
-    public void agregarProductosSinDestace() {
+    public void agregarProductosSinDestace(AnimalGUI figuraAnimal) {
         String nombreProducto;
         for (int i = 0; i < tipo.getSinDestace().getSize(); i++) {
             nombreProducto = tipo.getSinDestace().get(i).getNombre();
@@ -126,14 +134,47 @@ public class Parcela {
         return 0;
     }
 
-    public void preparararAlimentar() {
+    public void preparararAlimentar(String producto, int cantidad) {
+        this.productoTemp = producto;
+        this.cantidadTemp = cantidad;
         for (int i = 0; i < animalesGUI.getSize(); i++) {
             boolean temp = animalesGUI.get(i).isPrepararAlimentar();
             animalesGUI.get(i).setPrepararAlimentar(!temp);
         }
     }
 
-    public void verificarFiguraParcela() {
+    public void alimentar(AnimalGUI figuraAnimal) {
+        if (bodega.getContenedor().get(buscarProducto(productoTemp)).getExistencia() >= cantidadTemp) {
+            bodega.getContenedor().get(buscarProducto(productoTemp)).restarExistencia(cantidadTemp);
+            animales.get(buscarAnimalGUI(figuraAnimal)).sumarVida(alto);
+            figuraParcela.getContenedorAnimalesParcela().removeAll();
+            mostrarAnimales();
+        }else{
+                  JOptionPane.showMessageDialog(null, "No posee esta cantidad dentro de su Bodega");
+        }
+    }
+
+    private void llenarListaAlimentos() {
+        if (tipo instanceof Herbívoro) {
+            for (int i = 0; i < bodega.getContenedor().getSize(); i++) {
+                if (bodega.getContenedor().get(i).getProducto() instanceof ComidaAnimalesHerbívoros) {
+                    figuraParcela.getAlimentosDisponibles().addItem(bodega.getContenedor().get(i).getProducto().getNombre());
+                }
+            }
+        } else {
+            for (int i = 0; i < bodega.getContenedor().getSize(); i++) {
+                if (bodega.getContenedor().get(i).getProducto() instanceof ComidaAnimalesOmnívoros) {
+                    figuraParcela.getAlimentosDisponibles().addItem(bodega.getContenedor().get(i).getProducto().getNombre());
+                }
+            }
+        }
+    }
+
+    public String obtenerExistenciasAlimento(String nombre) {
+        return "" + bodega.getContenedor().get(buscarProducto(nombre)).getExistencia();
+    }
+
+    private void verificarFiguraParcela() {
         if (tipo.getDestace().esVacia()) {
             figuraParcela.getDestasar().setVisible(false);
         } else if (tipo.getSinDestace().esVacia()) {

@@ -11,9 +11,16 @@ package Productos;
  * @author alex
  */
 public class Alimento extends Producto{
+    
+    private int vidaAgregada;
 
-    public Alimento(String nombre, int precio) {
+    public Alimento(String nombre, int precio, int vidaAgregada) {
         super(nombre, precio);
+        this.vidaAgregada = vidaAgregada;
+    }
+
+    public int getVidaAgregada() {
+        return vidaAgregada;
     }
 
 

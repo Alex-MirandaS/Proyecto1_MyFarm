@@ -83,7 +83,9 @@ public class JuegoGUI extends javax.swing.JFrame {
         añadirParcela = new javax.swing.JToggleButton();
         jPanel16 = new javax.swing.JPanel();
         añadirPlanta = new javax.swing.JToggleButton();
-        opciones = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         PanelCentral = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -237,8 +239,20 @@ public class JuegoGUI extends javax.swing.JFrame {
 
         jPanel5.add(jPanel16);
 
-        opciones.setText("Opciones");
-        jPanel5.add(opciones);
+        jPanel3.setLayout(new java.awt.GridLayout(1, 2));
+
+        jButton1.setText("COMER");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton1);
+
+        jButton2.setText("Opciones");
+        jPanel3.add(jButton2);
+
+        jPanel5.add(jPanel3);
 
         jPanel2.add(jPanel5);
 
@@ -317,6 +331,10 @@ public class JuegoGUI extends javax.swing.JFrame {
         juego.mostrarMercado();
     }//GEN-LAST:event_accederMercadoActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        juego.mostrarComer();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -371,6 +389,8 @@ public class JuegoGUI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel cSemillas;
     private javax.swing.JLabel figuritaPersonaje;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -391,6 +411,7 @@ public class JuegoGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -399,7 +420,6 @@ public class JuegoGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel nick;
     private javax.swing.JLabel nombre;
-    private javax.swing.JButton opciones;
     private javax.swing.JLabel oro;
     private javax.swing.JLabel precioAgregarBarco;
     private javax.swing.JLabel precioAgregarCasillas;

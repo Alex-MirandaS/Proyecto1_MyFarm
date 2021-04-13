@@ -64,10 +64,13 @@ public class AnimalGUI extends javax.swing.JPanel {
 
         }
         if (prepararProductosSinDestace) {
-            parcela.agregarProductosSinDestace();
+            parcela.agregarProductosSinDestace(this);
         }
         if (prepararProductosConDestace) {
          parcela.agregarProductosConDestace(this);
+        }
+        if (prepararAlimentar) {
+            parcela.alimentar(this);
         }
     }//GEN-LAST:event_formMouseClicked
 

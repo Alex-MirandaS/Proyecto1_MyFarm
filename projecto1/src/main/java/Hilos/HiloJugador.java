@@ -4,16 +4,12 @@
  * and open the template in the editor.
  */
 
-package Productos;
+package Hilos;
 
 /**
  * 
  * @author alex
  */
-public class ComidaAnimalesHerbívoros extends ComidaAnimales{
-
-    public ComidaAnimalesHerbívoros(String nombre, int precio, int cantidad) {
-        super(nombre, precio, cantidad);
-    }
+public class HiloJugador {
 
 }
