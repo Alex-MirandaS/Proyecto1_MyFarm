@@ -6,6 +6,7 @@
 package JuegoGUI;
 
 import Casillas.Agua;
+import javax.swing.JLabel;
 
 /**
  *
@@ -34,7 +35,7 @@ public class BarcoGUI extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         recolectarPeces = new javax.swing.JToggleButton();
         limpiar = new javax.swing.JToggleButton();
-        jLabel1 = new javax.swing.JLabel();
+        pecesRecolectados = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -59,7 +60,7 @@ public class BarcoGUI extends javax.swing.JFrame {
             }
         });
         jPanel3.add(limpiar);
-        jPanel3.add(jLabel1);
+        jPanel3.add(pecesRecolectados);
 
         jButton2.setText("Salir");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -82,16 +83,24 @@ public class BarcoGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
-      //parcela.limpiar();
+        agua.limpiar();
     }//GEN-LAST:event_limpiarActionPerformed
 
     private void recolectarPecesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recolectarPecesActionPerformed
-     agua.recolectarPeces();
+        agua.recolectarPeces();
     }//GEN-LAST:event_recolectarPecesActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    public JLabel getFiguraBarco() {
+        return figuraBarco;
+    }
+
+    public JLabel getPecesRecolectados() {
+        return pecesRecolectados;
+    }
 
     /**
      * @param args the command line arguments
@@ -162,11 +171,11 @@ public class BarcoGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel figuraBarco;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JToggleButton limpiar;
+    private javax.swing.JLabel pecesRecolectados;
     private javax.swing.JToggleButton recolectarPeces;
     // End of variables declaration//GEN-END:variables
 }

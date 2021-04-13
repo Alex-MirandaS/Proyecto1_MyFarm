@@ -7,6 +7,8 @@ package Casillas;
 
 import CasillasGUI.AguaGUI;
 import Controladores.ControladorAgua;
+import Controladores.ControladorConstantes;
+import Hilos.HiloBarco;
 import Juego.Barco;
 import Juego.Bodega;
 import Juego.Jugador;
@@ -23,7 +25,6 @@ public class Agua extends Casilla {
     private Bodega bodega;
     private ControladorAgua controlador;
     private Barco barco;
-    private BarcoGUI figuraBarco;
 
     public Agua(Jugador jug, Bodega bodega) {
         super(jug);
@@ -35,11 +36,12 @@ public class Agua extends Casilla {
 
     public void ponerBarco(JLabel img) {
 
-        Barco barcoTemp = new Barco(this);
-        if (jug.getOro() >= barcoTemp.getPrecio()) {
-            barco = barcoTemp;
+        if (jug.getOro() >= ControladorConstantes.PRECIO_BARCO) {
+            barco = new Barco(this);
             jug.restarOro(barco.getPrecio());
             controlador.añadirBarco(img, barco.getNombre());
+            HiloBarco hiloBarco = new HiloBarco(barco, barco.getFiguraBarco());
+            hiloBarco.start();
         } else {
             JOptionPane.showMessageDialog(null, "No tiene el oro suficiente");
         }
@@ -47,6 +49,17 @@ public class Agua extends Casilla {
 
     public void desplegarBarco(JLabel barco) {
         this.barco.mostrarBarco();
+    }
+
+    public void limpiar() {
+        if (barco.isLleno()) {
+            barco.getFiguraBarco().getFiguraBarco().setText("");
+            AguaGUI figuraGUI = (AguaGUI) figura;
+            figuraGUI.getBarco().setText("");
+            barco = null;
+        } else {
+            JOptionPane.showMessageDialog(null, "Este barco aun esta pescando");
+        }
     }
 
     public boolean barcoExiste() {
@@ -58,7 +71,7 @@ public class Agua extends Casilla {
     }
 
     public void recolectarPeces() {
-        bodega.getContenedor().get(7).agregartExistencia(barco.getPeces());
+        bodega.getContenedor().get(7).agregartExistencia(barco.getPecesRecolectados());
     }
 
     @Override

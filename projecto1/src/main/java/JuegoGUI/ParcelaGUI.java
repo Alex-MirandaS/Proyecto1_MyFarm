@@ -145,7 +145,7 @@ public class ParcelaGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
-
+        parcela.prepararLimpiar();
     }//GEN-LAST:event_limpiarActionPerformed
 
     private void agregarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarAnimalActionPerformed

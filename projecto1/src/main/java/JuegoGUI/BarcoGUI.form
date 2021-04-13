@@ -53,7 +53,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="limpiarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="pecesRecolectados">
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
