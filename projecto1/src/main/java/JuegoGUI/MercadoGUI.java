@@ -19,6 +19,7 @@ public class MercadoGUI extends javax.swing.JFrame {
 
     public MercadoGUI(Mercado mercado) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.mercado = mercado;
     }

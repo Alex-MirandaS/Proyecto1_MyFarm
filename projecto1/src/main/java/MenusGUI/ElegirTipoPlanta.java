@@ -20,6 +20,7 @@ public class ElegirTipoPlanta extends javax.swing.JFrame {
 
     public ElegirTipoPlanta(JLabel img, Pasto pasto) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.pasto = pasto;
         this.img = img;

@@ -15,7 +15,7 @@ import javax.swing.JLabel;
  */
 public class ControladorAgua {
 
-    
+    //añade un barco a la interfaz grafica
         public void añadirBarco(JLabel component, String text) {
         if (component.getText().equals("")) {
             Component[] components = component.getComponents();

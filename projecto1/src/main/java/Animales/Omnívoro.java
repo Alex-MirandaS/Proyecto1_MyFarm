@@ -5,8 +5,6 @@
  */
 package Animales;
 
-import Plantas.Planta;
-
 /**
  *
  * @author alex

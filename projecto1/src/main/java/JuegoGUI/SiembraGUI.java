@@ -7,7 +7,6 @@ package JuegoGUI;
 
 import Casillas.Pasto;
 
-
 /**
  *
  * @author alex
@@ -18,6 +17,7 @@ public class SiembraGUI extends javax.swing.JFrame {
 
     public SiembraGUI(Pasto pasto) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.figuraCultivo.setText(pasto.getPlanta().getNombre());
         this.pasto = pasto;
@@ -85,11 +85,11 @@ public class SiembraGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
-      //parcela.limpiar();
+        //parcela.limpiar();
     }//GEN-LAST:event_limpiarActionPerformed
 
     private void cosecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cosecharActionPerformed
-     pasto.cosecha(figuraCultivo);
+        pasto.cosecha(figuraCultivo);
     }//GEN-LAST:event_cosecharActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

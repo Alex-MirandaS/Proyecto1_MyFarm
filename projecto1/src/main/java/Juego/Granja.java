@@ -23,7 +23,7 @@ import javax.swing.JPanel;
  * @author alex/
  */
 public class Granja {
-
+//atributos
     private Lista<Casilla> casillas = new Lista<>();
     private int PRIMERA_CASILLA_POS = 36;
     private int contPasto = 1, contAgua = 1, contDesierto = 1;
@@ -31,7 +31,7 @@ public class Granja {
     private Bodega bodega;
     private ControladorPlantas plantas;
     private ControladorAnimales animales;
-
+//constructos
     public Granja(Jugador jug, Bodega bodega, ControladorPlantas plantas, ControladorAnimales animales) {
         this.jug = jug;
         this.bodega = bodega;
@@ -39,7 +39,8 @@ public class Granja {
         this.animales = animales;
         LlenarCasillasAleatorias();
     }
-
+//es el metodo encargado de llenar una lista de casillas, de manera aleatoria y siguiendo la distribución de todas las casillas creadas
+    //en el tablero
     private void LlenarCasillasAleatorias() {
         int numAleatorio;
         for (int i = 0; i < (ControladorConstantes.X * ControladorConstantes.Y); i++) {
@@ -62,7 +63,7 @@ public class Granja {
             }
         }
     }
-
+//se encarga de llenar el tablero, dejando a la vista un pequeño terreno inicial
     public void LlenarTablero(JPanel panel) {
         panel.setLayout(new GridLayout(ControladorConstantes.Y, ControladorConstantes.X));
         ControladorCasillas controlador = new ControladorCasillas();

@@ -17,6 +17,7 @@ public class AgregarAnimalesGUI extends javax.swing.JFrame {
 
     public AgregarAnimalesGUI(ControladorAnimales controlador) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.controlador = controlador;
         controlador.mostrarListaAnimales(jTextArea1);
     }

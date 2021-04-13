@@ -13,11 +13,11 @@ import javax.swing.JPanel;
  * @author alex
  */
 public class Casilla {
-
+//atributos
     protected JPanel figura;
     protected boolean prepararDesbloqueo;
     protected Jugador jug;
-
+//constructor
     public Casilla(Jugador jug) {
         this.jug = jug;
     }

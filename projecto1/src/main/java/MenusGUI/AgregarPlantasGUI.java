@@ -17,6 +17,7 @@ public class AgregarPlantasGUI extends javax.swing.JFrame {
 
     public AgregarPlantasGUI(ControladorPlantas controlador) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.controlador = controlador;
         controlador.mostrarListaPlantas(jTextArea1);
     }
@@ -188,7 +189,7 @@ public class AgregarPlantasGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_agregarAnimalActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       this.setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -222,7 +223,7 @@ public class AgregarPlantasGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
- //               new AgregarAnimalesGUI().setVisible(true);
+                //               new AgregarAnimalesGUI().setVisible(true);
             }
         });
     }

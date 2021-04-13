@@ -18,6 +18,7 @@ public class ComerGUI extends javax.swing.JFrame {
 
     public ComerGUI(Juego juego) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.juego = juego;
     }
@@ -83,7 +84,7 @@ public class ComerGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void alimentosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_alimentosItemStateChanged
-        existencias.setText("Existencias: "+juego.getBodega().getContenedor().get(juego.obtenerIndiceProducto((String) alimentos.getSelectedItem())).getExistencia());
+        existencias.setText("Existencias: " + juego.getBodega().getContenedor().get(juego.obtenerIndiceProducto((String) alimentos.getSelectedItem())).getExistencia());
     }//GEN-LAST:event_alimentosItemStateChanged
 
     private void comerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comerActionPerformed

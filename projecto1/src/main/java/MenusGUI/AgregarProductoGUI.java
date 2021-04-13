@@ -17,6 +17,7 @@ public class AgregarProductoGUI extends javax.swing.JFrame {
 
     public AgregarProductoGUI(ControladorProductos controlador) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.controlador = controlador;
         controlador.mostrarListaProductosAnimales(areaTextoProductos);
@@ -181,8 +182,6 @@ public class AgregarProductoGUI extends javax.swing.JFrame {
             }
         });
     }
-
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

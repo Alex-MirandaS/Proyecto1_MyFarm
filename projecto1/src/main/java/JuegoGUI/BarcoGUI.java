@@ -18,6 +18,7 @@ public class BarcoGUI extends javax.swing.JFrame {
 
     public BarcoGUI(Agua agua) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.figuraBarco.setText("Barco");
         this.agua = agua;

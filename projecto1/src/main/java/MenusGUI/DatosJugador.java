@@ -17,6 +17,7 @@ public class DatosJugador extends javax.swing.JFrame {
 
     public DatosJugador(Juego juego) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.juego = juego;
     }
 

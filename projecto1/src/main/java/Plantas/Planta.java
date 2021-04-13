@@ -6,7 +6,6 @@
 
 package Plantas;
 
-import JuegoGUI.SiembraGUI;
 import javax.swing.JLabel;
 
 
@@ -16,19 +15,20 @@ import javax.swing.JLabel;
  * @author alex
  */
 public abstract class Planta {
-
+//atributos
     protected int semillas, vida;
     protected String nombre;
     protected boolean plantaLista = false;
     protected JLabel figuraPlanta = new JLabel();
     protected Planta plantaCosechada;
-
+    
+//constructor
     public Planta(int semillas, String nombre) {
         this.semillas = semillas;
         this.nombre = nombre;
         this.figuraPlanta.setText(nombre);
     }
-    
+    //metodos abstractos
     public abstract void marchitar();
     
     public abstract void cosechar(JLabel img, JLabel imgCasilla);

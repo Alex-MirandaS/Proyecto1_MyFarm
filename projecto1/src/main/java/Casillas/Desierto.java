@@ -13,7 +13,7 @@ import Juego.Jugador;
  * @author alex
  */
 public class Desierto extends Casilla {
-
+//constructor
     public Desierto(Jugador jug) {
         super(jug);
         figura = new DesiertoGUI(this);

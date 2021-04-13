@@ -10,9 +10,9 @@ package Productos;
  * @author alex
  */
 public class Fertilizante extends Producto {
-
+//atributo
     private int cantidad;
-
+//constructor
     public Fertilizante(String nombre, int precio, int cantidad) {
         super(nombre, precio);
         this.cantidad = cantidad;

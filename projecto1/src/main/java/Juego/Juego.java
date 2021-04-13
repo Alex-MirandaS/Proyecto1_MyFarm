@@ -23,6 +23,7 @@ import javax.swing.JOptionPane;
  * @author alex
  */
 public class Juego {
+//atributos
 
     private Jugador jug;
     private Granja granja;
@@ -31,12 +32,12 @@ public class Juego {
     private ControladorProductos controlProductos;
     private Bodega bodega;
     private Mercado mercado;
-
+    private Reporte reporte;
+//atributosGUI
     private JuegoGUI ventanaJuego;
     private DatosJugador datosJugador;
     private ComerGUI comer;
-    
-    private HiloJugador hiloJugador;
+//constructor
 
     public Juego() {
         controlPlantas = new ControladorPlantas();
@@ -44,28 +45,26 @@ public class Juego {
         controlAnimales = new ControladorAnimales(controlProductos);
         bodega = new Bodega(controlProductos);
         datosJugador = new DatosJugador(this);
-        //por mientras
-        jug = new Jugador("Pepe", "fsddfs");
-        granja = new Granja(jug, bodega, controlPlantas, controlAnimales);
-        mercado = new Mercado(jug, bodega);
-        ventanaJuego = new JuegoGUI(this);
-        hiloJugador = new HiloJugador(jug,ventanaJuego);
-        hiloJugador.start();
         comer = new ComerGUI(this);
-        llenarAlimentos();
     }
+//es el encargado del inicio de la partida
 
     public void inicio() {
-        //datosJugador.setVisible(true);
-        //mientras
-        ventanaJuego.setVisible(true);
+        datosJugador.setVisible(true);
     }
+//es el encargado del inicio del juego
 
     public void iniciarJuego() {
         granja = new Granja(jug, bodega, controlPlantas, controlAnimales);
+        mercado = new Mercado(jug, bodega);
+        reporte = new Reporte(jug, bodega, controlAnimales.getAnimalesJuego());
+        llenarAlimentos();
         ventanaJuego = new JuegoGUI(this);
         ventanaJuego.setVisible(true);
+        Thread hiloJugador = new Thread(new HiloJugador(jug, ventanaJuego));
+        hiloJugador.start();
     }
+//es el metodo encargado de crear a jugador
 
     public void crearJugador(String nombre, String nick) {
         if (nombre == "") {
@@ -76,10 +75,12 @@ public class Juego {
             jug = new Jugador(nombre, nick);
         }
     }
+//obteiene la granja
 
     public Granja getGranja() {
         return granja;
     }
+//manda un boolean a todas las casillas dentro de la granja para estar preparadas para un posible desbloque de casilla
 
     public void prepararDesbloqueo() {
         for (int i = 0; i < granja.getCasillas().getSize(); i++) {
@@ -101,6 +102,7 @@ public class Juego {
             }
         }
     }
+//manda un boolean a todas las casillas dentro de la granja para estar preparadas para una posible añadidura de parcela
 
     public void prepararAñadirParcela() {
         for (int i = 0; i < granja.getCasillas().getSize(); i++) {
@@ -112,6 +114,7 @@ public class Juego {
             }
         }
     }
+//manda un boolean a todas las casillas dentro de la granja para estar preparadas para una posible añadidura de cultivo
 
     public void prepararAñadirCultivo() {
 
@@ -124,6 +127,7 @@ public class Juego {
             }
         }
     }
+//manda un boolean a todas las casillas dentro de la granja para estar preparadas para una posible añadidura de barco en el agua
 
     public void prepararAñadirBarco() {
         for (int i = 0; i < granja.getCasillas().getSize(); i++) {
@@ -135,6 +139,7 @@ public class Juego {
             }
         }
     }
+//se encarga de cosechar la siembra cuando ya este lista
 
     public void prepararCosechar() {
         for (int i = 0; i < granja.getCasillas().getSize(); i++) {
@@ -147,16 +152,19 @@ public class Juego {
             }
         }
     }
+//se encarga de mostrar la ventana de la bodega
 
     public void mostrarBodega() {
         bodega.getFiguraBodega().getExistencias().setText("");
         bodega.llenarBodega();
         bodega.getFiguraBodega().setVisible(true);
     }
+//se encarga de mostrar el menu para ingerir alimentos y regenerar la vida del jugador
 
     public void mostrarComer() {
         comer.setVisible(true);
     }
+//consume un alimento y la cantidad del mismo para añadirla a su vida, y asi durar mas tiempo dentro del juego
 
     public void comer(int indiceAlimento, int cantidad) {
         if (cantidad < 0 || cantidad * bodega.getContenedor().get(indiceAlimento).getExistencia() > bodega.getContenedor().get(indiceAlimento).getExistencia()) {
@@ -167,6 +175,7 @@ public class Juego {
             jug.agregarVida(alimento.getVidaAgregada());
         }
     }
+//obtiene el indice de un producto, por medio del nombre del mismo
 
     public int obtenerIndiceProducto(String nombreAlimento) {
         for (int i = 0; i < bodega.getContenedor().getSize(); i++) {
@@ -176,6 +185,7 @@ public class Juego {
         }
         return 0;
     }
+//se encarga de obtener los nombres existentes de los alimentos dentro de los productos
 
     private void llenarAlimentos() {
         for (int i = 0; i < bodega.getContenedor().getSize(); i++) {
@@ -184,9 +194,14 @@ public class Juego {
             }
         }
     }
+//se encarga de mostrar la ventana del mercado
 
     public void mostrarMercado() {
         mercado.iniciar();
+    }
+
+    public void accederReportes() {
+        reporte.iniciar();
     }
 
     public ControladorAnimales getControlAnimales() {

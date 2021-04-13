@@ -12,7 +12,7 @@ import javax.swing.JLabel;
  * @author alex
  */
 public class Fruta extends Planta {
-
+//constructor
     public Fruta(int semillas, String nombre) {
         super(semillas, nombre);
     }

@@ -20,6 +20,7 @@ public class ElegirTipoAnimal extends javax.swing.JFrame {
 
     public ElegirTipoAnimal(JLabel img, Pasto pasto) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.pasto = pasto;
         this.img = img;
@@ -85,7 +86,7 @@ public class ElegirTipoAnimal extends javax.swing.JFrame {
     }//GEN-LAST:event_aceptarActionPerformed
 
     private void tipoAnimalesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_tipoAnimalesItemStateChanged
-   
+
     }//GEN-LAST:event_tipoAnimalesItemStateChanged
 
     /**

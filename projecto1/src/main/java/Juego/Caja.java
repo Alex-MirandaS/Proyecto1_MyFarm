@@ -5,6 +5,7 @@
  */
 package Juego;
 
+import Productos.Alimento;
 import Productos.Producto;
 
 /**
@@ -12,10 +13,11 @@ import Productos.Producto;
  * @author alex
  */
 public class Caja {
-
+//atributos
     private Producto producto;
-    private int existencia;
-
+    private int existencia, alimentoGenerado=0;
+//constructor
+    //es la encargada de almacenar un solo tipo de producto, y añadirle sus existencias correspondientes
     public Caja(Producto producto) {
         this.producto = producto;
     }
@@ -27,9 +29,16 @@ public class Caja {
     public void setExistencia(int existencia) {
         this.existencia = existencia;
     }
-
+//agrega y resta las existencias del producto en especifico
     public void agregartExistencia(int existencia) {
+        if (producto instanceof Alimento) {
+            alimentoGenerado+=existencia;
+        }
         this.existencia += existencia;
+    }
+
+    public int getAlimentoGenerado() {
+        return alimentoGenerado;
     }
 
     public void restarExistencia(int existencia) {

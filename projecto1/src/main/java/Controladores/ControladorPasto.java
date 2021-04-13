@@ -13,7 +13,7 @@ import javax.swing.JLabel;
  * @author alex
  */
 public class ControladorPasto {
-
+//es el encargado de añadir un cultivo o parcela a la interfaz grafica
     public void añadirParcelaCultivo(JLabel component) {
 
         Component[] components = component.getComponents();

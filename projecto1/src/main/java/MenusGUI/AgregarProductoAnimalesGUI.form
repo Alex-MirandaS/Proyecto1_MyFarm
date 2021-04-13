@@ -309,7 +309,7 @@
                         </Component>
                         <Component class="javax.swing.JToggleButton" name="jToggleButton3">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Aceptar"/>
+                            <Property name="text" type="java.lang.String" value="OK"/>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -366,6 +366,9 @@
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Salir"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton4ActionPerformed"/>
+                              </Events>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                                   <BorderConstraints direction="First"/>

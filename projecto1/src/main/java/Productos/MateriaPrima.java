@@ -10,7 +10,7 @@ package Productos;
  * @author alex
  */
 public class MateriaPrima extends Producto {
-
+//constructor
     public MateriaPrima(String nombre, int precio) {
         super(nombre, precio);
     }

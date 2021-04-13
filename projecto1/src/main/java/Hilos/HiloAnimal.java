@@ -7,6 +7,7 @@ package Hilos;
 
 import Animales.Animal;
 import JuegoGUI.AnimalGUI;
+import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,19 +15,20 @@ import java.util.logging.Logger;
  *
  * @author alex
  */
-public class HiloAnimal extends Thread {
-
+public class HiloAnimal implements Runnable{
+//atributos
     private Animal animal;
     private AnimalGUI animalGUI;
-    private int segundos = 3;
-    private int vidaRestadaSeg = 20;
+    private int segundos = 2;
+    private int vidaRestadaSeg = 1;
     private int contEdad = 0;
-
+//constructor
     public HiloAnimal(Animal animal, AnimalGUI animalGUI) {
         this.animal = animal;
         this.animalGUI = animalGUI;
     }
-
+//este metodo es el encargado de restar la vida de un animal, a cada cierto tiempo especifico, y al llegar su vida a 0, el animal 
+    //esta muerto, durante la disminución de vida, tambien se incrementa la edad, y con esto, se incrementa la cantidad de objetos que brinda
     private void restarVida() throws InterruptedException {
         do {
             sleep(segundos * 1000);

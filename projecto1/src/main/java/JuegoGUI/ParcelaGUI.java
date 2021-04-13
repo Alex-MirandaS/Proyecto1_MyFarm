@@ -21,6 +21,7 @@ public class ParcelaGUI extends javax.swing.JFrame {
 
     public ParcelaGUI(Parcela parcela) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.parcela = parcela;
         String precioAnimal = "Precio: " + parcela.getTipo().getPrecio();
@@ -162,12 +163,12 @@ public class ParcelaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_destasarActionPerformed
 
     private void alimentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alimentarActionPerformed
-        parcela.preparararAlimentar((String)alimentosDisponibles.getSelectedItem(), Integer.parseInt(cAlimento.getText()));
+        parcela.preparararAlimentar((String) alimentosDisponibles.getSelectedItem(), Integer.parseInt(cAlimento.getText()));
         cAlimento.setText("0");
     }//GEN-LAST:event_alimentarActionPerformed
 
     private void alimentosDisponiblesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_alimentosDisponiblesItemStateChanged
-        existencias.setText("Existencias: "+parcela.obtenerExistenciasAlimento((String)alimentosDisponibles.getSelectedItem()));
+        existencias.setText("Existencias: " + parcela.obtenerExistenciasAlimento((String) alimentosDisponibles.getSelectedItem()));
     }//GEN-LAST:event_alimentosDisponiblesItemStateChanged
 
     /**
@@ -219,8 +220,7 @@ public class ParcelaGUI extends javax.swing.JFrame {
     public JComboBox<String> getAlimentosDisponibles() {
         return alimentosDisponibles;
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton agregarAnimal;

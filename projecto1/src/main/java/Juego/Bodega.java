@@ -14,24 +14,24 @@ import Listas.Lista;
  * @author alex
  */
 public class Bodega {
-
+//atributos
     private ControladorProductos controlProductos;
     private Lista<Caja> contenedor = new Lista<>();
     private BodegaGUI figuraBodega;
-
+//cosntructor
     public Bodega(ControladorProductos controlProductos) {
         this.controlProductos = controlProductos;
         figuraBodega = new BodegaGUI();
         crearCajas();
         llenarBodega();
     }
-
+//crea las cajas en donde se almacena un tipo especifico de producto, con sus respectivas existencias
     private void crearCajas() {
         for (int i = 0; i < controlProductos.getProductosJuego().getSize(); i++) {
             contenedor.add(new Caja(controlProductos.getProductosJuego().get(i)));
         }
     }
-
+//llena la pantalla con los productos junto con sus existencias
     public void llenarBodega() {
         figuraBodega.getProductos().setText("");
         for (int i = 0; i < controlProductos.getProductosJuego().getSize(); i++) {
@@ -41,6 +41,15 @@ public class Bodega {
             figuraBodega.getExistencias().append(System.getProperty("line.separator"));
 
         }
+    }
+    
+    //obtiene todo el alimento generado durante la partida
+    public int alimentoGeneradoPartida(){
+        int alimentoGenerado = 0;
+        for (int i = 0; i < contenedor.getSize(); i++) {
+            alimentoGenerado += contenedor.get(i).getAlimentoGenerado();
+        }
+        return alimentoGenerado;
     }
 
     public Lista<Caja> getContenedor() {

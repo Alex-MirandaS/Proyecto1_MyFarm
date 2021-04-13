@@ -26,6 +26,8 @@ public class PastoGUI extends javax.swing.JPanel {
         initComponents();
         indice.setText("Pasto ");
         this.pasto = pasto;
+//        probar();
+
     }
 
     /**
@@ -65,21 +67,18 @@ public class PastoGUI extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(indice, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ParcelaCultivo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(indice, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(ParcelaCultivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(indice, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(ParcelaCultivo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addGap(18, 18, 18)
+                .addComponent(ParcelaCultivo, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -137,6 +136,14 @@ public class PastoGUI extends javax.swing.JPanel {
     public JLabel getParcelaCultivo() {
         return ParcelaCultivo;
     }
+
+//    public void probar() {
+//        ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("grama.jpeg")); // load the image to a imageIcon
+//        Image image = imageIcon.getImage();
+//        Image newimg = image.getScaledInstance(50,50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+//        imageIcon = new ImageIcon(newimg);
+//        this.ParcelaCultivo.setIcon(imageIcon);
+//    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

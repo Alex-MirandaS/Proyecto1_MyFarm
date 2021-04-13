@@ -21,6 +21,7 @@ public class AgregarProductoAnimalesGUI extends javax.swing.JFrame {
 
     public AgregarProductoAnimalesGUI(ControladorAnimales controlador) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.controlador = controlador;
     }
@@ -196,7 +197,7 @@ public class AgregarProductoAnimalesGUI extends javax.swing.JFrame {
         jLabel36.setText("  ");
         jPanel7.add(jLabel36, java.awt.BorderLayout.PAGE_END);
 
-        jToggleButton3.setText("Aceptar");
+        jToggleButton3.setText("OK");
         jPanel7.add(jToggleButton3, java.awt.BorderLayout.PAGE_START);
 
         jPanel6.add(jPanel7);
@@ -207,6 +208,11 @@ public class AgregarProductoAnimalesGUI extends javax.swing.JFrame {
         jPanel9.add(jLabel37, java.awt.BorderLayout.PAGE_END);
 
         jToggleButton4.setText("Salir");
+        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton4ActionPerformed(evt);
+            }
+        });
         jPanel9.add(jToggleButton4, java.awt.BorderLayout.PAGE_START);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -285,6 +291,10 @@ public class AgregarProductoAnimalesGUI extends javax.swing.JFrame {
     private void agregarProductosSinDestaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarProductosSinDestaceActionPerformed
         controlador.agregarProductos(areaTextoPsinDestace);
     }//GEN-LAST:event_agregarProductosSinDestaceActionPerformed
+
+    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jToggleButton4ActionPerformed
 
     /**
      * @param args the command line arguments

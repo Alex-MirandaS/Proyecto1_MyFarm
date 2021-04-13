@@ -10,9 +10,9 @@ package Productos;
  * @author alex
  */
 public class ComidaAnimales extends Producto {
-
+//atributo
     protected int cantidad;
-    
+    //constructor
     public ComidaAnimales(String nombre, int precio, int cantidad) {
         super(nombre, precio);
         this.cantidad = cantidad;

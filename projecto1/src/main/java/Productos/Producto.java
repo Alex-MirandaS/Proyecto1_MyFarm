@@ -10,10 +10,10 @@ package Productos;
  * @author alex
  */
 public class Producto {
-
+//atributos
     protected String nombre;
     protected int precio;
-
+//constructor
     public Producto(String nombre, int precio) {
         this.nombre = nombre;
         this.precio = precio;

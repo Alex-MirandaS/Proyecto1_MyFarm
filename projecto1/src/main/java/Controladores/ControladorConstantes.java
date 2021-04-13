@@ -35,20 +35,20 @@ public class ControladorConstantes {
     public static int C_SEMILLAS_G1 = 20;
 
     //ANIMALES PREDETERMINADAS
-    //MANZANO
+    //HERBÍVOROS
     public static String HERBÍVORO1 = "Vaca";
     public static double ESPACIO_HERBÍVORO1 = 5;
     public static int PRECIO_HERBÍVORO1 = 10;
-    //MAIZ
+    //OMNÍVOROS
     public static String OMNÍVORO1 = "Gallina";
     public static double ESPACIO_OMNÍVORO1 = 0.5;
     public static int PRECIO_OMNÍVORO1 = 2;
-
+//MANERAS DE OBTENER PRODUCTO
     public static String DESTACE = "Destace";
     public static String SIN_DESTACE = "Sin Destace";
     public static String AMBAS = "Ambas";
 
-    //Barco
+    //BARCO
     public static int PRECIO_BARCO = 20;
     //SIMBOLO DINERO
     public static String SIMBOLO_ORO = "©";

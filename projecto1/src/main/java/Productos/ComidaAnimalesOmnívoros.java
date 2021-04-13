@@ -11,7 +11,7 @@ package Productos;
  * @author alex
  */
 public class ComidaAnimalesOmnívoros extends ComidaAnimales{
-
+//constructor
     public ComidaAnimalesOmnívoros(String nombre, int precio, int cantidad) {
         super(nombre, precio, cantidad);
     }

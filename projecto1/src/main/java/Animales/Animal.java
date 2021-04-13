@@ -14,14 +14,15 @@ import javax.swing.JLabel;
  * @author alex
  */
 public class Animal {
-
+//atributos
     protected Lista<Producto> destace, sinDestace;
     protected String nombre, obtenerProducto;
     protected int edad = 1, alimentoConsumido, vida = 100, precio;
     protected double espacio;
     protected boolean muerto;
     protected JLabel figuraAnimal = new JLabel();
-
+    protected int criasCompradas=0, animalesDestazados=0;
+//constructor Animal
     public Animal(String nombre, double espacio, String obtenerProducto, int precio) {
         destace = new Lista<>();
         sinDestace = new Lista<>();
@@ -63,7 +64,7 @@ public class Animal {
     public int getVida() {
         return vida;
     }
-
+//Le agrega y resta vida
     public void sumarVida(int vida) {
         this.vida += vida;
     }
@@ -87,5 +88,23 @@ public class Animal {
     public void setMuerto(boolean muerto) {
         this.muerto = muerto;
     }
+
+    public int getCriasCompradas() {
+        return criasCompradas;
+    }
+
+    public void agregarCriasCompradas(int criasCompradas) {
+        this.criasCompradas += criasCompradas;
+    }
+
+    public int getAnimalesDestazados() {
+        return animalesDestazados;
+    }
+
+    public void agregarAnimalesDestazados(int animalesDestazados) {
+        this.animalesDestazados += animalesDestazados;
+    }
+    
+    
 
 }

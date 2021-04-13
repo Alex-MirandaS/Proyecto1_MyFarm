@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
  * @author alex
  */
 public class Parcela {
-
+//atributos
     private Lista<Animal> animales;
     private Lista<AnimalGUI> animalesGUI;
     private Animal tipo;
@@ -33,11 +33,10 @@ public class Parcela {
     private JLabel figuraParcelaCasilla = new JLabel();
     private Bodega bodega;
     private Jugador Jug;
-
     private String productoTemp;
     private int cantidadTemp;
 
-//GUI
+//constructor
     public Parcela(Animal tipo, Bodega bodega, Jugador jug) {
         this.figuraParcelaCasilla.setText("Parcela de " + tipo.getNombre() + "s");
         animales = new Lista<>();
@@ -52,19 +51,22 @@ public class Parcela {
         verificarFiguraParcela();
         llenarListaAlimentos();
     }
-
+//es el encargado de llenar la parcela segun la cantidad de animales que desee, verificando asi que posea la cantidad necesaria para su compra
+    //verificar si aun queda espacio dentro de la parcela, y al acatar estas condiciones, se agrega un nuevo animal
     public void llenarParcela(int cAnimales) {
         if (Jug.getOro() >= cAnimales * tipo.getPrecio()) {
             if (tipo.getEspacio() * cAnimales <= espacio) {
                 for (int i = 0; i < cAnimales; i++) {
                     Animal temp = new Animal(tipo.getNombre(), tipo.getEspacio(), tipo.getObtenerProducto(), tipo.getPrecio());
+                    tipo.agregarCriasCompradas(cAnimales);
                     llenarProductosAnimal(temp);
                     AnimalGUI tempGUI = new AnimalGUI(tipo.getNombre(), this);
                     animales.add(temp);
                     animalesGUI.add(tempGUI);
-                    HiloAnimal animal = new HiloAnimal(temp, tempGUI);
+                    Thread animal = new Thread(new HiloAnimal(temp, tempGUI));
                     animal.start();
                 }
+                Jug.restarOro(cAnimales );
                 espacio -= tipo.getEspacio() * cAnimales;
             } else {
                 JOptionPane.showMessageDialog(null, "La parcela no puede almacenar esa cantidad de animales");
@@ -75,29 +77,29 @@ public class Parcela {
         figuraParcela.getContenedorAnimalesParcela().removeAll();
         mostrarAnimales();
     }
-
+//dimensiona las casillas de la parcela
     private void dimensionarParcelaAnimales(double cAnimales) {
         alto = (int) Math.ceil(cAnimales / ancho);
     }
-
+//refresca la ventana con los animales que se posee actualmente
     private void mostrarAnimales() {
         figuraParcela.getContenedorAnimalesParcela().setLayout(new GridLayout(alto, ancho));
         for (int i = 0; i < animales.getSize(); i++) {
             figuraParcela.getContenedorAnimalesParcela().add(animalesGUI.get(i));
         }
     }
-
+//muestra la figura de la paracela, en donde dentro se encuentran los animales
     public void mostrarParcela() {
-        figuraParcela.setVisible(true);//poner boton recolectar
+        figuraParcela.setVisible(true);
     }
-
+//manda un booleano a todos los animales para que esten preparados para dar productos generados sin destace
     public void prepararProductosSinDestace() {
         for (int i = 0; i < animalesGUI.getSize(); i++) {
             boolean temp = animalesGUI.get(i).isPrepararProductosSinDestace();
             animalesGUI.get(i).setPrepararProductosSinDestace(!temp);
         }
     }
-
+//agrega los productos generados sin destace del animal, segun la edad que tenga
     public void agregarProductosSinDestace(AnimalGUI figuraAnimal) {
         String nombreProducto;
         if (animales.get(buscarAnimalGUI(figuraAnimal)).isMuerto() == false) {
@@ -109,21 +111,23 @@ public class Parcela {
             JOptionPane.showMessageDialog(null, "Este animal esta Muerto");
         }
     }
-
+//manda un booleano a todos los animales para que esten preparados para dar productos generados con destace
+    //para despues desaparecer de la parcela
     public void prepararProductosConDestace() {
         for (int i = 0; i < animalesGUI.getSize(); i++) {
             boolean temp = animalesGUI.get(i).isPrepararProductosConDestace();
             animalesGUI.get(i).setPrepararProductosConDestace(!temp);
         }
     }
-
+//agrega los productos generados con destace del animal, segun la edad que tenga, y luego el animal es eliminado de la parcela
     public void agregarProductosConDestace(AnimalGUI figuraAnimal) {
         String nombreProducto;
         if (animales.get(buscarAnimalGUI(figuraAnimal)).isMuerto() == false) {
             for (int i = 0; i < tipo.getDestace().getSize(); i++) {
                 nombreProducto = tipo.getDestace().get(i).getNombre();
-                bodega.getContenedor().get(buscarProducto(nombreProducto)).agregartExistencia(1);
+                bodega.getContenedor().get(buscarProducto(nombreProducto)).agregartExistencia(1*animales.get(buscarAnimalGUI(figuraAnimal)).getEdad());
             }
+            tipo.agregarAnimalesDestazados(1);
             animales.eliminar(buscarAnimalGUI(figuraAnimal));
             animalesGUI.eliminar(buscarAnimalGUI(figuraAnimal));
             figuraParcela.getContenedorAnimalesParcela().removeAll();
@@ -133,7 +137,7 @@ public class Parcela {
         }
 
     }
-
+//buscador de productos segun un nombre
     public int buscarProducto(String nombreProducto) {
         for (int i = 0; i < bodega.getContenedor().getSize(); i++) {
             if (nombreProducto.equals(bodega.getContenedor().get(i).getProducto().getNombre())) {
@@ -142,7 +146,7 @@ public class Parcela {
         }
         return 0;
     }
-
+//busca el indice de un animal, por medio de su figura
     public int buscarAnimalGUI(AnimalGUI buscarAnimalGUI) {
         for (int i = 0; i < animalesGUI.getSize(); i++) {
             if (buscarAnimalGUI.equals(animalesGUI.get(i))) {
@@ -151,7 +155,8 @@ public class Parcela {
         }
         return 0;
     }
-
+//manda un booleano a los animales para que se preparen para alimentarse, y asi incrementar su vida
+    
     public void preparararAlimentar(String producto, int cantidad) {
         this.productoTemp = producto;
         this.cantidadTemp = cantidad;
@@ -160,7 +165,8 @@ public class Parcela {
             animalesGUI.get(i).setPrepararAlimentar(!temp);
         }
     }
-
+//es el encargado de alimentar a los animales, indicando la cantidad que deseamos que coma, y el producto que deseamos ingiera
+    //segun esto, el animal incrementa su vida
     public void alimentar(AnimalGUI figuraAnimal) {
         if (bodega.getContenedor().get(buscarProducto(productoTemp)).getExistencia() >= cantidadTemp) {
             bodega.getContenedor().get(buscarProducto(productoTemp)).restarExistencia(cantidadTemp);
@@ -172,7 +178,7 @@ public class Parcela {
             JOptionPane.showMessageDialog(null, "No posee esta cantidad dentro de su Bodega");
         }
     }
-
+//llena la lista de alimientos segun el tipo de animal
     private void llenarListaAlimentos() {
         if (tipo instanceof Herbívoro) {
             for (int i = 0; i < bodega.getContenedor().getSize(); i++) {
@@ -188,14 +194,14 @@ public class Parcela {
             }
         }
     }
-
+//manda un booleano a todos los animales, verificando si el animal esta vivo o muerto
     public void prepararLimpiar() {
         for (int i = 0; i < animalesGUI.getSize(); i++) {
             boolean temp = animalesGUI.get(i).isPrepararLimpiar();
             animalesGUI.get(i).setPrepararLimpiar(!temp);
         }
     }
-
+//al limpiar el terreno, se verifica que el animal este muerto, de lo contrario no se puede remover de la parcela
     public void limpiar(AnimalGUI figuraAnimalGUI) {
         if (animales.get(buscarAnimalGUI(figuraAnimalGUI)).isMuerto()) {
             animales.eliminar(buscarAnimalGUI(figuraAnimalGUI));
@@ -206,11 +212,11 @@ public class Parcela {
             JOptionPane.showMessageDialog(null, "Este animal no esta muerto");
         }
     }
-
+//obtiene las existencias del alimento que se desea dar a los animales
     public String obtenerExistenciasAlimento(String nombre) {
         return "" + bodega.getContenedor().get(buscarProducto(nombre)).getExistencia();
     }
-
+//verifica si las listas de productos del animal esten llenas, de lo contrario, ciertas funciones se bloquearán
     private void verificarFiguraParcela() {
         if (tipo.getDestace().esVacia()) {
             figuraParcela.getDestasar().setVisible(false);
@@ -218,7 +224,7 @@ public class Parcela {
             figuraParcela.getRecolectarProductos().setVisible(false);
         }
     }
-
+//llena los productos de un nuevo animal, con los productos producidos por el tipo de animal que acepta la parcela
     private void llenarProductosAnimal(Animal animal) {
         for (int i = 0; i < tipo.getDestace().getSize(); i++) {
             animal.getDestace().add(tipo.getDestace().get(i));

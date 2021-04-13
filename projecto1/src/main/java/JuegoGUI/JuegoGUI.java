@@ -20,10 +20,11 @@ public class JuegoGUI extends javax.swing.JFrame {
 
     public JuegoGUI(Juego juego) {
         initComponents();
+                this.setLocationRelativeTo(null);
         this.juego = juego;
         this.nombre.setText(juego.getJug().getNombre());
         this.nick.setText(juego.getJug().getNickname());
-        this.vida.setText("" + juego.getJug().getVida());
+        this.vida.setText(juego.getJug().getVida()+"%");
         this.oro.setText("" + juego.getJug().getOro());
         this.cSemillas.setText("" + juego.getJug().getSemillas());
         this.precioAgregarCasillas.setText(ControladorConstantes.SIMBOLO_ORO + ControladorConstantes.PRECIO_CASILLA);
@@ -90,6 +91,9 @@ public class JuegoGUI extends javax.swing.JFrame {
         PanelCentral = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
+        setMinimumSize(new java.awt.Dimension(1000, 800));
+        setPreferredSize(new java.awt.Dimension(1000, 800));
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 3));
 
@@ -110,6 +114,11 @@ public class JuegoGUI extends javax.swing.JFrame {
         jPanel1.add(accederMercado);
 
         accederReportes.setText("Reportes");
+        accederReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accederReportesActionPerformed(evt);
+            }
+        });
         jPanel1.add(accederReportes);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
@@ -335,6 +344,10 @@ public class JuegoGUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         juego.mostrarComer();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void accederReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accederReportesActionPerformed
+        juego.accederReportes();
+    }//GEN-LAST:event_accederReportesActionPerformed
 
     public JLabel getOro() {
         return oro;

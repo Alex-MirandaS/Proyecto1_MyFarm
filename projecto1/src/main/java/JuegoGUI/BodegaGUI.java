@@ -17,6 +17,7 @@ public class BodegaGUI extends javax.swing.JFrame {
 
     public BodegaGUI() {
         initComponents();
+                this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);        
     }
 
