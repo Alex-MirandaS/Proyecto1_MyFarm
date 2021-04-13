@@ -17,8 +17,9 @@ public class Animal {
 
     protected Lista<Producto> destace, sinDestace;
     protected String nombre, obtenerProducto;
-    protected int edad, alimentoConsumido, vida = 100, precio;
+    protected int edad = 1, alimentoConsumido, vida = 100, precio;
     protected double espacio;
+    protected boolean muerto;
     protected JLabel figuraAnimal = new JLabel();
 
     public Animal(String nombre, double espacio, String obtenerProducto, int precio) {
@@ -71,5 +72,20 @@ public class Animal {
         this.vida -= vida;
     }
 
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public boolean isMuerto() {
+        return muerto;
+    }
+
+    public void setMuerto(boolean muerto) {
+        this.muerto = muerto;
+    }
 
 }

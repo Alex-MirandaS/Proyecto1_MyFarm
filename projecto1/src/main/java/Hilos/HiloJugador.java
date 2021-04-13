@@ -21,7 +21,7 @@ public class HiloJugador extends Thread{
     private Jugador jug;
     private JuegoGUI juegoGUI;
     private int segundos= 2;
-    private int vidaRestadaSeg = 2;
+    private int vidaRestadaSeg = 1;
 
     public HiloJugador(Jugador jug, JuegoGUI juegoGUI) {
         this.jug = jug;

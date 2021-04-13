@@ -33,6 +33,8 @@ public class AnimalGUI extends javax.swing.JPanel {
     private void initComponents() {
 
         nombreAnimal = new javax.swing.JLabel();
+        vidaAnimal = new javax.swing.JLabel();
+        edadAnimal = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -46,16 +48,27 @@ public class AnimalGUI extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(nombreAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(nombreAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(vidaAnimal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(edadAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap()
                 .addComponent(nombreAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(vidaAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(edadAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -67,10 +80,13 @@ public class AnimalGUI extends javax.swing.JPanel {
             parcela.agregarProductosSinDestace(this);
         }
         if (prepararProductosConDestace) {
-         parcela.agregarProductosConDestace(this);
+            parcela.agregarProductosConDestace(this);
         }
         if (prepararAlimentar) {
             parcela.alimentar(this);
+        }
+        if (prepararLimpiar) {
+            parcela.limpiar(this);
         }
     }//GEN-LAST:event_formMouseClicked
 
@@ -105,10 +121,23 @@ public class AnimalGUI extends javax.swing.JPanel {
     public void setPrepararLimpiar(boolean prepararLimpiar) {
         this.prepararLimpiar = prepararLimpiar;
     }
-    
-    
+
+    public JLabel getEdadAnimal() {
+        return edadAnimal;
+    }
+
+    public JLabel getNombreAnimal() {
+        return nombreAnimal;
+    }
+
+    public JLabel getVidaAnimal() {
+        return vidaAnimal;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel edadAnimal;
     private javax.swing.JLabel nombreAnimal;
+    private javax.swing.JLabel vidaAnimal;
     // End of variables declaration//GEN-END:variables
 }

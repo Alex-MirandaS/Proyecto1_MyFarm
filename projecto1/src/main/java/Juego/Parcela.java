@@ -8,12 +8,13 @@ package Juego;
 import Animales.Animal;
 import Animales.Herbívoro;
 import Controladores.ControladorConstantes;
+import Hilos.HiloAnimal;
 import JuegoGUI.AnimalGUI;
 import JuegoGUI.ParcelaGUI;
 import Listas.Lista;
+import Productos.ComidaAnimales;
 import Productos.ComidaAnimalesHerbívoros;
 import Productos.ComidaAnimalesOmnívoros;
-import Productos.Producto;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -53,14 +54,23 @@ public class Parcela {
     }
 
     public void llenarParcela(int cAnimales) {
-
-        if (tipo.getEspacio() * cAnimales <= espacio) {
-            for (int i = 0; i < cAnimales; i++) {
-                animales.add(tipo);
+        if (Jug.getOro() >= cAnimales * tipo.getPrecio()) {
+            if (tipo.getEspacio() * cAnimales <= espacio) {
+                for (int i = 0; i < cAnimales; i++) {
+                    Animal temp = new Animal(tipo.getNombre(), tipo.getEspacio(), tipo.getObtenerProducto(), tipo.getPrecio());
+                    llenarProductosAnimal(temp);
+                    AnimalGUI tempGUI = new AnimalGUI(tipo.getNombre(), this);
+                    animales.add(temp);
+                    animalesGUI.add(tempGUI);
+                    HiloAnimal animal = new HiloAnimal(temp, tempGUI);
+                    animal.start();
+                }
+                espacio -= tipo.getEspacio() * cAnimales;
+            } else {
+                JOptionPane.showMessageDialog(null, "La parcela no puede almacenar esa cantidad de animales");
             }
-            espacio -= tipo.getEspacio() * cAnimales;
         } else {
-            JOptionPane.showMessageDialog(null, "La parcela no puede almacenar esa cantidad de animales");
+            JOptionPane.showMessageDialog(null, "No tiene la cantidad necesaria");
         }
         figuraParcela.getContenedorAnimalesParcela().removeAll();
         mostrarAnimales();
@@ -73,7 +83,6 @@ public class Parcela {
     private void mostrarAnimales() {
         figuraParcela.getContenedorAnimalesParcela().setLayout(new GridLayout(alto, ancho));
         for (int i = 0; i < animales.getSize(); i++) {
-            animalesGUI.add(new AnimalGUI(tipo.getNombre(), this));
             figuraParcela.getContenedorAnimalesParcela().add(animalesGUI.get(i));
         }
     }
@@ -91,9 +100,13 @@ public class Parcela {
 
     public void agregarProductosSinDestace(AnimalGUI figuraAnimal) {
         String nombreProducto;
-        for (int i = 0; i < tipo.getSinDestace().getSize(); i++) {
-            nombreProducto = tipo.getSinDestace().get(i).getNombre();
-            bodega.getContenedor().get(buscarProducto(nombreProducto)).agregartExistencia(1);
+        if (animales.get(buscarAnimalGUI(figuraAnimal)).isMuerto() == false) {
+            for (int i = 0; i < tipo.getSinDestace().getSize(); i++) {
+                nombreProducto = tipo.getSinDestace().get(i).getNombre();
+                bodega.getContenedor().get(buscarProducto(nombreProducto)).agregartExistencia(1 * animales.get(buscarAnimalGUI(figuraAnimal)).getEdad());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Este animal esta Muerto");
         }
     }
 
@@ -106,14 +119,19 @@ public class Parcela {
 
     public void agregarProductosConDestace(AnimalGUI figuraAnimal) {
         String nombreProducto;
-        for (int i = 0; i < tipo.getDestace().getSize(); i++) {
-            nombreProducto = tipo.getDestace().get(i).getNombre();
-            bodega.getContenedor().get(buscarProducto(nombreProducto)).agregartExistencia(1);
+        if (animales.get(buscarAnimalGUI(figuraAnimal)).isMuerto() == false) {
+            for (int i = 0; i < tipo.getDestace().getSize(); i++) {
+                nombreProducto = tipo.getDestace().get(i).getNombre();
+                bodega.getContenedor().get(buscarProducto(nombreProducto)).agregartExistencia(1);
+            }
+            animales.eliminar(buscarAnimalGUI(figuraAnimal));
+            animalesGUI.eliminar(buscarAnimalGUI(figuraAnimal));
+            figuraParcela.getContenedorAnimalesParcela().removeAll();
+            mostrarAnimales();
+        } else {
+            JOptionPane.showMessageDialog(null, "Este animal esta Muerto");
         }
-        animales.eliminar(buscarAnimalGUI(figuraAnimal));
-        animalesGUI.eliminar(buscarAnimalGUI(figuraAnimal));
-        figuraParcela.getContenedorAnimalesParcela().removeAll();
-        mostrarAnimales();
+
     }
 
     public int buscarProducto(String nombreProducto) {
@@ -146,11 +164,12 @@ public class Parcela {
     public void alimentar(AnimalGUI figuraAnimal) {
         if (bodega.getContenedor().get(buscarProducto(productoTemp)).getExistencia() >= cantidadTemp) {
             bodega.getContenedor().get(buscarProducto(productoTemp)).restarExistencia(cantidadTemp);
-            animales.get(buscarAnimalGUI(figuraAnimal)).sumarVida(alto);
+            ComidaAnimales comida = (ComidaAnimales) bodega.getContenedor().get(buscarProducto(productoTemp)).getProducto();
+            animales.get(buscarAnimalGUI(figuraAnimal)).sumarVida(comida.getCantidad());
             figuraParcela.getContenedorAnimalesParcela().removeAll();
             mostrarAnimales();
-        }else{
-                  JOptionPane.showMessageDialog(null, "No posee esta cantidad dentro de su Bodega");
+        } else {
+            JOptionPane.showMessageDialog(null, "No posee esta cantidad dentro de su Bodega");
         }
     }
 
@@ -170,6 +189,24 @@ public class Parcela {
         }
     }
 
+    public void prepararLimpiar() {
+        for (int i = 0; i < animalesGUI.getSize(); i++) {
+            boolean temp = animalesGUI.get(i).isPrepararLimpiar();
+            animalesGUI.get(i).setPrepararLimpiar(!temp);
+        }
+    }
+
+    public void limpiar(AnimalGUI figuraAnimalGUI) {
+        if (animales.get(buscarAnimalGUI(figuraAnimalGUI)).isMuerto()) {
+            animales.eliminar(buscarAnimalGUI(figuraAnimalGUI));
+            animalesGUI.eliminar(buscarAnimalGUI(figuraAnimalGUI));
+            figuraParcela.getContenedorAnimalesParcela().removeAll();
+            mostrarAnimales();
+        } else {
+            JOptionPane.showMessageDialog(null, "Este animal no esta muerto");
+        }
+    }
+
     public String obtenerExistenciasAlimento(String nombre) {
         return "" + bodega.getContenedor().get(buscarProducto(nombre)).getExistencia();
     }
@@ -179,6 +216,15 @@ public class Parcela {
             figuraParcela.getDestasar().setVisible(false);
         } else if (tipo.getSinDestace().esVacia()) {
             figuraParcela.getRecolectarProductos().setVisible(false);
+        }
+    }
+
+    private void llenarProductosAnimal(Animal animal) {
+        for (int i = 0; i < tipo.getDestace().getSize(); i++) {
+            animal.getDestace().add(tipo.getDestace().get(i));
+        }
+        for (int i = 0; i < tipo.getSinDestace().getSize(); i++) {
+            animal.getSinDestace().add(tipo.getSinDestace().get(i));
         }
     }
 
