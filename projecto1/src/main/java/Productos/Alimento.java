@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Productos;
 
 /**
- * 
+ *
  * @author alex
  */
-public class Alimento extends Producto{
-    
+public class Alimento extends Producto {
+
     private int vidaAgregada;
 
     public Alimento(String nombre, int precio, int vidaAgregada) {
@@ -22,7 +21,5 @@ public class Alimento extends Producto{
     public int getVidaAgregada() {
         return vidaAgregada;
     }
-
-
 
 }

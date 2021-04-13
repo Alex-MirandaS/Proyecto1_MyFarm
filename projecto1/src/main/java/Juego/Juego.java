@@ -11,6 +11,7 @@ import Casillas.Pasto;
 import Controladores.ControladorAnimales;
 import Controladores.ControladorPlantas;
 import Controladores.ControladorProductos;
+import Hilos.HiloJugador;
 import JuegoGUI.JuegoGUI;
 import MenusGUI.ComerGUI;
 import MenusGUI.DatosJugador;
@@ -34,6 +35,8 @@ public class Juego {
     private JuegoGUI ventanaJuego;
     private DatosJugador datosJugador;
     private ComerGUI comer;
+    
+    private HiloJugador hiloJugador;
 
     public Juego() {
         controlPlantas = new ControladorPlantas();
@@ -46,6 +49,8 @@ public class Juego {
         granja = new Granja(jug, bodega, controlPlantas, controlAnimales);
         mercado = new Mercado(jug, bodega);
         ventanaJuego = new JuegoGUI(this);
+        hiloJugador = new HiloJugador(jug,ventanaJuego);
+        hiloJugador.start();
         comer = new ComerGUI(this);
         llenarAlimentos();
     }

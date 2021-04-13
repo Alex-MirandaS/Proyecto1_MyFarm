@@ -7,6 +7,7 @@ package JuegoGUI;
 
 import Controladores.ControladorConstantes;
 import Juego.Juego;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -334,6 +335,14 @@ public class JuegoGUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         juego.mostrarComer();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    public JLabel getOro() {
+        return oro;
+    }
+
+    public JLabel getVida() {
+        return vida;
+    }
 
     /**
      * @param args the command line arguments
